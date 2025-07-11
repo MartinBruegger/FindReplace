@@ -1,6 +1,6 @@
 ﻿// Updater.cs
 //
-// Copyright 2011 Jarrett Vance, 2025 Martin $Bruegger
+// Copyright 2011 Jarrett Vance, 2025 Martin Bruegger
 
 using System;
 using System.Diagnostics;
@@ -41,8 +41,7 @@ namespace FindReplace
                 //ServicePointManager.ServerCertificateValidationCallback = delegate { return true; };
                 ServicePointManager.Expect100Continue = true;
                 ServicePointManager.SecurityProtocol = SecurityProtocolType.Tls12;
-                //XDocument doc = XDocument.Load(Settings.Default.RemoteManifest);
-                XDocument doc = XDocument.Load(@"https://sourceforge.net/projects/findreplace/files/FindReplace.manifest/");
+                XDocument doc = XDocument.Load(Settings.Default.RemoteManifest);
                 //MessageBox.Show(string.Format("After XDocument.Load: {0}", doc));
 
                 // if newer, display update dialog

@@ -1,4 +1,7 @@
-﻿using System;
+﻿// Form1.cs
+//
+// Copyright 2025 Martin Bruegger
+using System;
 using System.Globalization;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -13,7 +16,6 @@ using System.Text;
 using System.Xml;
 using System.Xml.Linq;
 using System.Reflection;
-using System.Diagnostics.Eventing.Reader;
 
 namespace FindReplace
 {
@@ -1569,9 +1571,9 @@ namespace FindReplace
         {
             UpdateStatus status = Updater.CheckForUpdate(ShowUpdateDialog);
             if (status == UpdateStatus.UpdateFailed) 
-                MessageBox.Show(this, "Check for update faile. Please try later", "Warning");
+                MessageBox.Show(this, "Check for update failed. Please try later", "Warning");
             else if (status == UpdateStatus.NoUpdate)
-                MessageBox.Show(this, "There are no updates available-", "Update Check");
+                MessageBox.Show(this, "There are no updates available.", "Update Check");
         }
     }
 }

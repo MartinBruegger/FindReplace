@@ -1,7 +1,8 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
+﻿// Program.cs
+//
+// Copyright 2025 Martin Bruegger
+
+using System;
 using System.Windows.Forms;
 
 namespace FindReplace
