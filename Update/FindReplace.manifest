@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8" ?>
 <manifest>
-	<version>1.0.3.3</version>
-	<date>2025/07/11 14:20:00</date>
+	<version>1.0.3.4</version>
+	<date>2025/07/22 10:37:00</date>
 	<info>https://raw.githubusercontent.com/MartinBruegger/FindReplace/refs/heads/master/Update/FindReplace_changes.txt</info>
 	<download>https://raw.githubusercontent.com/MartinBruegger/FindReplace/refs/heads/master/Update/FindReplace.zip</download>
 </manifest>
