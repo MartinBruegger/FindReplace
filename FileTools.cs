@@ -56,8 +56,6 @@ namespace FindReplace
                                 fileCounter++;
                                 if (fileNumber == fileCounter)
                                 {
-                                    //MessageBox.Show(string.Format("Restore File: {0} \n LastWriteTime: {1}", 
-                                        //entry.FullName, entry.LastWriteTime.DateTime));     
                                     entry.ExtractToFile(file, true);                  
                                 }
                             }
@@ -126,7 +124,7 @@ namespace FindReplace
             while (len >= 1024 && order < sizes.Length - 1)
             {
                 order++;
-                len = len / 1024;
+                len /= 1024;
             }
             return String.Format("{0} {1}", Math.Ceiling(len), sizes[order]);
         }

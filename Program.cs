@@ -18,7 +18,8 @@ namespace FindReplace
             Updater.UpdateUpdater();    // Update the updater when file not in use.
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
-            Application.Run(new Form1(args));
+            //Application.Run(new Form1(args));
+            Application.Run(new Form1MaterialSkin(args));
         }
     }
 }

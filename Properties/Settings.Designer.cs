@@ -71,5 +71,197 @@ namespace FindReplace.Properties {
                 this["F1Size"] = value;
             }
         }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("light")]
+        public string F1Theme {
+            get {
+                return ((string)(this["F1Theme"]));
+            }
+            set {
+                this["F1Theme"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("")]
+        public string F1ColorScheme {
+            get {
+                return ((string)(this["F1ColorScheme"]));
+            }
+            set {
+                this["F1ColorScheme"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("")]
+        public string F1FindString {
+            get {
+                return ((string)(this["F1FindString"]));
+            }
+            set {
+                this["F1FindString"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("")]
+        public string F1SelectedPath {
+            get {
+                return ((string)(this["F1SelectedPath"]));
+            }
+            set {
+                this["F1SelectedPath"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("False")]
+        public bool F1SubDirectory {
+            get {
+                return ((bool)(this["F1SubDirectory"]));
+            }
+            set {
+                this["F1SubDirectory"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("")]
+        public string F1Filenames {
+            get {
+                return ((string)(this["F1Filenames"]));
+            }
+            set {
+                this["F1Filenames"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("False")]
+        public bool F1SelectByDate {
+            get {
+                return ((bool)(this["F1SelectByDate"]));
+            }
+            set {
+                this["F1SelectByDate"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("0")]
+        public int F1FileAge {
+            get {
+                return ((int)(this["F1FileAge"]));
+            }
+            set {
+                this["F1FileAge"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("")]
+        public string F1ReplaceString {
+            get {
+                return ((string)(this["F1ReplaceString"]));
+            }
+            set {
+                this["F1ReplaceString"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("False")]
+        public bool F1MatchCase {
+            get {
+                return ((bool)(this["F1MatchCase"]));
+            }
+            set {
+                this["F1MatchCase"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("False")]
+        public bool F1MatchWord {
+            get {
+                return ((bool)(this["F1MatchWord"]));
+            }
+            set {
+                this["F1MatchWord"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("False")]
+        public bool F1RegEx {
+            get {
+                return ((bool)(this["F1RegEx"]));
+            }
+            set {
+                this["F1RegEx"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("True")]
+        public bool F1BRLocal {
+            get {
+                return ((bool)(this["F1BRLocal"]));
+            }
+            set {
+                this["F1BRLocal"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("False")]
+        public bool F1BRCentral {
+            get {
+                return ((bool)(this["F1BRCentral"]));
+            }
+            set {
+                this["F1BRCentral"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("")]
+        public string F1BRDir {
+            get {
+                return ((string)(this["F1BRDir"]));
+            }
+            set {
+                this["F1BRDir"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("False")]
+        public bool F1BRNone {
+            get {
+                return ((bool)(this["F1BRNone"]));
+            }
+            set {
+                this["F1BRNone"] = value;
+            }
+        }
     }
 }

@@ -1,4 +1,6 @@
-﻿using System;
+﻿using MaterialSkin;
+using MaterialSkin.Controls;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -9,23 +11,20 @@ using System.Threading.Tasks;
 using System.Windows.Forms;
 using System.IO;
 using System.IO.Compression;
-using System.Diagnostics;
 
 namespace FindReplace
 {
-    public partial class Form2 : Form
+    public partial class Form2MaterialSkin : MaterialForm
     {
-        public Form2(string backup_dir, string file)
+        public Form2MaterialSkin(string backup_dir, string file)  //public Form2(string backup_dir, string file)
         {
             InitializeComponent();
+            var materialSkinManager = MaterialSkinManager.Instance;
+            materialSkinManager.AddFormToManage(this);
 
-            //Point point1 = this.Location;
-            //MessageBox.Show("Location:" + point1);
-            //this.StartPosition = FormStartPosition.CenterParent(+30, 30);
-
-            label_File.Text = file;
+            //materialLabel_File.Text = file;
             string zipFile = backup_dir + @"\" + FileTools.zipArchiveName;
-            label_ZipFile.Text = zipFile;
+            materialLabel_ZipFile.Text = zipFile;
 
             //string[] row1 = { "" };
             int fileCounter = 0;
@@ -39,43 +38,42 @@ namespace FindReplace
                         fileCounter++;
                         ListViewItem item = new ListViewItem(new string[]
                         {
-                            entry.LastWriteTime.DateTime.ToString(),
+                            file,
+                            entry.LastWriteTime.DateTime.ToString("yyyy/MM/dd HH:mm:ss"),
                             FileTools.GetFileSizeHuman(file, entry.Length)
                         })
                         {
                             Tag = fileCounter
                         };
-                        listView1.Items.Add(item);                        
-                    }                                          
+                        listView1.Items.Add(item);
+                    }
                 }
-            }           
+            }
         }
 
-        private void Button_Restore_Click(object sender, EventArgs e)
+        private void MaterialButton_Restore_Click(object sender, EventArgs e)
         {
-            int ID = 0;           // TAG contains ID of list_files            
+            //int ID = 0;           // TAG contains ID of list_files
+            //string file;                      
             ListView.SelectedListViewItemCollection fileselection = this.listView1.SelectedItems;
 
             foreach (ListViewItem item in fileselection)
             {
-                ID = Convert.ToInt16(item.Tag);
+                int ID = Convert.ToInt16(item.Tag);
+                //file = item.SubItems[0].Text;
+                if (ID == 0)
+                    MessageBox.Show("Please select a file version to restore.");
+                else
+                {
+                    FileTools.RestoreFile(Path.GetDirectoryName(materialLabel_ZipFile.Text), item.SubItems[0].Text, ID);
+                    this.DialogResult = DialogResult.OK;
+                    this.Close();
+                }
             }
-            if (ID == 0)
-                MessageBox.Show("Please select a file version to restore.");
-            else
-            {
-                FileTools.RestoreFile(Path.GetDirectoryName(label_ZipFile.Text), label_File.Text, ID);
-                this.DialogResult = DialogResult.OK;
-                this.Close();
-            }
+            
         }
 
-        private void Button_View_Click(object sender, EventArgs e)
-        {
-            MessageBox.Show("Code View follows ...");
-        }
-
-        private void Form2_Load(object sender, EventArgs e)
+        private void Form2MaterialSkin_Load(object sender, EventArgs e)
         {
             // CenterParent plus Offset 150m50
             // ... shift a bit to the right, don't cover parents preview and listivew 
