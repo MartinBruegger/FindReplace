@@ -1,12 +1,16 @@
-﻿using System.Windows.Forms;
+﻿using MaterialSkin;
+using MaterialSkin.Controls;
+using System.Windows.Forms;
 
 namespace FindReplace
 {
-    public partial class UpdateForm : Form
+    public partial class UpdateForm : MaterialForm
     {
         public UpdateForm()
         {
             InitializeComponent();
+            var materialSkinManager = MaterialSkinManager.Instance;
+            materialSkinManager.AddFormToManage(this);
         }
 
         public string Info { get { return lblInfo.Text; } set { lblInfo.Text = value; } }

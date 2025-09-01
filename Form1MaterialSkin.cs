@@ -498,7 +498,7 @@ namespace FindReplace
                         writer.WriteElementString("Title", item.SubItems[0].Text);
                         writer.WriteElementString("Path", item.SubItems[1].Text);
                         writer.WriteElementString("SubDirectories", item.SubItems[2].Text);
-                        writer.WriteElementString("Filenames", item.SubItems[3].Text);
+                        writer.WriteElementString("FileNames", item.SubItems[3].Text);
                         writer.WriteElementString("ByDate", item.SubItems[4].Text);
                         writer.WriteElementString("Days", item.SubItems[5].Text);
                         writer.WriteElementString("FindText", item.SubItems[6].Text);
@@ -1605,6 +1605,7 @@ namespace FindReplace
             int ID;             // TAG contains ID of listFiles
             string file;        // ID -> list_founds -> match-values from REGEXP.Matches
             string backupDir;   // Backup central, local or Empty
+            selectedReplaceString = materialTextBox_ReplaceString.Text;
             System.Windows.Forms.ListView.SelectedListViewItemCollection fileselection = this.listView_Result.SelectedItems;
             foreach (ListViewItem item in fileselection)
             {
@@ -1674,7 +1675,6 @@ namespace FindReplace
                         }
                         break;
                     default:
-                        //Form2 f = new Form2(backupDir, file);
                         Form2MaterialSkin f = new Form2MaterialSkin(backupDir, file);
                         if (f.ShowDialog(this) == DialogResult.OK)
                         {

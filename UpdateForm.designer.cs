@@ -40,10 +40,9 @@
             // 
             this.label1.AutoSize = true;
             this.label1.Font = new System.Drawing.Font("Microsoft Sans Serif", 14F);
-            this.label1.Location = new System.Drawing.Point(37, 25);
-            this.label1.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.label1.Location = new System.Drawing.Point(28, 20);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(195, 29);
+            this.label1.Size = new System.Drawing.Size(151, 24);
             this.label1.TabIndex = 0;
             this.label1.Text = "Update Available";
             // 
@@ -51,20 +50,20 @@
             // 
             this.lblInfo.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            this.lblInfo.Location = new System.Drawing.Point(39, 64);
-            this.lblInfo.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.lblInfo.AutoSize = true;
+            this.lblInfo.Location = new System.Drawing.Point(29, 52);
             this.lblInfo.Name = "lblInfo";
-            this.lblInfo.Size = new System.Drawing.Size(390, 28);
+            this.lblInfo.Size = new System.Drawing.Size(222, 13);
             this.lblInfo.TabIndex = 1;
             this.lblInfo.Text = "A new version {0} was made available on {1}.";
             // 
             // linkInfo
             // 
             this.linkInfo.AutoSize = true;
-            this.linkInfo.Location = new System.Drawing.Point(39, 110);
-            this.linkInfo.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.linkInfo.LinkColor = System.Drawing.Color.Teal;
+            this.linkInfo.Location = new System.Drawing.Point(29, 89);
             this.linkInfo.Name = "linkInfo";
-            this.linkInfo.Size = new System.Drawing.Size(67, 17);
+            this.linkInfo.Size = new System.Drawing.Size(52, 13);
             this.linkInfo.TabIndex = 2;
             this.linkInfo.TabStop = true;
             this.linkInfo.Text = "More Info";
@@ -76,10 +75,9 @@
             this.btnUpdate.DialogResult = System.Windows.Forms.DialogResult.OK;
             this.btnUpdate.Image = ((System.Drawing.Image)(resources.GetObject("btnUpdate.Image")));
             this.btnUpdate.ImageAlign = System.Drawing.ContentAlignment.TopCenter;
-            this.btnUpdate.Location = new System.Drawing.Point(330, 110);
-            this.btnUpdate.Margin = new System.Windows.Forms.Padding(4);
+            this.btnUpdate.Location = new System.Drawing.Point(383, 89);
             this.btnUpdate.Name = "btnUpdate";
-            this.btnUpdate.Size = new System.Drawing.Size(88, 49);
+            this.btnUpdate.Size = new System.Drawing.Size(66, 40);
             this.btnUpdate.TabIndex = 3;
             this.btnUpdate.Text = "Update";
             this.btnUpdate.TextAlign = System.Drawing.ContentAlignment.BottomCenter;
@@ -91,10 +89,9 @@
             this.btnSkip.DialogResult = System.Windows.Forms.DialogResult.Cancel;
             this.btnSkip.Image = ((System.Drawing.Image)(resources.GetObject("btnSkip.Image")));
             this.btnSkip.ImageAlign = System.Drawing.ContentAlignment.TopCenter;
-            this.btnSkip.Location = new System.Drawing.Point(205, 110);
-            this.btnSkip.Margin = new System.Windows.Forms.Padding(4);
+            this.btnSkip.Location = new System.Drawing.Point(289, 89);
             this.btnSkip.Name = "btnSkip";
-            this.btnSkip.Size = new System.Drawing.Size(88, 49);
+            this.btnSkip.Size = new System.Drawing.Size(66, 40);
             this.btnSkip.TabIndex = 4;
             this.btnSkip.Text = "Skip";
             this.btnSkip.TextAlign = System.Drawing.ContentAlignment.BottomCenter;
@@ -103,11 +100,11 @@
             // UpdateForm
             // 
             this.AcceptButton = this.btnUpdate;
-            this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.LightGray;
             this.CancelButton = this.btnSkip;
-            this.ClientSize = new System.Drawing.Size(454, 182);
+            this.ClientSize = new System.Drawing.Size(475, 148);
             this.ControlBox = false;
             this.Controls.Add(this.btnSkip);
             this.Controls.Add(this.btnUpdate);
@@ -115,10 +112,10 @@
             this.Controls.Add(this.lblInfo);
             this.Controls.Add(this.label1);
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
-            this.Margin = new System.Windows.Forms.Padding(4);
             this.MaximizeBox = false;
             this.MinimizeBox = false;
             this.Name = "UpdateForm";
+            this.Padding = new System.Windows.Forms.Padding(2, 52, 2, 2);
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterParent;
             this.Text = "{0} {1}";
             this.ResumeLayout(false);
