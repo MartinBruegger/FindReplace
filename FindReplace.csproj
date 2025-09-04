@@ -83,11 +83,17 @@
     <Compile Include="Form1MaterialSkin.Designer.cs">
       <DependentUpon>Form1MaterialSkin.cs</DependentUpon>
     </Compile>
-    <Compile Include="Form2MaterialSkin.cs">
+    <Compile Include="FormModFavorite.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Form2MaterialSkin.Designer.cs">
-      <DependentUpon>Form2MaterialSkin.cs</DependentUpon>
+    <Compile Include="FormModFavorite.Designer.cs">
+      <DependentUpon>FormModFavorite.cs</DependentUpon>
+    </Compile>
+    <Compile Include="FormRestore.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FormRestore.Designer.cs">
+      <DependentUpon>FormRestore.cs</DependentUpon>
     </Compile>
     <Compile Include="ListViewColumnSorter.cs" />
     <Compile Include="Program.cs" />
@@ -103,8 +109,11 @@
     <EmbeddedResource Include="Form1MaterialSkin.resx">
       <DependentUpon>Form1MaterialSkin.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Form2MaterialSkin.resx">
-      <DependentUpon>Form2MaterialSkin.cs</DependentUpon>
+    <EmbeddedResource Include="FormModFavorite.resx">
+      <DependentUpon>FormModFavorite.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FormRestore.resx">
+      <DependentUpon>FormRestore.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>
@@ -133,9 +142,8 @@
       <DependentUpon>Settings.settings</DependentUpon>
       <DesignTimeSharedInput>True</DesignTimeSharedInput>
     </Compile>
-    <Content Include="Update\FindReplace.manifest">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </Content>
+    <Content Include="Update\FindReplace.manifest" />
+    <None Include="Update\FindReplace.zip" />
   </ItemGroup>
   <ItemGroup>
     <None Include="Resources\App.config" />
@@ -195,9 +203,7 @@
     <Content Include="Updater.exe">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
-    <Content Include="Update\FindReplace_changes.txt">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </Content>
+    <Content Include="Update\FindReplace_changes.txt" />
   </ItemGroup>
   <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

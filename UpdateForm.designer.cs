@@ -29,33 +29,12 @@
         private void InitializeComponent()
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(UpdateForm));
-            this.label1 = new System.Windows.Forms.Label();
-            this.lblInfo = new System.Windows.Forms.Label();
             this.linkInfo = new System.Windows.Forms.LinkLabel();
-            this.btnUpdate = new System.Windows.Forms.Button();
-            this.btnSkip = new System.Windows.Forms.Button();
+            this.materialButton_Update = new MaterialSkin.Controls.MaterialButton();
+            this.materialButton_Cancel = new MaterialSkin.Controls.MaterialButton();
+            this.materialLabel1 = new MaterialSkin.Controls.MaterialLabel();
+            this.lblInfo = new MaterialSkin.Controls.MaterialLabel();
             this.SuspendLayout();
-            // 
-            // label1
-            // 
-            this.label1.AutoSize = true;
-            this.label1.Font = new System.Drawing.Font("Microsoft Sans Serif", 14F);
-            this.label1.Location = new System.Drawing.Point(28, 20);
-            this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(151, 24);
-            this.label1.TabIndex = 0;
-            this.label1.Text = "Update Available";
-            // 
-            // lblInfo
-            // 
-            this.lblInfo.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.lblInfo.AutoSize = true;
-            this.lblInfo.Location = new System.Drawing.Point(29, 52);
-            this.lblInfo.Name = "lblInfo";
-            this.lblInfo.Size = new System.Drawing.Size(222, 13);
-            this.lblInfo.TabIndex = 1;
-            this.lblInfo.Text = "A new version {0} was made available on {1}.";
             // 
             // linkInfo
             // 
@@ -69,48 +48,84 @@
             this.linkInfo.Text = "More Info";
             this.linkInfo.LinkClicked += new System.Windows.Forms.LinkLabelLinkClickedEventHandler(this.LinkInfo_LinkClicked);
             // 
-            // btnUpdate
+            // materialButton_Update
             // 
-            this.btnUpdate.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
-            this.btnUpdate.DialogResult = System.Windows.Forms.DialogResult.OK;
-            this.btnUpdate.Image = ((System.Drawing.Image)(resources.GetObject("btnUpdate.Image")));
-            this.btnUpdate.ImageAlign = System.Drawing.ContentAlignment.TopCenter;
-            this.btnUpdate.Location = new System.Drawing.Point(383, 89);
-            this.btnUpdate.Name = "btnUpdate";
-            this.btnUpdate.Size = new System.Drawing.Size(66, 40);
-            this.btnUpdate.TabIndex = 3;
-            this.btnUpdate.Text = "Update";
-            this.btnUpdate.TextAlign = System.Drawing.ContentAlignment.BottomCenter;
-            this.btnUpdate.UseVisualStyleBackColor = true;
+            this.materialButton_Update.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
+            this.materialButton_Update.Density = MaterialSkin.Controls.MaterialButton.MaterialButtonDensity.Default;
+            this.materialButton_Update.Depth = 0;
+            this.materialButton_Update.HighEmphasis = true;
+            this.materialButton_Update.Icon = null;
+            this.materialButton_Update.Location = new System.Drawing.Point(134, 89);
+            this.materialButton_Update.Margin = new System.Windows.Forms.Padding(4, 6, 4, 6);
+            this.materialButton_Update.MouseState = MaterialSkin.MouseState.HOVER;
+            this.materialButton_Update.Name = "materialButton_Update";
+            this.materialButton_Update.NoAccentTextColor = System.Drawing.Color.Empty;
+            this.materialButton_Update.Size = new System.Drawing.Size(77, 36);
+            this.materialButton_Update.TabIndex = 5;
+            this.materialButton_Update.Text = "Update";
+            this.materialButton_Update.Type = MaterialSkin.Controls.MaterialButton.MaterialButtonType.Contained;
+            this.materialButton_Update.UseAccentColor = false;
+            this.materialButton_Update.UseVisualStyleBackColor = true;
             // 
-            // btnSkip
+            // materialButton_Cancel
             // 
-            this.btnSkip.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
-            this.btnSkip.DialogResult = System.Windows.Forms.DialogResult.Cancel;
-            this.btnSkip.Image = ((System.Drawing.Image)(resources.GetObject("btnSkip.Image")));
-            this.btnSkip.ImageAlign = System.Drawing.ContentAlignment.TopCenter;
-            this.btnSkip.Location = new System.Drawing.Point(289, 89);
-            this.btnSkip.Name = "btnSkip";
-            this.btnSkip.Size = new System.Drawing.Size(66, 40);
-            this.btnSkip.TabIndex = 4;
-            this.btnSkip.Text = "Skip";
-            this.btnSkip.TextAlign = System.Drawing.ContentAlignment.BottomCenter;
-            this.btnSkip.UseVisualStyleBackColor = true;
+            this.materialButton_Cancel.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
+            this.materialButton_Cancel.Density = MaterialSkin.Controls.MaterialButton.MaterialButtonDensity.Default;
+            this.materialButton_Cancel.Depth = 0;
+            this.materialButton_Cancel.DialogResult = System.Windows.Forms.DialogResult.Cancel;
+            this.materialButton_Cancel.HighEmphasis = true;
+            this.materialButton_Cancel.Icon = null;
+            this.materialButton_Cancel.Location = new System.Drawing.Point(281, 89);
+            this.materialButton_Cancel.Margin = new System.Windows.Forms.Padding(4, 6, 4, 6);
+            this.materialButton_Cancel.MouseState = MaterialSkin.MouseState.HOVER;
+            this.materialButton_Cancel.Name = "materialButton_Cancel";
+            this.materialButton_Cancel.NoAccentTextColor = System.Drawing.Color.Empty;
+            this.materialButton_Cancel.Size = new System.Drawing.Size(77, 36);
+            this.materialButton_Cancel.TabIndex = 6;
+            this.materialButton_Cancel.Text = "Cancel";
+            this.materialButton_Cancel.Type = MaterialSkin.Controls.MaterialButton.MaterialButtonType.Contained;
+            this.materialButton_Cancel.UseAccentColor = false;
+            this.materialButton_Cancel.UseVisualStyleBackColor = true;
+            // 
+            // materialLabel1
+            // 
+            this.materialLabel1.AutoSize = true;
+            this.materialLabel1.Depth = 0;
+            this.materialLabel1.Font = new System.Drawing.Font("Roboto", 14F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Pixel);
+            this.materialLabel1.Location = new System.Drawing.Point(28, 18);
+            this.materialLabel1.MouseState = MaterialSkin.MouseState.HOVER;
+            this.materialLabel1.Name = "materialLabel1";
+            this.materialLabel1.Size = new System.Drawing.Size(120, 19);
+            this.materialLabel1.TabIndex = 7;
+            this.materialLabel1.Text = "Update Available";
+            // 
+            // lblInfo
+            // 
+            this.lblInfo.AutoSize = true;
+            this.lblInfo.Depth = 0;
+            this.lblInfo.Font = new System.Drawing.Font("Roboto", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Pixel);
+            this.lblInfo.FontType = MaterialSkin.MaterialSkinManager.fontType.Caption;
+            this.lblInfo.Location = new System.Drawing.Point(28, 52);
+            this.lblInfo.MouseState = MaterialSkin.MouseState.HOVER;
+            this.lblInfo.Name = "lblInfo";
+            this.lblInfo.Size = new System.Drawing.Size(243, 14);
+            this.lblInfo.TabIndex = 8;
+            this.lblInfo.Text = "A new version {0} was made available on {1}.";
             // 
             // UpdateForm
             // 
-            this.AcceptButton = this.btnUpdate;
+            this.AcceptButton = this.materialButton_Update;
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.LightGray;
-            this.CancelButton = this.btnSkip;
-            this.ClientSize = new System.Drawing.Size(475, 148);
+            this.CancelButton = this.materialButton_Cancel;
+            this.ClientSize = new System.Drawing.Size(435, 140);
             this.ControlBox = false;
-            this.Controls.Add(this.btnSkip);
-            this.Controls.Add(this.btnUpdate);
-            this.Controls.Add(this.linkInfo);
             this.Controls.Add(this.lblInfo);
-            this.Controls.Add(this.label1);
+            this.Controls.Add(this.materialLabel1);
+            this.Controls.Add(this.materialButton_Cancel);
+            this.Controls.Add(this.materialButton_Update);
+            this.Controls.Add(this.linkInfo);
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.MaximizeBox = false;
             this.MinimizeBox = false;
@@ -124,11 +139,10 @@
         }
 
         #endregion
-
-        private System.Windows.Forms.Label label1;
-        private System.Windows.Forms.Label lblInfo;
         private System.Windows.Forms.LinkLabel linkInfo;
-        private System.Windows.Forms.Button btnUpdate;
-        private System.Windows.Forms.Button btnSkip;
+        private MaterialSkin.Controls.MaterialButton materialButton_Update;
+        private MaterialSkin.Controls.MaterialButton materialButton_Cancel;
+        private MaterialSkin.Controls.MaterialLabel materialLabel1;
+        private MaterialSkin.Controls.MaterialLabel lblInfo;
     }
 }

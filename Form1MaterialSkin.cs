@@ -131,13 +131,13 @@ namespace FindReplace
                         NetworkDriveMapped = true;
                         BuildTreeLevel0();
                         selectedPath = materialComboBox_NetworkDrive.Text + ":";
-                        SetMessage("Drag and Drop - directory: " + file + " mapped as network drive \"" + materialComboBox_NetworkDrive.Text + "\"");
+                        SetMessage("Drag and Drop - directory: \"" + file + "\" mapped as network drive \"" + materialComboBox_NetworkDrive.Text + "\"");
                     }
                     else
                     {
                         BuildTreeLevel0();
                         selectedPath = null;
-                        SetMessage("Drag and Drop Error - " + mapDriveMsg, true);
+                        SetMessage("Drag and Drop: " + mapDriveMsg, true);
                     }
                 }
                 else
@@ -438,7 +438,7 @@ namespace FindReplace
             if (!string.IsNullOrEmpty(selectedPath))
                 if (SelectPathInTreeView(selectedPath) == false)
                 {
-                    SetMessage("Error - favorites: entry loaded, but directory: " + selectedPath + " does not exist.",true);
+                    SetMessage("Arguments from last session loaded, but directory \"" + selectedPath + "\" does not exist.", true);
                     selectedPath = string.Empty;
                 }
 
@@ -599,7 +599,7 @@ namespace FindReplace
                 }
                 else
                 {
-                    SetMessage("Directory: " + selectedPath + " does not exist.", true);
+                    SetMessage("Directory: \"" + selectedPath + "\" does not exist.", true);
                     return false;
                 }
             }
@@ -618,7 +618,7 @@ namespace FindReplace
                         return true;
                     }
                 }
-                SetMessage("Directory: \" + selectedPath + \" does not exist in current Tree View.", true);
+                SetMessage("Directory: \"" + selectedPath + "\" does not exist in current Tree View.", true);
                 return false;
             }
             else
@@ -640,13 +640,7 @@ namespace FindReplace
         private void MaterialListView_Favorites_KeyDown(object sender, KeyEventArgs e)
         {
             if (Keys.Delete == e.KeyCode)
-            {
-                foreach (ListViewItem item in materialListView_Favorites.SelectedItems)
-                {
-                    materialListView_Favorites.Items.Remove(item);
-                    SetMessage("Favorites: entry deleted.");
-                }
-            }
+                DeleteToolStripMenuItem_Click(sender, e);
         }
 
         private void MaterialListView_Favorites_SelectedIndexChanged(object sender, EventArgs e)
@@ -690,11 +684,11 @@ namespace FindReplace
                     regEx = false;
                 PictureBox_Checked(pictureBox_RegEx, regEx);
                 materialTextBox_ReplaceString.Text = item.SubItems[10].Text;
-                SetMessage("Favorites: entry loaded.");
+                SetMessage("Favorites: \"" + item.SubItems[0].Text + "\" loaded.");
                 if (!string.IsNullOrEmpty(selectedPath))
                     if (SelectPathInTreeView(selectedPath) == false)
                     {
-                        SetMessage("Error - favorites: entry loaded, but directory: " + selectedPath + " does not exist.", true);
+                        SetMessage(string.Format("Favorites: \"{0}\" loaded, but directory \"{1}\" does not exist.", item.SubItems[0].Text, selectedPath), true);
                         selectedPath = string.Empty;
                     }
             }
@@ -716,8 +710,8 @@ namespace FindReplace
         {
             foreach (ListViewItem item in materialListView_Favorites.SelectedItems)
             {
+                SetMessage(string.Format("Favorites: \"{0}\" deleted.", item.SubItems[0].Text));
                 materialListView_Favorites.Items.Remove(item);
-                SetMessage("Favorites: entry deleted.");
             }
         }
 
@@ -732,7 +726,7 @@ namespace FindReplace
         }
         private void FindOrReplace(string action)
         {
-            SetMessage("... processing - build list of files ...");
+            SetMessage("Processing - generating a list of files ...");
             if (string.IsNullOrEmpty(materialTextBox_FindString.Text))
             {
                 MessageBox.Show("Please enter a \"Find Text\".");
@@ -1205,59 +1199,74 @@ namespace FindReplace
         {
             backgroundWorker1.CancelAsync();
         }
-
-
         private void MaterialButton_FavoritesAdd_Click(object sender, EventArgs e)
         {
-            string input = Microsoft.VisualBasic.Interaction.InputBox("Add description for the actual search", "Add Favorites", "", -1, -1);
-            if (!string.IsNullOrEmpty(input))
-            {
-                ListViewItem item = new ListViewItem(new string[]
-                    {
-                    input,
-                    selectedPath,
-                    (materialCheckbox_SubDirectory.Checked ) ? "True" : "False",
+            using (FormModFavorite f = new FormModFavorite("",
+                    selectedPath, 
+                    (materialCheckbox_SubDirectory.Checked) ? "True" : "False",
                     materialTextBox_Filenames.Text,
-                    (materialCheckbox_SelectByDate.Checked ) ? "True" : "False",
+                    (materialCheckbox_SelectByDate.Checked) ? "True" : "False",
                     numericUpDown_FileAge.Value.ToString(),
                     materialTextBox_FindString.Text,
-                    (matchCase ) ? "True" : "False",
-                    (matchWord ) ? "True" : "False",
-                    (regEx ) ? "True" : "False",
-                    materialTextBox_ReplaceString.Text
+                    (matchCase) ? "True" : "False",
+                    (matchWord) ? "True" : "False",
+                    (regEx) ? "True" : "False",
+                    materialTextBox_ReplaceString.Text))
+            {
+                if (f.ShowDialog(this) == DialogResult.OK)
+                {
+                    ListViewItem itemNew = new ListViewItem(new string[]
+                   {
+                            f.TextBox_DescriptionValue,
+                            f.TextBox_DirectoryValue,
+                            (f.Checkbox_SubDirectoryValue) ? "True" : "False",
+                            f.TextBox_FilesValue,
+                            (f.Checkbox_ByDateValue) ? "True" : "False",
+                            f.NumericUpDown_DaysValue.ToString(),
+                            f.TextBox_FindTextValue,
+                            (f.Checkbox_MatchCaseValue) ? "True" : "False",
+                            (f.Checkbox_MatchWordValue) ? "True" : "False",
+                            (f.Checkbox_RegExValue) ? "True" : "False",
+                            f.TextBox_ReplaceTextValue,
                     });
-                materialListView_Favorites.Items.Add(item);
-                SetMessage("Favorites: new entry added.");
-                MaterialListView_FavoritesSetListViewColumnSizes();
+                    materialListView_Favorites.Items.Add(itemNew);
+                    SetMessage("Favorites: \"" + f.TextBox_DescriptionValue + "\" added.");
+                }
+                f.Dispose();
             }
+            
         }
 
-       
+
         private void UpdateToolStripMenuItem_Click(object sender, EventArgs e)
         {
             foreach (ListViewItem item in materialListView_Favorites.SelectedItems)
             {
-                string input = Microsoft.VisualBasic.Interaction.InputBox("Modify description of selected item", "Edit Favorites", item.SubItems[0].Text, -1, -1);
-                if (!string.IsNullOrEmpty(input))
+                using (FormModFavorite f = new FormModFavorite(item.SubItems[0].Text, item.SubItems[1].Text, item.SubItems[2].Text, item.SubItems[3].Text,
+                    item.SubItems[4].Text, item.SubItems[5].Text, item.SubItems[6].Text, item.SubItems[7].Text, item.SubItems[8].Text, item.SubItems[9].Text,
+                    item.SubItems[10].Text))
                 {
-                    materialListView_Favorites.Items.Remove(item);
-                    ListViewItem itemNew = new ListViewItem(new string[]
+                    if (f.ShowDialog(this) == DialogResult.OK)
                     {
-                    input,
-                    selectedPath,
-                    (materialCheckbox_SubDirectory.Checked ) ? "True" : "False",
-                    materialTextBox_Filenames.Text,
-                    (materialCheckbox_SelectByDate.Checked ) ? "True" : "False",
-                    numericUpDown_FileAge.Value.ToString(),
-                     materialTextBox_FindString.Text,
-                    (matchCase ) ? "True" : "False",
-                    (matchWord ) ? "True" : "False",
-                    (regEx ) ? "True" : "False",
-                    materialTextBox_ReplaceString.Text
-                    });
-                    materialListView_Favorites.Items.Add(itemNew);
-                    SetMessage("Favorites: entry updated.");
-                    MaterialListView_FavoritesSetListViewColumnSizes();
+                        materialListView_Favorites.Items.Remove(item);
+                        ListViewItem itemNew = new ListViewItem(new string[]
+                       {
+                            f.TextBox_DescriptionValue,
+                            f.TextBox_DirectoryValue,
+                            (f.Checkbox_SubDirectoryValue) ? "True" : "False",
+                            f.TextBox_FilesValue,
+                            (f.Checkbox_ByDateValue) ? "True" : "False",
+                            f.NumericUpDown_DaysValue.ToString(),
+                            f.TextBox_FindTextValue,
+                            (f.Checkbox_MatchCaseValue) ? "True" : "False",
+                            (f.Checkbox_MatchWordValue) ? "True" : "False",
+                            (f.Checkbox_RegExValue) ? "True" : "False",
+                            f.TextBox_ReplaceTextValue,
+                        });
+                        materialListView_Favorites.Items.Add(itemNew);
+                        SetMessage("Favorites: \"" + f.TextBox_DescriptionValue + "\" updated.");
+                    }
+                    f.Dispose();
                 }
             }
         }
@@ -1658,7 +1667,7 @@ namespace FindReplace
                 switch (FileTools.CountBackupVersions(backupDir, file))
                 {
                     case 0:
-                        SetMessage("Restore: no archived version of that file found", true);
+                        SetMessage("Restore: no archived version of file \"" + file + "\" found", true);
                         break;
                     case 1:
                         if (FileTools.RestoreFile(backupDir, file, 1))
@@ -1667,22 +1676,22 @@ namespace FindReplace
                             item.SubItems[2].Text = File.GetLastWriteTime(file).ToString("yyyy/MM/dd HH:mm:ss");
                             item.SubItems[3].Text = FileTools.GetFileSizeHuman(file);
                             ListView_Result_SelectedIndexChanged(listView_Result, EventArgs.Empty);  // Refresh File Preview after restore
-                            SetMessage("Restore: file successful restored.");
+                            SetMessage("Restore: file \"" + file + "\" successful restored.");
                         }
                         else
                         {
-                            SetMessage("Restore: restore failed.", true);
+                            SetMessage("Restore: restore of file \"" + file + "\" failed.", true);
                         }
                         break;
                     default:
-                        Form2MaterialSkin f = new Form2MaterialSkin(backupDir, file);
+                        FormRestore f = new FormRestore(backupDir, file);
                         if (f.ShowDialog(this) == DialogResult.OK)
                         {
                             item.SubItems[1].Text = FindStringInFile(file).ToString();
                             item.SubItems[2].Text = File.GetLastWriteTime(file).ToString("yyyy/MM/dd HH:mm:ss");
                             item.SubItems[3].Text = FileTools.GetFileSizeHuman(file);
                             ListView_Result_SelectedIndexChanged(listView_Result, EventArgs.Empty);  // Refresh File Preview after restore
-                            SetMessage("Restore: file successful restored.");
+                            SetMessage("Restore: file \"" + file + "\" successful restored.");
                         }
                         f.Dispose();
                         break;
@@ -1709,5 +1718,59 @@ namespace FindReplace
                     pictureBox_Warning.Visible = false;
             }
         }
+        private enum MoveDirection { Up = -1, Down = 1 };
+        private void MoveUpToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            MoveItems(materialListView_Favorites, MoveDirection.Up);
+        }
+
+        private void MoveDownToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            MoveItems(materialListView_Favorites, MoveDirection.Down);
+        }
+        
+        private void MoveItems(MaterialListView sender, MoveDirection direction)
+        {
+            bool valid = sender.SelectedItems.Count > 0 &&
+                        ((direction == MoveDirection.Down && (sender.SelectedItems[sender.SelectedItems.Count - 1].Index < sender.Items.Count - 1))
+                        || (direction == MoveDirection.Up && (sender.SelectedItems[0].Index > 0)));
+            if (valid)
+            {
+                bool start = true;
+                int first_idx = 0;
+                List<ListViewItem> items = new List<ListViewItem>();
+                foreach (ListViewItem i in sender.SelectedItems)
+                {
+                    if (start)
+                    {
+                        first_idx = i.Index;
+                        start = false;
+                    }
+                    items.Add(i);
+                }
+                sender.BeginUpdate();
+                foreach (ListViewItem i in sender.SelectedItems) i.Remove();
+                if (direction == MoveDirection.Up)
+                {
+                    int insert_to = first_idx - 1;
+                    foreach (ListViewItem i in items)
+                    {
+                        sender.Items.Insert(insert_to, i);
+                        insert_to++;
+                    }
+                }
+                else
+                {
+                    int insert_to = first_idx + 1;
+                    foreach (ListViewItem i in items)
+                    {
+                        sender.Items.Insert(insert_to, i);
+                        insert_to++;
+                    }
+                }
+                sender.EndUpdate();
+            }
+        }
+
     }
 }

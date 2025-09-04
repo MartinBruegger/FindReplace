@@ -14,9 +14,9 @@ using System.IO.Compression;
 
 namespace FindReplace
 {
-    public partial class Form2MaterialSkin : MaterialForm
+    public partial class FormRestore : MaterialForm
     {
-        public Form2MaterialSkin(string backup_dir, string file)  //public Form2(string backup_dir, string file)
+        public FormRestore(string backup_dir, string file)  //public Form2(string backup_dir, string file)
         {
             InitializeComponent();
             var materialSkinManager = MaterialSkinManager.Instance;
@@ -69,17 +69,7 @@ namespace FindReplace
                     this.DialogResult = DialogResult.OK;
                     this.Close();
                 }
-            }
-            
-        }
-
-        private void Form2MaterialSkin_Load(object sender, EventArgs e)
-        {
-            // CenterParent plus Offset 150m50
-            // ... shift a bit to the right, don't cover parents preview and listivew 
-            if (Owner != null)
-                Location = new Point(Owner.Location.X + Owner.Width / 2 - Width / 2 + 150,
-                    Owner.Location.Y + Owner.Height / 2 - Height / 2 + 50);
+            }            
         }
     }
 }
