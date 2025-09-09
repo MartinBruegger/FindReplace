@@ -38,7 +38,10 @@
             this.imageListTree = new System.Windows.Forms.ImageList(this.components);
             this.panel_LeftFindParms = new System.Windows.Forms.Panel();
             this.materialLabel8 = new MaterialSkin.Controls.MaterialLabel();
+            this.pictureBox_RegEx = new System.Windows.Forms.PictureBox();
+            this.pictureBox_MatchWord = new System.Windows.Forms.PictureBox();
             this.label_Panel2PB = new System.Windows.Forms.Label();
+            this.pictureBox_MatchCase = new System.Windows.Forms.PictureBox();
             this.materialButton_Cancel = new MaterialSkin.Controls.MaterialButton();
             this.materialButton_Replace = new MaterialSkin.Controls.MaterialButton();
             this.materialButton_Find = new MaterialSkin.Controls.MaterialButton();
@@ -66,7 +69,13 @@
             this.toolStripMenu_Result_Replace_Text = new System.Windows.Forms.ToolStripMenuItem();
             this.toolStripMenu_Result_Restore = new System.Windows.Forms.ToolStripMenuItem();
             this.imageList_Result = new System.Windows.Forms.ImageList(this.components);
+            this.pictureBox_PRFindPage = new System.Windows.Forms.PictureBox();
+            this.pictureBox_PRRegEx = new System.Windows.Forms.PictureBox();
+            this.pictureBox_PRMatchWord = new System.Windows.Forms.PictureBox();
+            this.pictureBox_PRMatchCase = new System.Windows.Forms.PictureBox();
             this.label_SCPanel2PB = new System.Windows.Forms.Label();
+            this.pictureBox_PRBackward = new System.Windows.Forms.PictureBox();
+            this.pictureBox_PRForward = new System.Windows.Forms.PictureBox();
             this.materialLabel_PrMatches = new MaterialSkin.Controls.MaterialLabel();
             this.materialCard_Preview = new MaterialSkin.Controls.MaterialCard();
             this.richTextBox_Preview = new System.Windows.Forms.RichTextBox();
@@ -128,18 +137,12 @@
             this.panel_Bottom = new System.Windows.Forms.Panel();
             this.groupBox_Bottom = new System.Windows.Forms.GroupBox();
             this.pictureBox_Warning = new System.Windows.Forms.PictureBox();
-            this.pictureBox_RegEx = new System.Windows.Forms.PictureBox();
-            this.pictureBox_MatchWord = new System.Windows.Forms.PictureBox();
-            this.pictureBox_MatchCase = new System.Windows.Forms.PictureBox();
-            this.pictureBox_PRFindPage = new System.Windows.Forms.PictureBox();
-            this.pictureBox_PRRegEx = new System.Windows.Forms.PictureBox();
-            this.pictureBox_PRMatchWord = new System.Windows.Forms.PictureBox();
-            this.pictureBox_PRMatchCase = new System.Windows.Forms.PictureBox();
-            this.pictureBox_PRBackward = new System.Windows.Forms.PictureBox();
-            this.pictureBox_PRForward = new System.Windows.Forms.PictureBox();
             this.panel_Left.SuspendLayout();
             this.contextMenuStrip_Tree.SuspendLayout();
             this.panel_LeftFindParms.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox_RegEx)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox_MatchWord)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox_MatchCase)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.numericUpDown_FileAge)).BeginInit();
             this.panel_Center.SuspendLayout();
             this.materialTabControl1.SuspendLayout();
@@ -150,6 +153,12 @@
             this.splitContainer1.SuspendLayout();
             this.materialCard_Result.SuspendLayout();
             this.contextMenuStrip_Result.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox_PRFindPage)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox_PRRegEx)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox_PRMatchWord)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox_PRMatchCase)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox_PRBackward)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox_PRForward)).BeginInit();
             this.materialCard_Preview.SuspendLayout();
             this.tabPage2.SuspendLayout();
             this.materialCard_Options.SuspendLayout();
@@ -166,15 +175,6 @@
             this.panel_Bottom.SuspendLayout();
             this.groupBox_Bottom.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox_Warning)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox_RegEx)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox_MatchWord)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox_MatchCase)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox_PRFindPage)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox_PRRegEx)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox_PRMatchWord)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox_PRMatchCase)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox_PRBackward)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox_PRForward)).BeginInit();
             this.SuspendLayout();
             // 
             // panel_Left
@@ -185,7 +185,7 @@
             this.panel_Left.Controls.Add(this.treeView1);
             this.panel_Left.Location = new System.Drawing.Point(0, 66);
             this.panel_Left.Name = "panel_Left";
-            this.panel_Left.Size = new System.Drawing.Size(300, 690);
+            this.panel_Left.Size = new System.Drawing.Size(300, 768);
             this.panel_Left.TabIndex = 0;
             // 
             // materialLabel1
@@ -213,7 +213,7 @@
             this.treeView1.Location = new System.Drawing.Point(9, 31);
             this.treeView1.Name = "treeView1";
             this.treeView1.SelectedImageIndex = 0;
-            this.treeView1.Size = new System.Drawing.Size(290, 650);
+            this.treeView1.Size = new System.Drawing.Size(290, 728);
             this.treeView1.TabIndex = 7;
             this.treeView1.BeforeExpand += new System.Windows.Forms.TreeViewCancelEventHandler(this.TreeView1_BeforeExpand);
             this.treeView1.BeforeSelect += new System.Windows.Forms.TreeViewCancelEventHandler(this.TreeView1_BeforeSelect);
@@ -262,7 +262,7 @@
             this.panel_LeftFindParms.Controls.Add(this.materialCheckbox_SelectByDate);
             this.panel_LeftFindParms.Controls.Add(this.materialTextBox_Filenames);
             this.panel_LeftFindParms.Controls.Add(this.materialCheckbox_SubDirectory);
-            this.panel_LeftFindParms.Location = new System.Drawing.Point(6, 760);
+            this.panel_LeftFindParms.Location = new System.Drawing.Point(6, 838);
             this.panel_LeftFindParms.Name = "panel_LeftFindParms";
             this.panel_LeftFindParms.Size = new System.Drawing.Size(300, 340);
             this.panel_LeftFindParms.TabIndex = 1;
@@ -280,6 +280,30 @@
             this.materialLabel8.TabIndex = 15;
             this.materialLabel8.Text = "Options";
             // 
+            // pictureBox_RegEx
+            // 
+            this.pictureBox_RegEx.Image = ((System.Drawing.Image)(resources.GetObject("pictureBox_RegEx.Image")));
+            this.pictureBox_RegEx.Location = new System.Drawing.Point(153, 212);
+            this.pictureBox_RegEx.Name = "pictureBox_RegEx";
+            this.pictureBox_RegEx.Size = new System.Drawing.Size(24, 24);
+            this.pictureBox_RegEx.TabIndex = 14;
+            this.pictureBox_RegEx.TabStop = false;
+            this.pictureBox_RegEx.Click += new System.EventHandler(this.PictureBox_RegEx_Click);
+            this.pictureBox_RegEx.MouseLeave += new System.EventHandler(this.PictureBox_RegEx_MouseLeave);
+            this.pictureBox_RegEx.MouseHover += new System.EventHandler(this.PictureBox_RegEx_MouseHover);
+            // 
+            // pictureBox_MatchWord
+            // 
+            this.pictureBox_MatchWord.Image = ((System.Drawing.Image)(resources.GetObject("pictureBox_MatchWord.Image")));
+            this.pictureBox_MatchWord.Location = new System.Drawing.Point(125, 212);
+            this.pictureBox_MatchWord.Name = "pictureBox_MatchWord";
+            this.pictureBox_MatchWord.Size = new System.Drawing.Size(24, 24);
+            this.pictureBox_MatchWord.TabIndex = 13;
+            this.pictureBox_MatchWord.TabStop = false;
+            this.pictureBox_MatchWord.Click += new System.EventHandler(this.PictureBox_MatchWord_Click);
+            this.pictureBox_MatchWord.MouseLeave += new System.EventHandler(this.PictureBox_MatchWord_MouseLeave);
+            this.pictureBox_MatchWord.MouseHover += new System.EventHandler(this.PictureBox_MatchWord_MouseHover);
+            // 
             // label_Panel2PB
             // 
             this.label_Panel2PB.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
@@ -291,6 +315,18 @@
             this.label_Panel2PB.TabIndex = 12;
             this.label_Panel2PB.Text = "label_Panel2PB";
             this.label_Panel2PB.Visible = false;
+            // 
+            // pictureBox_MatchCase
+            // 
+            this.pictureBox_MatchCase.Image = ((System.Drawing.Image)(resources.GetObject("pictureBox_MatchCase.Image")));
+            this.pictureBox_MatchCase.Location = new System.Drawing.Point(97, 212);
+            this.pictureBox_MatchCase.Name = "pictureBox_MatchCase";
+            this.pictureBox_MatchCase.Size = new System.Drawing.Size(24, 24);
+            this.pictureBox_MatchCase.TabIndex = 11;
+            this.pictureBox_MatchCase.TabStop = false;
+            this.pictureBox_MatchCase.Click += new System.EventHandler(this.PictureBox_MatchCase_Click);
+            this.pictureBox_MatchCase.MouseLeave += new System.EventHandler(this.PictureBox_MatchCase_MouseLeave);
+            this.pictureBox_MatchCase.MouseHover += new System.EventHandler(this.PictureBox_MatchCase_MouseHover);
             // 
             // materialButton_Cancel
             // 
@@ -358,7 +394,7 @@
             this.materialTextBox_ReplaceString.AnimateReadOnly = false;
             this.materialTextBox_ReplaceString.BorderStyle = System.Windows.Forms.BorderStyle.None;
             this.materialTextBox_ReplaceString.Depth = 0;
-            this.materialTextBox_ReplaceString.Font = new System.Drawing.Font("Microsoft Sans Serif", 16F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Pixel);
+            this.materialTextBox_ReplaceString.Font = new System.Drawing.Font("Roboto", 16F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Pixel);
             this.materialTextBox_ReplaceString.Hint = "Replace Text";
             this.materialTextBox_ReplaceString.LeadingIcon = null;
             this.materialTextBox_ReplaceString.Location = new System.Drawing.Point(3, 237);
@@ -376,7 +412,7 @@
             this.materialTextBox_FindString.AnimateReadOnly = false;
             this.materialTextBox_FindString.BorderStyle = System.Windows.Forms.BorderStyle.None;
             this.materialTextBox_FindString.Depth = 0;
-            this.materialTextBox_FindString.Font = new System.Drawing.Font("Microsoft Sans Serif", 16F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Pixel);
+            this.materialTextBox_FindString.Font = new System.Drawing.Font("Roboto", 16F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Pixel);
             this.materialTextBox_FindString.Hint = "Find Text";
             this.materialTextBox_FindString.LeadingIcon = null;
             this.materialTextBox_FindString.Location = new System.Drawing.Point(3, 150);
@@ -436,7 +472,7 @@
             this.materialTextBox_Filenames.AnimateReadOnly = false;
             this.materialTextBox_Filenames.BorderStyle = System.Windows.Forms.BorderStyle.None;
             this.materialTextBox_Filenames.Depth = 0;
-            this.materialTextBox_Filenames.Font = new System.Drawing.Font("Microsoft Sans Serif", 16F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Pixel);
+            this.materialTextBox_Filenames.Font = new System.Drawing.Font("Roboto", 16F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Pixel);
             this.materialTextBox_Filenames.Hint = "Filenames";
             this.materialTextBox_Filenames.LeadingIcon = null;
             this.materialTextBox_Filenames.Location = new System.Drawing.Point(3, 40);
@@ -474,7 +510,7 @@
             this.panel_Center.Controls.Add(this.materialTabControl1);
             this.panel_Center.Location = new System.Drawing.Point(300, 66);
             this.panel_Center.Name = "panel_Center";
-            this.panel_Center.Size = new System.Drawing.Size(1411, 1030);
+            this.panel_Center.Size = new System.Drawing.Size(1443, 1108);
             this.panel_Center.TabIndex = 2;
             // 
             // materialTabSelector1
@@ -484,11 +520,11 @@
             this.materialTabSelector1.BaseTabControl = this.materialTabControl1;
             this.materialTabSelector1.CharacterCasing = MaterialSkin.Controls.MaterialTabSelector.CustomCharacterCasing.Normal;
             this.materialTabSelector1.Depth = 0;
-            this.materialTabSelector1.Font = new System.Drawing.Font("Microsoft Sans Serif", 14F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Pixel);
+            this.materialTabSelector1.Font = new System.Drawing.Font("Roboto", 14F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Pixel);
             this.materialTabSelector1.Location = new System.Drawing.Point(11, 3);
             this.materialTabSelector1.MouseState = MaterialSkin.MouseState.HOVER;
             this.materialTabSelector1.Name = "materialTabSelector1";
-            this.materialTabSelector1.Size = new System.Drawing.Size(1391, 29);
+            this.materialTabSelector1.Size = new System.Drawing.Size(1423, 29);
             this.materialTabSelector1.TabIndex = 1;
             this.materialTabSelector1.Text = "materialTabSelector1";
             // 
@@ -507,7 +543,7 @@
             this.materialTabControl1.Multiline = true;
             this.materialTabControl1.Name = "materialTabControl1";
             this.materialTabControl1.SelectedIndex = 0;
-            this.materialTabControl1.Size = new System.Drawing.Size(1390, 980);
+            this.materialTabControl1.Size = new System.Drawing.Size(1422, 1058);
             this.materialTabControl1.TabIndex = 0;
             // 
             // tabPage1
@@ -516,7 +552,7 @@
             this.tabPage1.Location = new System.Drawing.Point(4, 22);
             this.tabPage1.Name = "tabPage1";
             this.tabPage1.Padding = new System.Windows.Forms.Padding(3);
-            this.tabPage1.Size = new System.Drawing.Size(1382, 954);
+            this.tabPage1.Size = new System.Drawing.Size(1414, 1032);
             this.tabPage1.TabIndex = 0;
             this.tabPage1.Text = "Result";
             this.tabPage1.UseVisualStyleBackColor = true;
@@ -548,7 +584,7 @@
             this.splitContainer1.Panel2.Controls.Add(this.materialCard_Preview);
             this.splitContainer1.Panel2.Controls.Add(this.materialTextBox_PrFindString);
             this.splitContainer1.Panel2MinSize = 100;
-            this.splitContainer1.Size = new System.Drawing.Size(1382, 960);
+            this.splitContainer1.Size = new System.Drawing.Size(1414, 1038);
             this.splitContainer1.SplitterDistance = 630;
             this.splitContainer1.SplitterIncrement = 5;
             this.splitContainer1.TabIndex = 0;
@@ -567,7 +603,7 @@
             this.materialCard_Result.MouseState = MaterialSkin.MouseState.HOVER;
             this.materialCard_Result.Name = "materialCard_Result";
             this.materialCard_Result.Padding = new System.Windows.Forms.Padding(14);
-            this.materialCard_Result.Size = new System.Drawing.Size(627, 947);
+            this.materialCard_Result.Size = new System.Drawing.Size(627, 1025);
             this.materialCard_Result.TabIndex = 2;
             // 
             // listView_Result
@@ -586,7 +622,7 @@
             this.listView_Result.HideSelection = false;
             this.listView_Result.Location = new System.Drawing.Point(10, 10);
             this.listView_Result.Name = "listView_Result";
-            this.listView_Result.Size = new System.Drawing.Size(607, 934);
+            this.listView_Result.Size = new System.Drawing.Size(607, 1012);
             this.listView_Result.SmallImageList = this.imageList_Result;
             this.listView_Result.TabIndex = 1;
             this.listView_Result.UseCompatibleStateImageBehavior = false;
@@ -663,18 +699,93 @@
             this.imageList_Result.Images.SetKeyName(0, "yellow-folder-center.png");
             this.imageList_Result.Images.SetKeyName(1, "file.png");
             // 
+            // pictureBox_PRFindPage
+            // 
+            this.pictureBox_PRFindPage.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
+            this.pictureBox_PRFindPage.Image = ((System.Drawing.Image)(resources.GetObject("pictureBox_PRFindPage.Image")));
+            this.pictureBox_PRFindPage.Location = new System.Drawing.Point(491, 1003);
+            this.pictureBox_PRFindPage.Name = "pictureBox_PRFindPage";
+            this.pictureBox_PRFindPage.Size = new System.Drawing.Size(24, 24);
+            this.pictureBox_PRFindPage.TabIndex = 18;
+            this.pictureBox_PRFindPage.TabStop = false;
+            this.pictureBox_PRFindPage.Click += new System.EventHandler(this.PictureBox_PRFindPage_Click);
+            this.pictureBox_PRFindPage.MouseLeave += new System.EventHandler(this.PictureBox_PRFindPage_MouseLeave);
+            this.pictureBox_PRFindPage.MouseHover += new System.EventHandler(this.PictureBox_PRFindPage_MouseHover);
+            // 
+            // pictureBox_PRRegEx
+            // 
+            this.pictureBox_PRRegEx.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
+            this.pictureBox_PRRegEx.Image = ((System.Drawing.Image)(resources.GetObject("pictureBox_PRRegEx.Image")));
+            this.pictureBox_PRRegEx.Location = new System.Drawing.Point(575, 1003);
+            this.pictureBox_PRRegEx.Name = "pictureBox_PRRegEx";
+            this.pictureBox_PRRegEx.Size = new System.Drawing.Size(24, 24);
+            this.pictureBox_PRRegEx.TabIndex = 17;
+            this.pictureBox_PRRegEx.TabStop = false;
+            this.pictureBox_PRRegEx.Click += new System.EventHandler(this.PictureBox_PRRegEx_Click);
+            this.pictureBox_PRRegEx.MouseLeave += new System.EventHandler(this.PictureBox_PRRegEx_MouseLeave);
+            this.pictureBox_PRRegEx.MouseHover += new System.EventHandler(this.PictureBox_PRRegEx_MouseHover);
+            // 
+            // pictureBox_PRMatchWord
+            // 
+            this.pictureBox_PRMatchWord.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
+            this.pictureBox_PRMatchWord.Image = ((System.Drawing.Image)(resources.GetObject("pictureBox_PRMatchWord.Image")));
+            this.pictureBox_PRMatchWord.Location = new System.Drawing.Point(547, 1003);
+            this.pictureBox_PRMatchWord.Name = "pictureBox_PRMatchWord";
+            this.pictureBox_PRMatchWord.Size = new System.Drawing.Size(24, 24);
+            this.pictureBox_PRMatchWord.TabIndex = 16;
+            this.pictureBox_PRMatchWord.TabStop = false;
+            this.pictureBox_PRMatchWord.Click += new System.EventHandler(this.PictureBox_PRMatchWord_Click);
+            this.pictureBox_PRMatchWord.MouseLeave += new System.EventHandler(this.PictureBox_PRMatchWord_MouseLeave);
+            this.pictureBox_PRMatchWord.MouseHover += new System.EventHandler(this.PictureBox_PRMatchWord_MouseHover);
+            // 
+            // pictureBox_PRMatchCase
+            // 
+            this.pictureBox_PRMatchCase.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
+            this.pictureBox_PRMatchCase.Image = ((System.Drawing.Image)(resources.GetObject("pictureBox_PRMatchCase.Image")));
+            this.pictureBox_PRMatchCase.Location = new System.Drawing.Point(519, 1003);
+            this.pictureBox_PRMatchCase.Name = "pictureBox_PRMatchCase";
+            this.pictureBox_PRMatchCase.Size = new System.Drawing.Size(24, 24);
+            this.pictureBox_PRMatchCase.TabIndex = 15;
+            this.pictureBox_PRMatchCase.TabStop = false;
+            this.pictureBox_PRMatchCase.Click += new System.EventHandler(this.PictureBox_PRMatchCase_Click);
+            this.pictureBox_PRMatchCase.MouseLeave += new System.EventHandler(this.PictureBox_PRMatchCase_MouseLeave);
+            this.pictureBox_PRMatchCase.MouseHover += new System.EventHandler(this.PictureBox_PRMatchCase_MouseHover);
+            // 
             // label_SCPanel2PB
             // 
             this.label_SCPanel2PB.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
             this.label_SCPanel2PB.AutoSize = true;
             this.label_SCPanel2PB.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
             this.label_SCPanel2PB.Font = new System.Drawing.Font("Verdana", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Pixel, ((byte)(0)));
-            this.label_SCPanel2PB.Location = new System.Drawing.Point(475, 913);
+            this.label_SCPanel2PB.Location = new System.Drawing.Point(507, 991);
             this.label_SCPanel2PB.Name = "label_SCPanel2PB";
             this.label_SCPanel2PB.Size = new System.Drawing.Size(46, 14);
             this.label_SCPanel2PB.TabIndex = 14;
             this.label_SCPanel2PB.Text = "BPBox";
             this.label_SCPanel2PB.Visible = false;
+            // 
+            // pictureBox_PRBackward
+            // 
+            this.pictureBox_PRBackward.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
+            this.pictureBox_PRBackward.BackColor = System.Drawing.Color.Transparent;
+            this.pictureBox_PRBackward.Image = ((System.Drawing.Image)(resources.GetObject("pictureBox_PRBackward.Image")));
+            this.pictureBox_PRBackward.Location = new System.Drawing.Point(628, 1003);
+            this.pictureBox_PRBackward.Name = "pictureBox_PRBackward";
+            this.pictureBox_PRBackward.Size = new System.Drawing.Size(24, 24);
+            this.pictureBox_PRBackward.TabIndex = 13;
+            this.pictureBox_PRBackward.TabStop = false;
+            this.pictureBox_PRBackward.Click += new System.EventHandler(this.PictureBox_PRBackward_Click);
+            // 
+            // pictureBox_PRForward
+            // 
+            this.pictureBox_PRForward.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
+            this.pictureBox_PRForward.Image = ((System.Drawing.Image)(resources.GetObject("pictureBox_PRForward.Image")));
+            this.pictureBox_PRForward.Location = new System.Drawing.Point(658, 1003);
+            this.pictureBox_PRForward.Name = "pictureBox_PRForward";
+            this.pictureBox_PRForward.Size = new System.Drawing.Size(24, 24);
+            this.pictureBox_PRForward.TabIndex = 12;
+            this.pictureBox_PRForward.TabStop = false;
+            this.pictureBox_PRForward.Click += new System.EventHandler(this.PictureBox_PRForward_Click);
             // 
             // materialLabel_PrMatches
             // 
@@ -683,7 +794,7 @@
             this.materialLabel_PrMatches.Depth = 0;
             this.materialLabel_PrMatches.Font = new System.Drawing.Font("Roboto", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Pixel);
             this.materialLabel_PrMatches.FontType = MaterialSkin.MaterialSkinManager.fontType.Caption;
-            this.materialLabel_PrMatches.Location = new System.Drawing.Point(659, 931);
+            this.materialLabel_PrMatches.Location = new System.Drawing.Point(691, 1009);
             this.materialLabel_PrMatches.MouseState = MaterialSkin.MouseState.HOVER;
             this.materialLabel_PrMatches.Name = "materialLabel_PrMatches";
             this.materialLabel_PrMatches.Size = new System.Drawing.Size(1, 0);
@@ -703,7 +814,7 @@
             this.materialCard_Preview.MouseState = MaterialSkin.MouseState.HOVER;
             this.materialCard_Preview.Name = "materialCard_Preview";
             this.materialCard_Preview.Padding = new System.Windows.Forms.Padding(14);
-            this.materialCard_Preview.Size = new System.Drawing.Size(743, 895);
+            this.materialCard_Preview.Size = new System.Drawing.Size(775, 973);
             this.materialCard_Preview.TabIndex = 10;
             // 
             // richTextBox_Preview
@@ -712,9 +823,10 @@
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
             this.richTextBox_Preview.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.richTextBox_Preview.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.richTextBox_Preview.Location = new System.Drawing.Point(10, 10);
             this.richTextBox_Preview.Name = "richTextBox_Preview";
-            this.richTextBox_Preview.Size = new System.Drawing.Size(723, 874);
+            this.richTextBox_Preview.Size = new System.Drawing.Size(755, 952);
             this.richTextBox_Preview.TabIndex = 0;
             this.richTextBox_Preview.Text = "";
             this.richTextBox_Preview.KeyUp += new System.Windows.Forms.KeyEventHandler(this.RichTextBox_Preview_KeyUp);
@@ -726,15 +838,15 @@
             this.materialTextBox_PrFindString.AnimateReadOnly = false;
             this.materialTextBox_PrFindString.BorderStyle = System.Windows.Forms.BorderStyle.None;
             this.materialTextBox_PrFindString.Depth = 0;
-            this.materialTextBox_PrFindString.Font = new System.Drawing.Font("Microsoft Sans Serif", 16F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Pixel);
+            this.materialTextBox_PrFindString.Font = new System.Drawing.Font("Roboto", 16F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Pixel);
             this.materialTextBox_PrFindString.Hint = "Find Text";
             this.materialTextBox_PrFindString.LeadingIcon = null;
-            this.materialTextBox_PrFindString.Location = new System.Drawing.Point(3, 904);
+            this.materialTextBox_PrFindString.Location = new System.Drawing.Point(3, 982);
             this.materialTextBox_PrFindString.MaxLength = 2000;
             this.materialTextBox_PrFindString.MouseState = MaterialSkin.MouseState.OUT;
             this.materialTextBox_PrFindString.Multiline = false;
             this.materialTextBox_PrFindString.Name = "materialTextBox_PrFindString";
-            this.materialTextBox_PrFindString.Size = new System.Drawing.Size(438, 50);
+            this.materialTextBox_PrFindString.Size = new System.Drawing.Size(470, 50);
             this.materialTextBox_PrFindString.TabIndex = 1;
             this.materialTextBox_PrFindString.Text = "";
             this.materialTextBox_PrFindString.TrailingIcon = null;
@@ -745,7 +857,7 @@
             this.tabPage2.Location = new System.Drawing.Point(4, 22);
             this.tabPage2.Name = "tabPage2";
             this.tabPage2.Padding = new System.Windows.Forms.Padding(3);
-            this.tabPage2.Size = new System.Drawing.Size(1382, 954);
+            this.tabPage2.Size = new System.Drawing.Size(1414, 1032);
             this.tabPage2.TabIndex = 1;
             this.tabPage2.Text = "Options";
             this.tabPage2.UseVisualStyleBackColor = true;
@@ -871,7 +983,7 @@
             this.materialTextBox_ArchiveDirectory.AnimateReadOnly = false;
             this.materialTextBox_ArchiveDirectory.BorderStyle = System.Windows.Forms.BorderStyle.None;
             this.materialTextBox_ArchiveDirectory.Depth = 0;
-            this.materialTextBox_ArchiveDirectory.Font = new System.Drawing.Font("Microsoft Sans Serif", 16F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Pixel);
+            this.materialTextBox_ArchiveDirectory.Font = new System.Drawing.Font("Roboto", 16F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Pixel);
             this.materialTextBox_ArchiveDirectory.Hint = "Archive Driectory";
             this.materialTextBox_ArchiveDirectory.LeadingIcon = null;
             this.materialTextBox_ArchiveDirectory.Location = new System.Drawing.Point(356, 77);
@@ -1164,7 +1276,7 @@
             this.tabPage3.Controls.Add(this.materialCard_Favorites);
             this.tabPage3.Location = new System.Drawing.Point(4, 22);
             this.tabPage3.Name = "tabPage3";
-            this.tabPage3.Size = new System.Drawing.Size(1387, 954);
+            this.tabPage3.Size = new System.Drawing.Size(1414, 1032);
             this.tabPage3.TabIndex = 2;
             this.tabPage3.Text = "Favorites";
             this.tabPage3.UseVisualStyleBackColor = true;
@@ -1362,7 +1474,7 @@
             this.tabPage4.Controls.Add(this.materialCard_About);
             this.tabPage4.Location = new System.Drawing.Point(4, 22);
             this.tabPage4.Name = "tabPage4";
-            this.tabPage4.Size = new System.Drawing.Size(1387, 954);
+            this.tabPage4.Size = new System.Drawing.Size(1414, 1032);
             this.tabPage4.TabIndex = 3;
             this.tabPage4.Text = "About";
             this.tabPage4.UseVisualStyleBackColor = true;
@@ -1426,7 +1538,7 @@
             this.materialProgressBar1.MarqueeAnimationSpeed = 300;
             this.materialProgressBar1.MouseState = MaterialSkin.MouseState.HOVER;
             this.materialProgressBar1.Name = "materialProgressBar1";
-            this.materialProgressBar1.Size = new System.Drawing.Size(1606, 5);
+            this.materialProgressBar1.Size = new System.Drawing.Size(1638, 5);
             this.materialProgressBar1.TabIndex = 15;
             this.materialProgressBar1.Visible = false;
             // 
@@ -1435,9 +1547,9 @@
             this.panel_Bottom.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
             this.panel_Bottom.Controls.Add(this.groupBox_Bottom);
-            this.panel_Bottom.Location = new System.Drawing.Point(0, 1099);
+            this.panel_Bottom.Location = new System.Drawing.Point(0, 1177);
             this.panel_Bottom.Name = "panel_Bottom";
-            this.panel_Bottom.Size = new System.Drawing.Size(1708, 48);
+            this.panel_Bottom.Size = new System.Drawing.Size(1740, 48);
             this.panel_Bottom.TabIndex = 17;
             // 
             // groupBox_Bottom
@@ -1449,7 +1561,7 @@
             this.groupBox_Bottom.Controls.Add(this.materialProgressBar1);
             this.groupBox_Bottom.Location = new System.Drawing.Point(6, 2);
             this.groupBox_Bottom.Name = "groupBox_Bottom";
-            this.groupBox_Bottom.Size = new System.Drawing.Size(1696, 40);
+            this.groupBox_Bottom.Size = new System.Drawing.Size(1728, 40);
             this.groupBox_Bottom.TabIndex = 17;
             this.groupBox_Bottom.TabStop = false;
             // 
@@ -1465,122 +1577,11 @@
             this.pictureBox_Warning.TabStop = false;
             this.pictureBox_Warning.Visible = false;
             // 
-            // pictureBox_RegEx
-            // 
-            this.pictureBox_RegEx.Image = ((System.Drawing.Image)(resources.GetObject("pictureBox_RegEx.Image")));
-            this.pictureBox_RegEx.Location = new System.Drawing.Point(153, 212);
-            this.pictureBox_RegEx.Name = "pictureBox_RegEx";
-            this.pictureBox_RegEx.Size = new System.Drawing.Size(24, 24);
-            this.pictureBox_RegEx.TabIndex = 14;
-            this.pictureBox_RegEx.TabStop = false;
-            this.pictureBox_RegEx.Click += new System.EventHandler(this.PictureBox_RegEx_Click);
-            this.pictureBox_RegEx.MouseLeave += new System.EventHandler(this.PictureBox_RegEx_MouseLeave);
-            this.pictureBox_RegEx.MouseHover += new System.EventHandler(this.PictureBox_RegEx_MouseHover);
-            // 
-            // pictureBox_MatchWord
-            // 
-            this.pictureBox_MatchWord.Image = ((System.Drawing.Image)(resources.GetObject("pictureBox_MatchWord.Image")));
-            this.pictureBox_MatchWord.Location = new System.Drawing.Point(125, 212);
-            this.pictureBox_MatchWord.Name = "pictureBox_MatchWord";
-            this.pictureBox_MatchWord.Size = new System.Drawing.Size(24, 24);
-            this.pictureBox_MatchWord.TabIndex = 13;
-            this.pictureBox_MatchWord.TabStop = false;
-            this.pictureBox_MatchWord.Click += new System.EventHandler(this.PictureBox_MatchWord_Click);
-            this.pictureBox_MatchWord.MouseLeave += new System.EventHandler(this.PictureBox_MatchWord_MouseLeave);
-            this.pictureBox_MatchWord.MouseHover += new System.EventHandler(this.PictureBox_MatchWord_MouseHover);
-            // 
-            // pictureBox_MatchCase
-            // 
-            this.pictureBox_MatchCase.Image = ((System.Drawing.Image)(resources.GetObject("pictureBox_MatchCase.Image")));
-            this.pictureBox_MatchCase.Location = new System.Drawing.Point(97, 212);
-            this.pictureBox_MatchCase.Name = "pictureBox_MatchCase";
-            this.pictureBox_MatchCase.Size = new System.Drawing.Size(24, 24);
-            this.pictureBox_MatchCase.TabIndex = 11;
-            this.pictureBox_MatchCase.TabStop = false;
-            this.pictureBox_MatchCase.Click += new System.EventHandler(this.PictureBox_MatchCase_Click);
-            this.pictureBox_MatchCase.MouseLeave += new System.EventHandler(this.PictureBox_MatchCase_MouseLeave);
-            this.pictureBox_MatchCase.MouseHover += new System.EventHandler(this.PictureBox_MatchCase_MouseHover);
-            // 
-            // pictureBox_PRFindPage
-            // 
-            this.pictureBox_PRFindPage.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
-            this.pictureBox_PRFindPage.Image = ((System.Drawing.Image)(resources.GetObject("pictureBox_PRFindPage.Image")));
-            this.pictureBox_PRFindPage.Location = new System.Drawing.Point(459, 925);
-            this.pictureBox_PRFindPage.Name = "pictureBox_PRFindPage";
-            this.pictureBox_PRFindPage.Size = new System.Drawing.Size(24, 24);
-            this.pictureBox_PRFindPage.TabIndex = 18;
-            this.pictureBox_PRFindPage.TabStop = false;
-            this.pictureBox_PRFindPage.Click += new System.EventHandler(this.PictureBox_PRFindPage_Click);
-            this.pictureBox_PRFindPage.MouseLeave += new System.EventHandler(this.PictureBox_PRFindPage_MouseLeave);
-            this.pictureBox_PRFindPage.MouseHover += new System.EventHandler(this.PictureBox_PRFindPage_MouseHover);
-            // 
-            // pictureBox_PRRegEx
-            // 
-            this.pictureBox_PRRegEx.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
-            this.pictureBox_PRRegEx.Image = ((System.Drawing.Image)(resources.GetObject("pictureBox_PRRegEx.Image")));
-            this.pictureBox_PRRegEx.Location = new System.Drawing.Point(543, 925);
-            this.pictureBox_PRRegEx.Name = "pictureBox_PRRegEx";
-            this.pictureBox_PRRegEx.Size = new System.Drawing.Size(24, 24);
-            this.pictureBox_PRRegEx.TabIndex = 17;
-            this.pictureBox_PRRegEx.TabStop = false;
-            this.pictureBox_PRRegEx.Click += new System.EventHandler(this.PictureBox_PRRegEx_Click);
-            this.pictureBox_PRRegEx.MouseLeave += new System.EventHandler(this.PictureBox_PRRegEx_MouseLeave);
-            this.pictureBox_PRRegEx.MouseHover += new System.EventHandler(this.PictureBox_PRRegEx_MouseHover);
-            // 
-            // pictureBox_PRMatchWord
-            // 
-            this.pictureBox_PRMatchWord.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
-            this.pictureBox_PRMatchWord.Image = ((System.Drawing.Image)(resources.GetObject("pictureBox_PRMatchWord.Image")));
-            this.pictureBox_PRMatchWord.Location = new System.Drawing.Point(515, 925);
-            this.pictureBox_PRMatchWord.Name = "pictureBox_PRMatchWord";
-            this.pictureBox_PRMatchWord.Size = new System.Drawing.Size(24, 24);
-            this.pictureBox_PRMatchWord.TabIndex = 16;
-            this.pictureBox_PRMatchWord.TabStop = false;
-            this.pictureBox_PRMatchWord.Click += new System.EventHandler(this.PictureBox_PRMatchWord_Click);
-            this.pictureBox_PRMatchWord.MouseLeave += new System.EventHandler(this.PictureBox_PRMatchWord_MouseLeave);
-            this.pictureBox_PRMatchWord.MouseHover += new System.EventHandler(this.PictureBox_PRMatchWord_MouseHover);
-            // 
-            // pictureBox_PRMatchCase
-            // 
-            this.pictureBox_PRMatchCase.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
-            this.pictureBox_PRMatchCase.Image = ((System.Drawing.Image)(resources.GetObject("pictureBox_PRMatchCase.Image")));
-            this.pictureBox_PRMatchCase.Location = new System.Drawing.Point(487, 925);
-            this.pictureBox_PRMatchCase.Name = "pictureBox_PRMatchCase";
-            this.pictureBox_PRMatchCase.Size = new System.Drawing.Size(24, 24);
-            this.pictureBox_PRMatchCase.TabIndex = 15;
-            this.pictureBox_PRMatchCase.TabStop = false;
-            this.pictureBox_PRMatchCase.Click += new System.EventHandler(this.PictureBox_PRMatchCase_Click);
-            this.pictureBox_PRMatchCase.MouseLeave += new System.EventHandler(this.PictureBox_PRMatchCase_MouseLeave);
-            this.pictureBox_PRMatchCase.MouseHover += new System.EventHandler(this.PictureBox_PRMatchCase_MouseHover);
-            // 
-            // pictureBox_PRBackward
-            // 
-            this.pictureBox_PRBackward.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
-            this.pictureBox_PRBackward.BackColor = System.Drawing.Color.Transparent;
-            this.pictureBox_PRBackward.Image = ((System.Drawing.Image)(resources.GetObject("pictureBox_PRBackward.Image")));
-            this.pictureBox_PRBackward.Location = new System.Drawing.Point(596, 925);
-            this.pictureBox_PRBackward.Name = "pictureBox_PRBackward";
-            this.pictureBox_PRBackward.Size = new System.Drawing.Size(24, 24);
-            this.pictureBox_PRBackward.TabIndex = 13;
-            this.pictureBox_PRBackward.TabStop = false;
-            this.pictureBox_PRBackward.Click += new System.EventHandler(this.PictureBox_PRBackward_Click);
-            // 
-            // pictureBox_PRForward
-            // 
-            this.pictureBox_PRForward.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
-            this.pictureBox_PRForward.Image = ((System.Drawing.Image)(resources.GetObject("pictureBox_PRForward.Image")));
-            this.pictureBox_PRForward.Location = new System.Drawing.Point(626, 925);
-            this.pictureBox_PRForward.Name = "pictureBox_PRForward";
-            this.pictureBox_PRForward.Size = new System.Drawing.Size(24, 24);
-            this.pictureBox_PRForward.TabIndex = 12;
-            this.pictureBox_PRForward.TabStop = false;
-            this.pictureBox_PRForward.Click += new System.EventHandler(this.PictureBox_PRForward_Click);
-            // 
             // Form1MaterialSkin
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1724, 1106);
+            this.ClientSize = new System.Drawing.Size(1756, 1184);
             this.Controls.Add(this.panel_Bottom);
             this.Controls.Add(this.panel_LeftFindParms);
             this.Controls.Add(this.panel_Center);
@@ -1597,6 +1598,9 @@
             this.contextMenuStrip_Tree.ResumeLayout(false);
             this.panel_LeftFindParms.ResumeLayout(false);
             this.panel_LeftFindParms.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox_RegEx)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox_MatchWord)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox_MatchCase)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.numericUpDown_FileAge)).EndInit();
             this.panel_Center.ResumeLayout(false);
             this.materialTabControl1.ResumeLayout(false);
@@ -1608,6 +1612,12 @@
             this.splitContainer1.ResumeLayout(false);
             this.materialCard_Result.ResumeLayout(false);
             this.contextMenuStrip_Result.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox_PRFindPage)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox_PRRegEx)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox_PRMatchWord)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox_PRMatchCase)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox_PRBackward)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox_PRForward)).EndInit();
             this.materialCard_Preview.ResumeLayout(false);
             this.tabPage2.ResumeLayout(false);
             this.materialCard_Options.ResumeLayout(false);
@@ -1631,15 +1641,6 @@
             this.groupBox_Bottom.ResumeLayout(false);
             this.groupBox_Bottom.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox_Warning)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox_RegEx)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox_MatchWord)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox_MatchCase)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox_PRFindPage)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox_PRRegEx)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox_PRMatchWord)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox_PRMatchCase)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox_PRBackward)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox_PRForward)).EndInit();
             this.ResumeLayout(false);
 
         }

@@ -10,11 +10,15 @@ namespace FindReplace
     {
         public const string zipArchiveName = @"FindReplace_Backup.zip";
 
-        public static bool BackupFile(string backup_dir, string file)
+        public static bool BackupFile(string backupDir, bool backupLocal, string sourceFileName)
         {
-            if (string.IsNullOrEmpty(backup_dir))
+            if (string.IsNullOrEmpty(backupDir))
                 return true;
-            string zipFile = backup_dir + @"\" + zipArchiveName;
+            string zipFile = backupDir + @"\" + zipArchiveName;
+            string entryName = sourceFileName;
+            if (backupLocal)
+                entryName = Path.GetFileName(sourceFileName);
+           
             try
             {
                 if (!File.Exists(zipFile))        // create empty .zp file if not exists    
@@ -23,11 +27,11 @@ namespace FindReplace
                     {
                     }
                 }
-                if (!FileExistsInArchive(zipFile, file))
+                if (!FileExistsInArchive(zipFile, backupLocal, sourceFileName))
                 {
                     using (ZipArchive zipArchive = ZipFile.Open(zipFile, ZipArchiveMode.Update))
                     {
-                        zipArchive.CreateEntryFromFile(file, file, CompressionLevel.Optimal);
+                        zipArchive.CreateEntryFromFile(sourceFileName, entryName, CompressionLevel.Optimal);
                     }
                 }
                 return true;
@@ -39,9 +43,12 @@ namespace FindReplace
             }            
         }
 
-        public static bool RestoreFile(string backup_dir, string file, int fileNumber)
+        public static bool RestoreFile(string backupDir, bool backupLocal, string sourceFileName, int fileNumber)
         {
-            string zipFile = backup_dir + @"\" + zipArchiveName;
+            string zipFile = backupDir + @"\" + zipArchiveName;
+            string entryName = sourceFileName;
+            if (backupLocal)
+                entryName = Path.GetFileName(sourceFileName);
             int fileCounter = 0;
             try
             {
@@ -51,15 +58,14 @@ namespace FindReplace
                     {
                         foreach (ZipArchiveEntry entry in zipArchive.Entries)
                         {
-                            if (entry.FullName == file)
+                            if (entry.FullName == entryName)
                             {
                                 fileCounter++;
                                 if (fileNumber == fileCounter)
                                 {
-                                    entry.ExtractToFile(file, true);                  
+                                    entry.ExtractToFile(sourceFileName, true);                  
                                 }
                             }
-                                
                         }
                     }
                 }               
@@ -72,55 +78,59 @@ namespace FindReplace
             return true;
         }
 
-        private static bool FileExistsInArchive(string zipFile, string file)
+        private static bool FileExistsInArchive(string zipFile, bool backupLocal, string sourceFileName)
         {
+            string entryName = sourceFileName;
+            if (backupLocal)
+                entryName = Path.GetFileName(sourceFileName);
             if (!File.Exists(zipFile))
                 return false;
-            DateTime fileLastWriteTime = File.GetLastWriteTime(file);
+            DateTime fileLastWriteTime = File.GetLastWriteTime(sourceFileName);
             using (ZipArchive zipArchive = ZipFile.OpenRead(zipFile))
             {
                 foreach (ZipArchiveEntry entry in zipArchive.Entries)
                 {
-                    if (entry.FullName == file)
+                    if (entry.FullName == entryName)
                     {
                         TimeSpan timeSpan = fileLastWriteTime - entry.LastWriteTime.DateTime;
                         //MessageBox.Show(String.Format("File:   {0}\nArch: {1}\nTimeSpan: {2}", 
                         //    fileLastWriteTime, entry.LastWriteTime.DateTime, timeSpan.Seconds ));                        
                         // Microsoft: ..  DateTimeOffset value is converted to a timestamp format that is specific to zip archives. 
                         // This format supports a resolution of two seconds.
-                        if (timeSpan.Seconds < 3)
-                        {
+                        if (timeSpan.Seconds < 3)                   // when LastWriteTime are identical, then wo do not backup
                             return true;
-                        }
                     }
                 }
             }
-            return false;
+            return false;                                           // otherwise backup new or newer vesion
         }
 
-        public static int CountBackupVersions(string backup_dir, string file)
+        public static int CountBackupVersions(string backupDir, bool backupLocal, string sourceFileName)
         {
             int fileCounter = 0;
-            string zipFile = backup_dir + @"\" + zipArchiveName;
+            string zipFile = backupDir + @"\" + zipArchiveName;
+            string entryName = sourceFileName;
+            if (backupLocal)
+                entryName = Path.GetFileName(sourceFileName);
             if (!File.Exists(zipFile))
                 return 0;           
             using (ZipArchive zipArchive = ZipFile.OpenRead(zipFile))
             {
                 foreach (ZipArchiveEntry entry in zipArchive.Entries)
                 {
-                    if (entry.FullName == file)
+                    if (entry.FullName == entryName)
                         fileCounter++;                    
                 }
             }
             return fileCounter;
         }
 
-        public static string GetFileSizeHuman(string file, double len = 0)
+        public static string GetFileSizeHuman(string sourceFileName, double len = 0)
         {
             string[] sizes = { "B", "KB", "MB", "GB", "TB" };
             int order = 0;
             if (len == 0)
-                len = new FileInfo(file).Length;            
+                len = new FileInfo(sourceFileName).Length;            
             while (len >= 1024 && order < sizes.Length - 1)
             {
                 order++;

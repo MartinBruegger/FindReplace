@@ -1,13 +1,6 @@
 ﻿using MaterialSkin;
 using MaterialSkin.Controls;
 using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
-using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
 using System.IO;
 using System.IO.Compression;
@@ -16,31 +9,31 @@ namespace FindReplace
 {
     public partial class FormRestore : MaterialForm
     {
-        public FormRestore(string backup_dir, string file)  //public Form2(string backup_dir, string file)
+        bool argBackupLocal;
+        public FormRestore(string backupDir, bool backupLocal, string sourceFileName)  
         {
             InitializeComponent();
             var materialSkinManager = MaterialSkinManager.Instance;
             materialSkinManager.AddFormToManage(this);
-
-            //materialLabel_File.Text = file;
-            string zipFile = backup_dir + @"\" + FileTools.zipArchiveName;
+            argBackupLocal = backupLocal;
+            string entryName = sourceFileName;
+            if (backupLocal)
+                entryName = Path.GetFileName(sourceFileName);
+            string zipFile = backupDir + @"\" + FileTools.zipArchiveName;
             materialLabel_ZipFile.Text = zipFile;
-
-            //string[] row1 = { "" };
             int fileCounter = 0;
-
             using (ZipArchive zipArchive = ZipFile.OpenRead(zipFile))
             {
                 foreach (ZipArchiveEntry entry in zipArchive.Entries)
                 {
-                    if (entry.FullName == file)
+                    if (entry.FullName == entryName)
                     {
                         fileCounter++;
                         ListViewItem item = new ListViewItem(new string[]
                         {
-                            file,
+                            sourceFileName,
                             entry.LastWriteTime.DateTime.ToString("yyyy/MM/dd HH:mm:ss"),
-                            FileTools.GetFileSizeHuman(file, entry.Length)
+                            FileTools.GetFileSizeHuman(sourceFileName, entry.Length)
                         })
                         {
                             Tag = fileCounter
@@ -53,19 +46,15 @@ namespace FindReplace
 
         private void MaterialButton_Restore_Click(object sender, EventArgs e)
         {
-            //int ID = 0;           // TAG contains ID of list_files
-            //string file;                      
-            ListView.SelectedListViewItemCollection fileselection = this.listView1.SelectedItems;
-
+            ListView.SelectedListViewItemCollection fileselection = listView1.SelectedItems;
             foreach (ListViewItem item in fileselection)
             {
                 int ID = Convert.ToInt16(item.Tag);
-                //file = item.SubItems[0].Text;
                 if (ID == 0)
                     MessageBox.Show("Please select a file version to restore.");
                 else
                 {
-                    FileTools.RestoreFile(Path.GetDirectoryName(materialLabel_ZipFile.Text), item.SubItems[0].Text, ID);
+                    FileTools.RestoreFile(Path.GetDirectoryName(materialLabel_ZipFile.Text), argBackupLocal, item.SubItems[0].Text, ID);
                     this.DialogResult = DialogResult.OK;
                     this.Close();
                 }

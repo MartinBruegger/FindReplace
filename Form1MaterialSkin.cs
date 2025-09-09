@@ -1,8 +1,10 @@
-﻿using MaterialSkin;
+﻿using FindReplace.Properties;
+using MaterialSkin;
 using MaterialSkin.Controls;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
+using System.Configuration;
 using System.Data;
 using System.Diagnostics;
 using System.Diagnostics.Eventing.Reader;
@@ -365,7 +367,15 @@ namespace FindReplace
         private void Form1MaterialSkin_Load(object sender, EventArgs e)
         {
             // Upgrade?
-            if (Properties.Settings.Default.F1Size.Width == 0) Properties.Settings.Default.Upgrade();
+            string configPath = ConfigurationManager.OpenExeConfiguration(ConfigurationUserLevel.PerUserRoamingAndLocal).FilePath;
+            if (!File.Exists(configPath))
+            {
+                //Existing user config does not exist, so load settings from previous assembly
+                Settings.Default.Upgrade();
+                Settings.Default.Reload();
+                Settings.Default.Save();
+            }
+            //if (Properties.Settings.Default.F1Size.Width == 0) Properties.Settings.Default.Upgrade();
 
             if (Properties.Settings.Default.F1Size.Width == 0 || Properties.Settings.Default.F1Size.Height == 0)
             {
@@ -795,7 +805,7 @@ namespace FindReplace
                     {
                         if (materialRadioButtonBRLocal.Checked)
                             backupDir = Path.GetDirectoryName(listFiles[i]);
-                        if (ReplaceString(backupDir, listFiles[i]))
+                        if (ReplaceString(backupDir, materialRadioButtonBRLocal.Checked, listFiles[i]))
                             total_file_replaced++;
                     }
                 }
@@ -1019,7 +1029,7 @@ namespace FindReplace
             }
             return matches;
         }
-        private bool ReplaceString(string backupDir, string file)
+        private bool ReplaceString(string backupDir, bool backupLocal, string file)
         {
             string fileOld = FileTools.ReadFileString(file);
             RegexOptions options = RegexOptions.Multiline;
@@ -1029,7 +1039,7 @@ namespace FindReplace
             string fileNew = rgx.Replace(fileOld, selectedReplaceString);
             if (!fileOld.Equals(fileNew))
             {
-                FileTools.BackupFile(backupDir, file);
+                FileTools.BackupFile(backupDir, backupLocal, file);
                 try
                 {
                     File.WriteAllText(file, fileNew, Encoding.Default);
@@ -1193,6 +1203,8 @@ namespace FindReplace
             PictureBox_Checked(pictureBox_PRRegEx, regEx);
             materialLabel_PrMatches.Text = string.Empty;
             richTextBox_Preview.Text = string.Empty;
+            //richTextBox_Preview.Font = new Font("Consolas",richTextBox_Preview.Font.Size);
+            richTextBox_Preview.Font = new Font("Consolas", 8F);  // Lucida Console
         }
 
         private void MaterialButton_Cancel_Click(object sender, EventArgs e)
@@ -1631,7 +1643,7 @@ namespace FindReplace
                     else
                         backupDir = string.Empty;
                     }
-                    if (ReplaceString(backupDir, file))
+                    if (ReplaceString(backupDir, materialRadioButtonBRLocal.Checked, file))
                     {
                         item.SubItems[1].Text = FindStringInFile(file).ToString();
                         item.SubItems[2].Text = File.GetLastWriteTime(file).ToString("yyyy/MM/dd HH:mm:ss");
@@ -1664,13 +1676,13 @@ namespace FindReplace
                 else
                     backupDir = selectedBackupDir;
 
-                switch (FileTools.CountBackupVersions(backupDir, file))
+                switch (FileTools.CountBackupVersions(backupDir, materialRadioButtonBRLocal.Checked, file))
                 {
                     case 0:
                         SetMessage("Restore: no archived version of file \"" + file + "\" found", true);
                         break;
                     case 1:
-                        if (FileTools.RestoreFile(backupDir, file, 1))
+                        if (FileTools.RestoreFile(backupDir, materialRadioButtonBRLocal.Checked, file, 1))
                         {
                             item.SubItems[1].Text = FindStringInFile(file).ToString();
                             item.SubItems[2].Text = File.GetLastWriteTime(file).ToString("yyyy/MM/dd HH:mm:ss");
@@ -1684,7 +1696,7 @@ namespace FindReplace
                         }
                         break;
                     default:
-                        FormRestore f = new FormRestore(backupDir, file);
+                        FormRestore f = new FormRestore(backupDir, materialRadioButtonBRLocal.Checked, file);
                         if (f.ShowDialog(this) == DialogResult.OK)
                         {
                             item.SubItems[1].Text = FindStringInFile(file).ToString();

@@ -2,6 +2,7 @@ This file contains latest news in project FindReplace
 
 Version  	Date		Changes
 ========	==========	=======
+1.1.0.3     2025/09/09  Preview/RichTextBox Font changed to "Consolas", localbackup now supports a propper entryName (fileName without Path)
 1.1.0.2     2025/09/02  StatusMessage in a GroupBox, more Text in Message, less empty Space at the Bottom of the Form
 1.1.0.1		2025/09/01  Favorites.xml - add missing FileNames, fixed position of Warn-Icon
 1.1.0.0		2025/08/29	MaterialSkin2 using Themes and Color Schemas
