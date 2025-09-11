@@ -267,8 +267,22 @@ namespace FindReplace
             else
             {
                 TManager.Theme = MaterialSkinManager.Themes.DARK;
+                SetToolStripMenuBackground();
+            }                
+        }
+        private void SetToolStripMenuBackground()
+        {
+            ToolStripMenuBackground(contextMenuStrip_Tree);
+            ToolStripMenuBackground(contextMenuStrip_Result);
+            ToolStripMenuBackground(contextMenuStrip_Favorites);
+
+        }
+        private void ToolStripMenuBackground(ContextMenuStrip contextMenuStrip)
+        {
+            foreach (ToolStripMenuItem tsmi in contextMenuStrip.Items)          // When Theme "dark": set background color of all contextMenuStrip items
+            {
+                tsmi.BackColor = SystemColors.ControlDarkDark;
             }
-                
         }
         private void MaterialRadioButton_CSDefault_CheckedChanged(object sender, EventArgs e)
         {
@@ -311,6 +325,8 @@ namespace FindReplace
                     break;
             }
             colorScheme = color;
+            if (!materialSwitch_Theme.Checked) 
+                SetToolStripMenuBackground();
         }
 
         private void ShowUpdateDialog(Version appVersion, Version newVersion, XDocument doc)
@@ -332,6 +348,7 @@ namespace FindReplace
                     this.Close();
                 }
             }
+            SetToolStripMenuBackground();
         }
 
         private void MaterialButton_Update_Click(object sender, EventArgs e)
@@ -487,11 +504,32 @@ namespace FindReplace
         }
         private void MaterialListView_FavoritesSetListViewColumnSizes()
         {
-            
-            //materialListView_Favorites.AutoResizeColumns(ColumnHeaderAutoResizeStyle.ColumnContent);
-            //materialListView_Favorites.AutoResizeColumns(ColumnHeaderAutoResizeStyle.HeaderSize);
-            //foreach (ColumnHeader col in materialListView_Favorites.Columns)
-            //    col.Width = -2;
+            foreach (ColumnHeader col in materialListView_Favorites.Columns)
+                col.Width = -2;
+            //Prevents flickering
+            materialListView_Favorites.BeginUpdate();
+
+            Dictionary<int, int> columnSize = new Dictionary<int, int>();
+
+            //Auto size using header
+            materialListView_Favorites.AutoResizeColumns(ColumnHeaderAutoResizeStyle.HeaderSize);
+
+            //Grab column size based on header
+            foreach (ColumnHeader colHeader in materialListView_Favorites.Columns)
+                columnSize.Add(colHeader.Index, colHeader.Width);
+
+            //Auto size using data
+            materialListView_Favorites.AutoResizeColumns(ColumnHeaderAutoResizeStyle.ColumnContent);
+
+            //Grab comumn size based on data and set max width
+            foreach (ColumnHeader colHeader in materialListView_Favorites.Columns)
+            {
+                if (columnSize.TryGetValue(colHeader.Index, out int nColWidth))
+                    colHeader.Width = Math.Max(nColWidth + 30, colHeader.Width);      // colHeader.Width = Math.Max(nColWidth, colHeader.Width);
+                else
+                    colHeader.Width = Math.Max(50, colHeader.Width);                //Default to 50
+            }
+            materialListView_Favorites.EndUpdate();
         }
 
         private void Form1MaterialSkin_FormClosed(object sender, FormClosedEventArgs e)
@@ -650,7 +688,10 @@ namespace FindReplace
         private void MaterialListView_Favorites_KeyDown(object sender, KeyEventArgs e)
         {
             if (Keys.Delete == e.KeyCode)
-                DeleteToolStripMenuItem_Click(sender, e);
+            {
+                ToolStripMenu_Favorites_Delete_Click(sender, e);
+                MaterialListView_FavoritesSetListViewColumnSizes();
+            }
         }
 
         private void MaterialListView_Favorites_SelectedIndexChanged(object sender, EventArgs e)
@@ -661,8 +702,9 @@ namespace FindReplace
                 item.Selected = true;
             }
         }
-        private void LoadToolStripMenuItem_Click(object sender, EventArgs e)
+        private void ToolStripMenu_Favorites_Load_Click(object sender, EventArgs e)
         {
+            listView_Result.Items.Clear();
             treeView1.CollapseAll();
             foreach (ListViewItem item in materialListView_Favorites.SelectedItems)
             {
@@ -706,17 +748,17 @@ namespace FindReplace
 
         private void MaterialListView_Favorites_MouseDoubleClick(object sender, MouseEventArgs e)
         {
-            LoadAndFindToolStripMenuItem_Click(sender, e);
+            ToolStripMenu_Favorites_LoadAndFind_Click(sender, e);
         }
-        private void LoadAndFindToolStripMenuItem_Click(object sender, EventArgs e)
+        private void ToolStripMenu_Favorites_LoadAndFind_Click(object sender, EventArgs e)
         {
-            LoadToolStripMenuItem_Click(sender, e);
+            ToolStripMenu_Favorites_Load_Click(sender, e);
             if (!string.IsNullOrEmpty(selectedPath))
             {
                 MaterialButton_Find_Click(sender, e);
             }
         }
-        private void DeleteToolStripMenuItem_Click(object sender, EventArgs e)
+        private void ToolStripMenu_Favorites_Delete_Click(object sender, EventArgs e)
         {
             foreach (ListViewItem item in materialListView_Favorites.SelectedItems)
             {
@@ -736,6 +778,7 @@ namespace FindReplace
         }
         private void FindOrReplace(string action)
         {
+            listView_Result.Items.Clear();
             SetMessage("Processing - generating a list of files ...");
             if (string.IsNullOrEmpty(materialTextBox_FindString.Text))
             {
@@ -769,13 +812,14 @@ namespace FindReplace
             materialProgressBar1.Step = 1;
             materialProgressBar1.Value = 40;
             ResetPreview();
-            listView_Result.Items.Clear();  
+            //listView_Result.Items.Clear();  
             backgroundWorker1.RunWorkerAsync(action);
-            materialTabControl1.SelectedIndex = 0;
+            //materialTabControl1.SelectedIndex = 0;
         }
 
         private void BackgroundWorker1_DoWork(object sender, DoWorkEventArgs e)
         {
+           
             string action = (string)e.Argument;
             int total_files_skipped = GetFiles(e);
             int total_directories = listDirectories.Count();
@@ -1076,7 +1120,7 @@ namespace FindReplace
             materialButton_Find.Visible = true;
             materialButton_Replace.Visible = true;
             materialButton_Cancel.Visible = false;
-            listView_Result.Items.Clear();
+            //listView_Result.Items.Clear();
             richTextBox_Preview.Text = string.Empty;
             if (listMatches.Count() == 0)
             {
@@ -1190,10 +1234,45 @@ namespace FindReplace
                     }
                 }
             }
-            listView_Result.AutoResizeColumns(ColumnHeaderAutoResizeStyle.ColumnContent);
-            listView_Result.AutoResizeColumns(ColumnHeaderAutoResizeStyle.HeaderSize);
-            listView_Result.Items[firstFile-1].Selected = true;
-            listView_Result.Items[firstFile - 1].Focused = true;
+            if (listView_Result.Items.Count > 0)
+            {
+                listView_Result.BeginUpdate();
+
+
+                //Auto size using header
+                listView_Result.AutoResizeColumns(ColumnHeaderAutoResizeStyle.HeaderSize);
+
+                ////Grab column size based on header
+                //foreach (ColumnHeader colHeader in listView_Result.Columns)
+                //    columnSize.Add(colHeader.Index, colHeader.Width);
+
+                //Auto size using data
+                listView_Result.AutoResizeColumns(ColumnHeaderAutoResizeStyle.ColumnContent);       // Resize all Columns with ColumnContent 
+                listView_Result.AutoResizeColumn(1, ColumnHeaderAutoResizeStyle.HeaderSize);        // Exception "Matches":    HeaderSize
+                //int myListViewWidth = listView_Result.Width;
+                ////MessageBox.Show("myListViewWidth:" + myListViewWidth);
+                int myListViewWidth2 = 0;
+                foreach (ColumnHeader colHeader in listView_Result.Columns)
+                {
+                    myListViewWidth2 += colHeader.Width;
+                }
+                //MessageBox.Show("myListViewWidth: " + myListViewWidth + "myListViewWidth2: " + myListViewWidth2);
+                splitContainer1.SplitterDistance = myListViewWidth2+35;
+
+                //Grab comumn size based on data and set max width
+                //foreach (ColumnHeader colHeader in listView_Result.Columns)
+                //{
+                //    if (columnSize.TryGetValue(colHeader.Index, out int nColWidth))
+                //        colHeader.Width = Math.Max(nColWidth, colHeader.Width);      // colHeader.Width = Math.Max(nColWidth, colHeader.Width);
+                //    else
+                //        colHeader.Width = Math.Max(50, colHeader.Width);                //Default to 50
+                //}
+                listView_Result.EndUpdate();
+                listView_Result.Items[firstFile - 1].Selected = true;
+                listView_Result.Items[firstFile - 1].Focused = true;
+                materialTabControl1.SelectedIndex = 0;
+            }
+            
         }
         private void ResetPreview()
         {
@@ -1245,12 +1324,13 @@ namespace FindReplace
                     SetMessage("Favorites: \"" + f.TextBox_DescriptionValue + "\" added.");
                 }
                 f.Dispose();
+                MaterialListView_FavoritesSetListViewColumnSizes();
             }
-            
+            SetToolStripMenuBackground();
         }
 
 
-        private void UpdateToolStripMenuItem_Click(object sender, EventArgs e)
+        private void ToolStripMenu_Favorites_Update_Click(object sender, EventArgs e)
         {
             foreach (ListViewItem item in materialListView_Favorites.SelectedItems)
             {
@@ -1260,6 +1340,7 @@ namespace FindReplace
                 {
                     if (f.ShowDialog(this) == DialogResult.OK)
                     {
+                        int itemIndex = materialListView_Favorites.SelectedIndices[0];
                         materialListView_Favorites.Items.Remove(item);
                         ListViewItem itemNew = new ListViewItem(new string[]
                        {
@@ -1281,6 +1362,7 @@ namespace FindReplace
                     f.Dispose();
                 }
             }
+            SetToolStripMenuBackground();
         }
         private string ProtectRegExpCharacterEscape (string text)       // When RegEx is not selected: protect all Escape Characters with a leading '\'
         {
@@ -1706,6 +1788,7 @@ namespace FindReplace
                             SetMessage("Restore: file \"" + file + "\" successful restored.");
                         }
                         f.Dispose();
+                        SetToolStripMenuBackground();
                         break;
                 }
             }
@@ -1731,12 +1814,12 @@ namespace FindReplace
             }
         }
         private enum MoveDirection { Up = -1, Down = 1 };
-        private void MoveUpToolStripMenuItem_Click(object sender, EventArgs e)
+        private void ToolStripMenu_Favorites_MoveUp_Click(object sender, EventArgs e)
         {
             MoveItems(materialListView_Favorites, MoveDirection.Up);
         }
 
-        private void MoveDownToolStripMenuItem_Click(object sender, EventArgs e)
+        private void ToolStripMenu_Favorites_MoveDown_Click(object sender, EventArgs e)
         {
             MoveItems(materialListView_Favorites, MoveDirection.Down);
         }
@@ -1783,6 +1866,5 @@ namespace FindReplace
                 sender.EndUpdate();
             }
         }
-
     }
 }

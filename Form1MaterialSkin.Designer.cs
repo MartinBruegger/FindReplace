@@ -122,12 +122,12 @@
             this.columnHeader10 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.columnHeader11 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.contextMenuStrip_Favorites = new System.Windows.Forms.ContextMenuStrip(this.components);
-            this.loadAndFindToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.loadToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.updateToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.deleteToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.moveUpToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.moveDownToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.toolStripMenu_Favorites_LoadAndFind = new System.Windows.Forms.ToolStripMenuItem();
+            this.toolStripMenu_Favorites_Load = new System.Windows.Forms.ToolStripMenuItem();
+            this.toolStripMenu_Favorites_Update = new System.Windows.Forms.ToolStripMenuItem();
+            this.toolStripMenu_Favorites_Delete = new System.Windows.Forms.ToolStripMenuItem();
+            this.toolStripMenu_Favorites_MoveUp = new System.Windows.Forms.ToolStripMenuItem();
+            this.toolStripMenu_Favorites_MoveDown = new System.Windows.Forms.ToolStripMenuItem();
             this.tabPage4 = new System.Windows.Forms.TabPage();
             this.materialCard_About = new MaterialSkin.Controls.MaterialCard();
             this.richTextBoxAbout = new System.Windows.Forms.RichTextBox();
@@ -185,7 +185,7 @@
             this.panel_Left.Controls.Add(this.treeView1);
             this.panel_Left.Location = new System.Drawing.Point(0, 66);
             this.panel_Left.Name = "panel_Left";
-            this.panel_Left.Size = new System.Drawing.Size(300, 768);
+            this.panel_Left.Size = new System.Drawing.Size(300, 930);
             this.panel_Left.TabIndex = 0;
             // 
             // materialLabel1
@@ -213,7 +213,7 @@
             this.treeView1.Location = new System.Drawing.Point(9, 31);
             this.treeView1.Name = "treeView1";
             this.treeView1.SelectedImageIndex = 0;
-            this.treeView1.Size = new System.Drawing.Size(290, 728);
+            this.treeView1.Size = new System.Drawing.Size(290, 890);
             this.treeView1.TabIndex = 7;
             this.treeView1.BeforeExpand += new System.Windows.Forms.TreeViewCancelEventHandler(this.TreeView1_BeforeExpand);
             this.treeView1.BeforeSelect += new System.Windows.Forms.TreeViewCancelEventHandler(this.TreeView1_BeforeSelect);
@@ -262,7 +262,7 @@
             this.panel_LeftFindParms.Controls.Add(this.materialCheckbox_SelectByDate);
             this.panel_LeftFindParms.Controls.Add(this.materialTextBox_Filenames);
             this.panel_LeftFindParms.Controls.Add(this.materialCheckbox_SubDirectory);
-            this.panel_LeftFindParms.Location = new System.Drawing.Point(6, 838);
+            this.panel_LeftFindParms.Location = new System.Drawing.Point(6, 1000);
             this.panel_LeftFindParms.Name = "panel_LeftFindParms";
             this.panel_LeftFindParms.Size = new System.Drawing.Size(300, 340);
             this.panel_LeftFindParms.TabIndex = 1;
@@ -510,7 +510,7 @@
             this.panel_Center.Controls.Add(this.materialTabControl1);
             this.panel_Center.Location = new System.Drawing.Point(300, 66);
             this.panel_Center.Name = "panel_Center";
-            this.panel_Center.Size = new System.Drawing.Size(1443, 1108);
+            this.panel_Center.Size = new System.Drawing.Size(1523, 1270);
             this.panel_Center.TabIndex = 2;
             // 
             // materialTabSelector1
@@ -524,7 +524,7 @@
             this.materialTabSelector1.Location = new System.Drawing.Point(11, 3);
             this.materialTabSelector1.MouseState = MaterialSkin.MouseState.HOVER;
             this.materialTabSelector1.Name = "materialTabSelector1";
-            this.materialTabSelector1.Size = new System.Drawing.Size(1423, 29);
+            this.materialTabSelector1.Size = new System.Drawing.Size(1503, 29);
             this.materialTabSelector1.TabIndex = 1;
             this.materialTabSelector1.Text = "materialTabSelector1";
             // 
@@ -543,7 +543,7 @@
             this.materialTabControl1.Multiline = true;
             this.materialTabControl1.Name = "materialTabControl1";
             this.materialTabControl1.SelectedIndex = 0;
-            this.materialTabControl1.Size = new System.Drawing.Size(1422, 1058);
+            this.materialTabControl1.Size = new System.Drawing.Size(1502, 1220);
             this.materialTabControl1.TabIndex = 0;
             // 
             // tabPage1
@@ -552,7 +552,7 @@
             this.tabPage1.Location = new System.Drawing.Point(4, 22);
             this.tabPage1.Name = "tabPage1";
             this.tabPage1.Padding = new System.Windows.Forms.Padding(3);
-            this.tabPage1.Size = new System.Drawing.Size(1414, 1032);
+            this.tabPage1.Size = new System.Drawing.Size(1494, 1194);
             this.tabPage1.TabIndex = 0;
             this.tabPage1.Text = "Result";
             this.tabPage1.UseVisualStyleBackColor = true;
@@ -569,7 +569,7 @@
             // splitContainer1.Panel1
             // 
             this.splitContainer1.Panel1.Controls.Add(this.materialCard_Result);
-            this.splitContainer1.Panel1MinSize = 500;
+            this.splitContainer1.Panel1MinSize = 450;
             // 
             // splitContainer1.Panel2
             // 
@@ -584,7 +584,7 @@
             this.splitContainer1.Panel2.Controls.Add(this.materialCard_Preview);
             this.splitContainer1.Panel2.Controls.Add(this.materialTextBox_PrFindString);
             this.splitContainer1.Panel2MinSize = 100;
-            this.splitContainer1.Size = new System.Drawing.Size(1414, 1038);
+            this.splitContainer1.Size = new System.Drawing.Size(1494, 1200);
             this.splitContainer1.SplitterDistance = 630;
             this.splitContainer1.SplitterIncrement = 5;
             this.splitContainer1.TabIndex = 0;
@@ -603,7 +603,7 @@
             this.materialCard_Result.MouseState = MaterialSkin.MouseState.HOVER;
             this.materialCard_Result.Name = "materialCard_Result";
             this.materialCard_Result.Padding = new System.Windows.Forms.Padding(14);
-            this.materialCard_Result.Size = new System.Drawing.Size(627, 1025);
+            this.materialCard_Result.Size = new System.Drawing.Size(627, 1187);
             this.materialCard_Result.TabIndex = 2;
             // 
             // listView_Result
@@ -622,7 +622,7 @@
             this.listView_Result.HideSelection = false;
             this.listView_Result.Location = new System.Drawing.Point(10, 10);
             this.listView_Result.Name = "listView_Result";
-            this.listView_Result.Size = new System.Drawing.Size(607, 1012);
+            this.listView_Result.Size = new System.Drawing.Size(607, 1174);
             this.listView_Result.SmallImageList = this.imageList_Result;
             this.listView_Result.TabIndex = 1;
             this.listView_Result.UseCompatibleStateImageBehavior = false;
@@ -703,7 +703,7 @@
             // 
             this.pictureBox_PRFindPage.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
             this.pictureBox_PRFindPage.Image = ((System.Drawing.Image)(resources.GetObject("pictureBox_PRFindPage.Image")));
-            this.pictureBox_PRFindPage.Location = new System.Drawing.Point(491, 1003);
+            this.pictureBox_PRFindPage.Location = new System.Drawing.Point(571, 1165);
             this.pictureBox_PRFindPage.Name = "pictureBox_PRFindPage";
             this.pictureBox_PRFindPage.Size = new System.Drawing.Size(24, 24);
             this.pictureBox_PRFindPage.TabIndex = 18;
@@ -716,7 +716,7 @@
             // 
             this.pictureBox_PRRegEx.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
             this.pictureBox_PRRegEx.Image = ((System.Drawing.Image)(resources.GetObject("pictureBox_PRRegEx.Image")));
-            this.pictureBox_PRRegEx.Location = new System.Drawing.Point(575, 1003);
+            this.pictureBox_PRRegEx.Location = new System.Drawing.Point(655, 1165);
             this.pictureBox_PRRegEx.Name = "pictureBox_PRRegEx";
             this.pictureBox_PRRegEx.Size = new System.Drawing.Size(24, 24);
             this.pictureBox_PRRegEx.TabIndex = 17;
@@ -729,7 +729,7 @@
             // 
             this.pictureBox_PRMatchWord.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
             this.pictureBox_PRMatchWord.Image = ((System.Drawing.Image)(resources.GetObject("pictureBox_PRMatchWord.Image")));
-            this.pictureBox_PRMatchWord.Location = new System.Drawing.Point(547, 1003);
+            this.pictureBox_PRMatchWord.Location = new System.Drawing.Point(627, 1165);
             this.pictureBox_PRMatchWord.Name = "pictureBox_PRMatchWord";
             this.pictureBox_PRMatchWord.Size = new System.Drawing.Size(24, 24);
             this.pictureBox_PRMatchWord.TabIndex = 16;
@@ -742,7 +742,7 @@
             // 
             this.pictureBox_PRMatchCase.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
             this.pictureBox_PRMatchCase.Image = ((System.Drawing.Image)(resources.GetObject("pictureBox_PRMatchCase.Image")));
-            this.pictureBox_PRMatchCase.Location = new System.Drawing.Point(519, 1003);
+            this.pictureBox_PRMatchCase.Location = new System.Drawing.Point(599, 1165);
             this.pictureBox_PRMatchCase.Name = "pictureBox_PRMatchCase";
             this.pictureBox_PRMatchCase.Size = new System.Drawing.Size(24, 24);
             this.pictureBox_PRMatchCase.TabIndex = 15;
@@ -757,7 +757,7 @@
             this.label_SCPanel2PB.AutoSize = true;
             this.label_SCPanel2PB.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
             this.label_SCPanel2PB.Font = new System.Drawing.Font("Verdana", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Pixel, ((byte)(0)));
-            this.label_SCPanel2PB.Location = new System.Drawing.Point(507, 991);
+            this.label_SCPanel2PB.Location = new System.Drawing.Point(587, 1153);
             this.label_SCPanel2PB.Name = "label_SCPanel2PB";
             this.label_SCPanel2PB.Size = new System.Drawing.Size(46, 14);
             this.label_SCPanel2PB.TabIndex = 14;
@@ -769,7 +769,7 @@
             this.pictureBox_PRBackward.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
             this.pictureBox_PRBackward.BackColor = System.Drawing.Color.Transparent;
             this.pictureBox_PRBackward.Image = ((System.Drawing.Image)(resources.GetObject("pictureBox_PRBackward.Image")));
-            this.pictureBox_PRBackward.Location = new System.Drawing.Point(628, 1003);
+            this.pictureBox_PRBackward.Location = new System.Drawing.Point(708, 1165);
             this.pictureBox_PRBackward.Name = "pictureBox_PRBackward";
             this.pictureBox_PRBackward.Size = new System.Drawing.Size(24, 24);
             this.pictureBox_PRBackward.TabIndex = 13;
@@ -780,7 +780,7 @@
             // 
             this.pictureBox_PRForward.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
             this.pictureBox_PRForward.Image = ((System.Drawing.Image)(resources.GetObject("pictureBox_PRForward.Image")));
-            this.pictureBox_PRForward.Location = new System.Drawing.Point(658, 1003);
+            this.pictureBox_PRForward.Location = new System.Drawing.Point(738, 1165);
             this.pictureBox_PRForward.Name = "pictureBox_PRForward";
             this.pictureBox_PRForward.Size = new System.Drawing.Size(24, 24);
             this.pictureBox_PRForward.TabIndex = 12;
@@ -794,7 +794,7 @@
             this.materialLabel_PrMatches.Depth = 0;
             this.materialLabel_PrMatches.Font = new System.Drawing.Font("Roboto", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Pixel);
             this.materialLabel_PrMatches.FontType = MaterialSkin.MaterialSkinManager.fontType.Caption;
-            this.materialLabel_PrMatches.Location = new System.Drawing.Point(691, 1009);
+            this.materialLabel_PrMatches.Location = new System.Drawing.Point(771, 1171);
             this.materialLabel_PrMatches.MouseState = MaterialSkin.MouseState.HOVER;
             this.materialLabel_PrMatches.Name = "materialLabel_PrMatches";
             this.materialLabel_PrMatches.Size = new System.Drawing.Size(1, 0);
@@ -814,7 +814,7 @@
             this.materialCard_Preview.MouseState = MaterialSkin.MouseState.HOVER;
             this.materialCard_Preview.Name = "materialCard_Preview";
             this.materialCard_Preview.Padding = new System.Windows.Forms.Padding(14);
-            this.materialCard_Preview.Size = new System.Drawing.Size(775, 973);
+            this.materialCard_Preview.Size = new System.Drawing.Size(855, 1135);
             this.materialCard_Preview.TabIndex = 10;
             // 
             // richTextBox_Preview
@@ -826,7 +826,7 @@
             this.richTextBox_Preview.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.richTextBox_Preview.Location = new System.Drawing.Point(10, 10);
             this.richTextBox_Preview.Name = "richTextBox_Preview";
-            this.richTextBox_Preview.Size = new System.Drawing.Size(755, 952);
+            this.richTextBox_Preview.Size = new System.Drawing.Size(835, 1114);
             this.richTextBox_Preview.TabIndex = 0;
             this.richTextBox_Preview.Text = "";
             this.richTextBox_Preview.KeyUp += new System.Windows.Forms.KeyEventHandler(this.RichTextBox_Preview_KeyUp);
@@ -841,12 +841,12 @@
             this.materialTextBox_PrFindString.Font = new System.Drawing.Font("Roboto", 16F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Pixel);
             this.materialTextBox_PrFindString.Hint = "Find Text";
             this.materialTextBox_PrFindString.LeadingIcon = null;
-            this.materialTextBox_PrFindString.Location = new System.Drawing.Point(3, 982);
+            this.materialTextBox_PrFindString.Location = new System.Drawing.Point(3, 1144);
             this.materialTextBox_PrFindString.MaxLength = 2000;
             this.materialTextBox_PrFindString.MouseState = MaterialSkin.MouseState.OUT;
             this.materialTextBox_PrFindString.Multiline = false;
             this.materialTextBox_PrFindString.Name = "materialTextBox_PrFindString";
-            this.materialTextBox_PrFindString.Size = new System.Drawing.Size(470, 50);
+            this.materialTextBox_PrFindString.Size = new System.Drawing.Size(550, 50);
             this.materialTextBox_PrFindString.TabIndex = 1;
             this.materialTextBox_PrFindString.Text = "";
             this.materialTextBox_PrFindString.TrailingIcon = null;
@@ -857,7 +857,7 @@
             this.tabPage2.Location = new System.Drawing.Point(4, 22);
             this.tabPage2.Name = "tabPage2";
             this.tabPage2.Padding = new System.Windows.Forms.Padding(3);
-            this.tabPage2.Size = new System.Drawing.Size(1414, 1032);
+            this.tabPage2.Size = new System.Drawing.Size(1478, 1188);
             this.tabPage2.TabIndex = 1;
             this.tabPage2.Text = "Options";
             this.tabPage2.UseVisualStyleBackColor = true;
@@ -878,7 +878,7 @@
             this.materialCard_Options.MouseState = MaterialSkin.MouseState.HOVER;
             this.materialCard_Options.Name = "materialCard_Options";
             this.materialCard_Options.Padding = new System.Windows.Forms.Padding(14);
-            this.materialCard_Options.Size = new System.Drawing.Size(1160, 944);
+            this.materialCard_Options.Size = new System.Drawing.Size(1160, 983);
             this.materialCard_Options.TabIndex = 2;
             // 
             // groupBox6
@@ -1276,7 +1276,7 @@
             this.tabPage3.Controls.Add(this.materialCard_Favorites);
             this.tabPage3.Location = new System.Drawing.Point(4, 22);
             this.tabPage3.Name = "tabPage3";
-            this.tabPage3.Size = new System.Drawing.Size(1414, 1032);
+            this.tabPage3.Size = new System.Drawing.Size(1478, 1188);
             this.tabPage3.TabIndex = 2;
             this.tabPage3.Text = "Favorites";
             this.tabPage3.UseVisualStyleBackColor = true;
@@ -1296,7 +1296,7 @@
             this.materialCard_Favorites.MouseState = MaterialSkin.MouseState.HOVER;
             this.materialCard_Favorites.Name = "materialCard_Favorites";
             this.materialCard_Favorites.Padding = new System.Windows.Forms.Padding(14);
-            this.materialCard_Favorites.Size = new System.Drawing.Size(1380, 942);
+            this.materialCard_Favorites.Size = new System.Drawing.Size(1428, 1059);
             this.materialCard_Favorites.TabIndex = 0;
             // 
             // materialButton_FavoritesAdd
@@ -1307,7 +1307,7 @@
             this.materialButton_FavoritesAdd.Depth = 0;
             this.materialButton_FavoritesAdd.HighEmphasis = true;
             this.materialButton_FavoritesAdd.Icon = null;
-            this.materialButton_FavoritesAdd.Location = new System.Drawing.Point(17, 900);
+            this.materialButton_FavoritesAdd.Location = new System.Drawing.Point(17, 1017);
             this.materialButton_FavoritesAdd.Margin = new System.Windows.Forms.Padding(4, 6, 4, 6);
             this.materialButton_FavoritesAdd.MouseState = MaterialSkin.MouseState.HOVER;
             this.materialButton_FavoritesAdd.Name = "materialButton_FavoritesAdd";
@@ -1350,7 +1350,7 @@
             this.materialListView_Favorites.MouseState = MaterialSkin.MouseState.OUT;
             this.materialListView_Favorites.Name = "materialListView_Favorites";
             this.materialListView_Favorites.OwnerDraw = true;
-            this.materialListView_Favorites.Size = new System.Drawing.Size(1341, 872);
+            this.materialListView_Favorites.Size = new System.Drawing.Size(1389, 989);
             this.materialListView_Favorites.TabIndex = 0;
             this.materialListView_Favorites.UseCompatibleStateImageBehavior = false;
             this.materialListView_Favorites.View = System.Windows.Forms.View.Details;
@@ -1387,7 +1387,7 @@
             // 
             this.columnHeader6.Text = "Days";
             this.columnHeader6.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
-            this.columnHeader6.Width = 70;
+            this.columnHeader6.Width = 65;
             // 
             // columnHeader7
             // 
@@ -1418,63 +1418,63 @@
             // 
             this.contextMenuStrip_Favorites.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(102)))), ((int)(((byte)(102)))), ((int)(((byte)(102)))));
             this.contextMenuStrip_Favorites.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.loadAndFindToolStripMenuItem,
-            this.loadToolStripMenuItem,
-            this.updateToolStripMenuItem,
-            this.deleteToolStripMenuItem,
-            this.moveUpToolStripMenuItem,
-            this.moveDownToolStripMenuItem});
+            this.toolStripMenu_Favorites_LoadAndFind,
+            this.toolStripMenu_Favorites_Load,
+            this.toolStripMenu_Favorites_Update,
+            this.toolStripMenu_Favorites_Delete,
+            this.toolStripMenu_Favorites_MoveUp,
+            this.toolStripMenu_Favorites_MoveDown});
             this.contextMenuStrip_Favorites.Name = "contextMenuStrip_Favorites";
             this.contextMenuStrip_Favorites.Size = new System.Drawing.Size(150, 136);
             // 
-            // loadAndFindToolStripMenuItem
+            // toolStripMenu_Favorites_LoadAndFind
             // 
-            this.loadAndFindToolStripMenuItem.Name = "loadAndFindToolStripMenuItem";
-            this.loadAndFindToolStripMenuItem.Size = new System.Drawing.Size(149, 22);
-            this.loadAndFindToolStripMenuItem.Text = "Load and Find";
-            this.loadAndFindToolStripMenuItem.Click += new System.EventHandler(this.LoadAndFindToolStripMenuItem_Click);
+            this.toolStripMenu_Favorites_LoadAndFind.Name = "toolStripMenu_Favorites_LoadAndFind";
+            this.toolStripMenu_Favorites_LoadAndFind.Size = new System.Drawing.Size(149, 22);
+            this.toolStripMenu_Favorites_LoadAndFind.Text = "Load and Find";
+            this.toolStripMenu_Favorites_LoadAndFind.Click += new System.EventHandler(this.ToolStripMenu_Favorites_LoadAndFind_Click);
             // 
-            // loadToolStripMenuItem
+            // toolStripMenu_Favorites_Load
             // 
-            this.loadToolStripMenuItem.Name = "loadToolStripMenuItem";
-            this.loadToolStripMenuItem.Size = new System.Drawing.Size(149, 22);
-            this.loadToolStripMenuItem.Text = "Load only";
-            this.loadToolStripMenuItem.Click += new System.EventHandler(this.LoadToolStripMenuItem_Click);
+            this.toolStripMenu_Favorites_Load.Name = "toolStripMenu_Favorites_Load";
+            this.toolStripMenu_Favorites_Load.Size = new System.Drawing.Size(149, 22);
+            this.toolStripMenu_Favorites_Load.Text = "Load only";
+            this.toolStripMenu_Favorites_Load.Click += new System.EventHandler(this.ToolStripMenu_Favorites_Load_Click);
             // 
-            // updateToolStripMenuItem
+            // toolStripMenu_Favorites_Update
             // 
-            this.updateToolStripMenuItem.Name = "updateToolStripMenuItem";
-            this.updateToolStripMenuItem.Size = new System.Drawing.Size(149, 22);
-            this.updateToolStripMenuItem.Text = "Update";
-            this.updateToolStripMenuItem.Click += new System.EventHandler(this.UpdateToolStripMenuItem_Click);
+            this.toolStripMenu_Favorites_Update.Name = "toolStripMenu_Favorites_Update";
+            this.toolStripMenu_Favorites_Update.Size = new System.Drawing.Size(149, 22);
+            this.toolStripMenu_Favorites_Update.Text = "Update";
+            this.toolStripMenu_Favorites_Update.Click += new System.EventHandler(this.ToolStripMenu_Favorites_Update_Click);
             // 
-            // deleteToolStripMenuItem
+            // toolStripMenu_Favorites_Delete
             // 
-            this.deleteToolStripMenuItem.Name = "deleteToolStripMenuItem";
-            this.deleteToolStripMenuItem.Size = new System.Drawing.Size(149, 22);
-            this.deleteToolStripMenuItem.Text = "Delete";
-            this.deleteToolStripMenuItem.Click += new System.EventHandler(this.DeleteToolStripMenuItem_Click);
+            this.toolStripMenu_Favorites_Delete.Name = "toolStripMenu_Favorites_Delete";
+            this.toolStripMenu_Favorites_Delete.Size = new System.Drawing.Size(149, 22);
+            this.toolStripMenu_Favorites_Delete.Text = "Delete";
+            this.toolStripMenu_Favorites_Delete.Click += new System.EventHandler(this.ToolStripMenu_Favorites_Delete_Click);
             // 
-            // moveUpToolStripMenuItem
+            // toolStripMenu_Favorites_MoveUp
             // 
-            this.moveUpToolStripMenuItem.Name = "moveUpToolStripMenuItem";
-            this.moveUpToolStripMenuItem.Size = new System.Drawing.Size(149, 22);
-            this.moveUpToolStripMenuItem.Text = "Move Up";
-            this.moveUpToolStripMenuItem.Click += new System.EventHandler(this.MoveUpToolStripMenuItem_Click);
+            this.toolStripMenu_Favorites_MoveUp.Name = "toolStripMenu_Favorites_MoveUp";
+            this.toolStripMenu_Favorites_MoveUp.Size = new System.Drawing.Size(149, 22);
+            this.toolStripMenu_Favorites_MoveUp.Text = "Move Up";
+            this.toolStripMenu_Favorites_MoveUp.Click += new System.EventHandler(this.ToolStripMenu_Favorites_MoveUp_Click);
             // 
-            // moveDownToolStripMenuItem
+            // toolStripMenu_Favorites_MoveDown
             // 
-            this.moveDownToolStripMenuItem.Name = "moveDownToolStripMenuItem";
-            this.moveDownToolStripMenuItem.Size = new System.Drawing.Size(149, 22);
-            this.moveDownToolStripMenuItem.Text = "Move Down";
-            this.moveDownToolStripMenuItem.Click += new System.EventHandler(this.MoveDownToolStripMenuItem_Click);
+            this.toolStripMenu_Favorites_MoveDown.Name = "toolStripMenu_Favorites_MoveDown";
+            this.toolStripMenu_Favorites_MoveDown.Size = new System.Drawing.Size(149, 22);
+            this.toolStripMenu_Favorites_MoveDown.Text = "Move Down";
+            this.toolStripMenu_Favorites_MoveDown.Click += new System.EventHandler(this.ToolStripMenu_Favorites_MoveDown_Click);
             // 
             // tabPage4
             // 
             this.tabPage4.Controls.Add(this.materialCard_About);
             this.tabPage4.Location = new System.Drawing.Point(4, 22);
             this.tabPage4.Name = "tabPage4";
-            this.tabPage4.Size = new System.Drawing.Size(1414, 1032);
+            this.tabPage4.Size = new System.Drawing.Size(1478, 1188);
             this.tabPage4.TabIndex = 3;
             this.tabPage4.Text = "About";
             this.tabPage4.UseVisualStyleBackColor = true;
@@ -1538,7 +1538,7 @@
             this.materialProgressBar1.MarqueeAnimationSpeed = 300;
             this.materialProgressBar1.MouseState = MaterialSkin.MouseState.HOVER;
             this.materialProgressBar1.Name = "materialProgressBar1";
-            this.materialProgressBar1.Size = new System.Drawing.Size(1638, 5);
+            this.materialProgressBar1.Size = new System.Drawing.Size(1718, 5);
             this.materialProgressBar1.TabIndex = 15;
             this.materialProgressBar1.Visible = false;
             // 
@@ -1547,9 +1547,9 @@
             this.panel_Bottom.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
             this.panel_Bottom.Controls.Add(this.groupBox_Bottom);
-            this.panel_Bottom.Location = new System.Drawing.Point(0, 1177);
+            this.panel_Bottom.Location = new System.Drawing.Point(0, 1339);
             this.panel_Bottom.Name = "panel_Bottom";
-            this.panel_Bottom.Size = new System.Drawing.Size(1740, 48);
+            this.panel_Bottom.Size = new System.Drawing.Size(1820, 48);
             this.panel_Bottom.TabIndex = 17;
             // 
             // groupBox_Bottom
@@ -1561,7 +1561,7 @@
             this.groupBox_Bottom.Controls.Add(this.materialProgressBar1);
             this.groupBox_Bottom.Location = new System.Drawing.Point(6, 2);
             this.groupBox_Bottom.Name = "groupBox_Bottom";
-            this.groupBox_Bottom.Size = new System.Drawing.Size(1728, 40);
+            this.groupBox_Bottom.Size = new System.Drawing.Size(1808, 40);
             this.groupBox_Bottom.TabIndex = 17;
             this.groupBox_Bottom.TabStop = false;
             // 
@@ -1581,7 +1581,7 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1756, 1184);
+            this.ClientSize = new System.Drawing.Size(1836, 1346);
             this.Controls.Add(this.panel_Bottom);
             this.Controls.Add(this.panel_LeftFindParms);
             this.Controls.Add(this.panel_Center);
@@ -1709,10 +1709,10 @@
         private MaterialSkin.Controls.MaterialCard materialCard_Preview;
         private System.Windows.Forms.RichTextBox richTextBox_Preview;
         private System.Windows.Forms.ContextMenuStrip contextMenuStrip_Favorites;
-        private System.Windows.Forms.ToolStripMenuItem loadAndFindToolStripMenuItem;
-        private System.Windows.Forms.ToolStripMenuItem loadToolStripMenuItem;
-        private System.Windows.Forms.ToolStripMenuItem updateToolStripMenuItem;
-        private System.Windows.Forms.ToolStripMenuItem deleteToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem toolStripMenu_Favorites_LoadAndFind;
+        private System.Windows.Forms.ToolStripMenuItem toolStripMenu_Favorites_Load;
+        private System.Windows.Forms.ToolStripMenuItem toolStripMenu_Favorites_Update;
+        private System.Windows.Forms.ToolStripMenuItem toolStripMenu_Favorites_Delete;
         private System.ComponentModel.BackgroundWorker backgroundWorker1;
         private MaterialSkin.Controls.MaterialLabel materialLabel_PrMatches;
         private System.Windows.Forms.ImageList imageList_Result;
@@ -1752,7 +1752,7 @@
         private System.Windows.Forms.PictureBox pictureBox_Warning;
         private System.Windows.Forms.Panel panel_Bottom;
         private System.Windows.Forms.GroupBox groupBox_Bottom;
-        private System.Windows.Forms.ToolStripMenuItem moveUpToolStripMenuItem;
-        private System.Windows.Forms.ToolStripMenuItem moveDownToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem toolStripMenu_Favorites_MoveUp;
+        private System.Windows.Forms.ToolStripMenuItem toolStripMenu_Favorites_MoveDown;
     }
 }

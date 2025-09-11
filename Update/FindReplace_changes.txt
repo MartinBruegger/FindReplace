@@ -2,6 +2,7 @@ This file contains latest news in project FindReplace
 
 Version  	Date		Changes
 ========	==========	=======
+1.1.0.4     2025/09/11  ListView Columns resize auto, ContextMenuStrip background fixed when Theme=dark
 1.1.0.3     2025/09/09  Preview/RichTextBox Font changed to "Consolas", localbackup now supports a propper entryName (fileName without Path)
 1.1.0.2     2025/09/02  StatusMessage in a GroupBox, more Text in Message, less empty Space at the Bottom of the Form
 1.1.0.1		2025/09/01  Favorites.xml - add missing FileNames, fixed position of Warn-Icon
@@ -17,7 +18,7 @@ Version  	Date		Changes
 1.0.2.6		2019/08/20	Favorites: columns sortable (again), keep item selected
 1.0.2.5		2019/07/05	Drag & Drop enabled
 1.0.2.4		2019/05/29	Exclude .png files
-1.0.2.3		2019/05/29	Encoding.Default in reading and writing files (after problems with °C temperature in Rainmeter skins)
+1.0.2.3		2019/05/29	Encoding.Default in reading and writing files (after problems with  C temperature in Rainmeter skins)
 1.0.2.2		2019/01/03	Delete entry in Favorites using "delete" key (Key-Down, if (Keys.Delete == e.KeyCode)).
 1.0.2.1		2019/01/03	Check for non-existing directory in startup or on load of favorite.
 1.0.2.0		2018/12/12	Favorites in a separate tab - former version contained it in "more options".
