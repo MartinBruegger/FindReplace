@@ -151,14 +151,14 @@ namespace FindReplace
                     SetMessage("Drag and Drop - selected directory is \"" + selectedPath + "\"");
                 }
             }
-            treeView1.CollapseAll();
+            treeV_Directories.CollapseAll();
             if (!string.IsNullOrEmpty(selectedPath))
                 SelectPathInTreeView(selectedPath);
         }
 
         private void BuildTreeLevel0()
         {
-            treeView1.Nodes.Clear();
+            treeV_Directories.Nodes.Clear();
             //get a list of the drives
             DriveInfo[] drives = DriveInfo.GetDrives();
             //foreach (string drive in drives)
@@ -194,7 +194,7 @@ namespace FindReplace
                 {
                     node.Nodes.Add("...");
                 }
-                treeView1.Nodes.Add(node);
+                treeV_Directories.Nodes.Add(node);
             }
         }
         private void TreeView1_BeforeExpand(object sender, TreeViewCancelEventArgs e)
@@ -248,7 +248,7 @@ namespace FindReplace
             if (newSelected.ImageIndex == 5)
             {
                 MessageBox.Show("No authorization for this directory.");
-                treeView1.SelectedNode = null;
+                treeV_Directories.SelectedNode = null;
                 selectedPath = "";
                 return;
             }
@@ -257,7 +257,7 @@ namespace FindReplace
         }
         private void ToolStripMenu_Tree_Explorer_Click(object sender, EventArgs e)
         {
-            Process.Start("explorer.exe", treeView1.SelectedNode.FullPath);
+            Process.Start("explorer.exe", treeV_Directories.SelectedNode.FullPath);
         }
 
         private void MaterialSwitch_Theme_CheckedChanged(object sender, EventArgs e)
@@ -279,9 +279,9 @@ namespace FindReplace
         }
         private void ToolStripMenuBackground(ContextMenuStrip contextMenuStrip)
         {
-            foreach (ToolStripMenuItem tsmi in contextMenuStrip.Items)          // When Theme "dark": set background color of all contextMenuStrip items
-            {
-                tsmi.BackColor = SystemColors.ControlDarkDark;
+            foreach (ToolStripMenuItem tsmi in contextMenuStrip.Items)          // When Theme "dark": set ForeColor SlateGray. Contrast on Black Background/SkyBlue Selection 
+            {                                   
+                tsmi.ForeColor = Color.SlateGray;
             }
         }
         private void MaterialRadioButton_CSDefault_CheckedChanged(object sender, EventArgs e)
@@ -490,7 +490,7 @@ namespace FindReplace
                     dm.Element("RegEx")?.Value,
                     dm.Element("ReplaceText")?.Value
                         });
-                        materialListView_Favorites.Items.Add(item);
+                        listV_Favorites.Items.Add(item);
                     }
                     materialTabControl1.SelectedIndex = 2;
                 }
@@ -500,46 +500,36 @@ namespace FindReplace
                     MessageBox.Show("Error: "+ ex.Message);
                 }
             }
-            MaterialListView_FavoritesSetListViewColumnSizes();
+            ListV_Favorites_SetColumnSizes();
         }
-        private void MaterialListView_FavoritesSetListViewColumnSizes()
+        private void ListV_Favorites_SetColumnSizes()
         {
-            foreach (ColumnHeader col in materialListView_Favorites.Columns)
-                col.Width = -2;
-            //Prevents flickering
-            materialListView_Favorites.BeginUpdate();
-
-            Dictionary<int, int> columnSize = new Dictionary<int, int>();
+            listV_Favorites.BeginUpdate();
 
             //Auto size using header
-            materialListView_Favorites.AutoResizeColumns(ColumnHeaderAutoResizeStyle.HeaderSize);
-
-            //Grab column size based on header
-            foreach (ColumnHeader colHeader in materialListView_Favorites.Columns)
-                columnSize.Add(colHeader.Index, colHeader.Width);
+            listV_Favorites.AutoResizeColumns(ColumnHeaderAutoResizeStyle.HeaderSize);
 
             //Auto size using data
-            materialListView_Favorites.AutoResizeColumns(ColumnHeaderAutoResizeStyle.ColumnContent);
-
-            //Grab comumn size based on data and set max width
-            foreach (ColumnHeader colHeader in materialListView_Favorites.Columns)
-            {
-                if (columnSize.TryGetValue(colHeader.Index, out int nColWidth))
-                    colHeader.Width = Math.Max(nColWidth + 30, colHeader.Width);      // colHeader.Width = Math.Max(nColWidth, colHeader.Width);
-                else
-                    colHeader.Width = Math.Max(50, colHeader.Width);                //Default to 50
-            }
-            materialListView_Favorites.EndUpdate();
+            listV_Favorites.AutoResizeColumns(ColumnHeaderAutoResizeStyle.ColumnContent);
+            listV_Favorites.AutoResizeColumn(2, ColumnHeaderAutoResizeStyle.HeaderSize);        // Column "Subdirectories"
+            listV_Favorites.AutoResizeColumn(4, ColumnHeaderAutoResizeStyle.HeaderSize);        // Column "By Date"
+            listV_Favorites.AutoResizeColumn(5, ColumnHeaderAutoResizeStyle.HeaderSize);        // Column "Days"
+            listV_Favorites.AutoResizeColumn(7, ColumnHeaderAutoResizeStyle.HeaderSize);        // Column "Match Case"
+            listV_Favorites.AutoResizeColumn(8, ColumnHeaderAutoResizeStyle.HeaderSize);        // Column "Match Word"
+            listV_Favorites.AutoResizeColumn(9, ColumnHeaderAutoResizeStyle.HeaderSize);        // Column "RegExp":
+            listV_Favorites.AutoResizeColumn(10, ColumnHeaderAutoResizeStyle.HeaderSize);       // Column "Replace Text"
+            
+            listV_Favorites.EndUpdate();
         }
 
         private void Form1MaterialSkin_FormClosed(object sender, FormClosedEventArgs e)
         {
-            if (materialListView_Favorites.Items.Count > 0)
+            if (listV_Favorites.Items.Count > 0)
                 using (XmlWriter writer = XmlWriter.Create(historyFile))
                 {
                     writer.WriteStartDocument();
                     writer.WriteStartElement("Favorites");
-                    foreach (ListViewItem item in materialListView_Favorites.Items)
+                    foreach (ListViewItem item in listV_Favorites.Items)
                     {
                         writer.WriteStartElement("Favorite");
 
@@ -656,13 +646,13 @@ namespace FindReplace
         {
             if (root_node)
             {
-                foreach (TreeNode t in treeView1.Nodes)
+                foreach (TreeNode t in treeV_Directories.Nodes)
                 {
                     if (String.Equals(t.Text, text, StringComparison.OrdinalIgnoreCase))
                     {
-                        treeView1.SelectedNode = t;
-                        if (expand_node) { treeView1.SelectedNode.Expand(); }
-                        else { treeView1.Select(); }
+                        treeV_Directories.SelectedNode = t;
+                        if (expand_node) { treeV_Directories.SelectedNode.Expand(); }
+                        else { treeV_Directories.Select(); }
                         return true;
                     }
                 }
@@ -671,13 +661,13 @@ namespace FindReplace
             }
             else
             {
-                foreach (TreeNode t in treeView1.SelectedNode.Nodes)
+                foreach (TreeNode t in treeV_Directories.SelectedNode.Nodes)
                 {
                     if (String.Equals(t.Text, text, StringComparison.OrdinalIgnoreCase))
                     {
-                        treeView1.SelectedNode = t;
-                        if (expand_node) { treeView1.SelectedNode.Expand(); }
-                        else { treeView1.Select(); }
+                        treeV_Directories.SelectedNode = t;
+                        if (expand_node) { treeV_Directories.SelectedNode.Expand(); }
+                        else { treeV_Directories.Select(); }
                         return true;
                     }
                 }
@@ -685,18 +675,18 @@ namespace FindReplace
             return false;
         }
 
-        private void MaterialListView_Favorites_KeyDown(object sender, KeyEventArgs e)
+        private void ListV_Favorites_KeyDown(object sender, KeyEventArgs e)
         {
             if (Keys.Delete == e.KeyCode)
             {
                 ToolStripMenu_Favorites_Delete_Click(sender, e);
-                MaterialListView_FavoritesSetListViewColumnSizes();
+                ListV_Favorites_SetColumnSizes();
             }
         }
 
-        private void MaterialListView_Favorites_SelectedIndexChanged(object sender, EventArgs e)
+        private void ListV_Favorites_SelectedIndexChanged(object sender, EventArgs e)
         {
-            MaterialListView.SelectedListViewItemCollection FavoritesSelection = this.materialListView_Favorites.SelectedItems;
+            System.Windows.Forms.ListView.SelectedListViewItemCollection FavoritesSelection = this.listV_Favorites.SelectedItems;
             foreach (ListViewItem item in FavoritesSelection)
             {
                 item.Selected = true;
@@ -704,9 +694,9 @@ namespace FindReplace
         }
         private void ToolStripMenu_Favorites_Load_Click(object sender, EventArgs e)
         {
-            listView_Result.Items.Clear();
-            treeView1.CollapseAll();
-            foreach (ListViewItem item in materialListView_Favorites.SelectedItems)
+            listV_Result.Items.Clear();
+            treeV_Directories.CollapseAll();
+            foreach (ListViewItem item in listV_Favorites.SelectedItems)
             {
                 selectedPath = item.SubItems[1].Text;
                 if (item.SubItems[2].Text == "True")
@@ -746,7 +736,7 @@ namespace FindReplace
             }
         }
 
-        private void MaterialListView_Favorites_MouseDoubleClick(object sender, MouseEventArgs e)
+        private void ListV_Favorites_MouseDoubleClick(object sender, MouseEventArgs e)
         {
             ToolStripMenu_Favorites_LoadAndFind_Click(sender, e);
         }
@@ -760,10 +750,10 @@ namespace FindReplace
         }
         private void ToolStripMenu_Favorites_Delete_Click(object sender, EventArgs e)
         {
-            foreach (ListViewItem item in materialListView_Favorites.SelectedItems)
+            foreach (ListViewItem item in listV_Favorites.SelectedItems)
             {
                 SetMessage(string.Format("Favorites: \"{0}\" deleted.", item.SubItems[0].Text));
-                materialListView_Favorites.Items.Remove(item);
+                listV_Favorites.Items.Remove(item);
             }
         }
 
@@ -778,7 +768,7 @@ namespace FindReplace
         }
         private void FindOrReplace(string action)
         {
-            listView_Result.Items.Clear();
+            listV_Result.Items.Clear();
             SetMessage("Processing - generating a list of files ...");
             if (string.IsNullOrEmpty(materialTextBox_FindString.Text))
             {
@@ -1138,15 +1128,16 @@ namespace FindReplace
             // ListViewItem (string item text, int image index)
             // 1st Item: Text and Tag = starting directory
             // ListViewItem item0 = new ListViewItem(directoryNameOld, 0)
-            imageIndex = 0;                                                                 // imageIndex 0 = Directory
+            imageIndex = 0;                                                                     // imageIndex 0 = Directory
             ListViewItem item0 = new ListViewItem(directoryNameOld, imageIndex)
             {
                 IndentCount = 0,
                 Tag = directoryNameOld
             };
-            listView_Result.Items.Add(item0);                                               // top directory
+            listV_Result.Items.Add(item0);                                                      // top directory
             directoriesOld = directoryNameOld.Split('\\');
             int indentOffset = directoriesOld.Count() - 1;
+            int indentMax = 0;
             foreach (MatchInfo foundItem in listMatches)
             {
                 file = listFiles[foundItem.ID];
@@ -1156,7 +1147,7 @@ namespace FindReplace
                 {
                     // ListViewItem (string array subitems and text, int image index)
                     // new item in existing directory 
-                    imageIndex = 1;                                                         // imageIndex 1 = File
+                    imageIndex = 1;                                                             // imageIndex 1 = File
                     ListViewItem item1 = new ListViewItem(new string[]
                         {
                             Path.GetFileName(file),
@@ -1168,20 +1159,21 @@ namespace FindReplace
                         IndentCount = directoriesNew.Count() - indentOffset,
                         Tag = foundItem.ID
                     };
-                    listView_Result.Items.Add(item1);                                       // file in  top directory                       
+                    indentMax = (directoriesNew.Count() - indentOffset > indentMax) ? directoriesNew.Count() - indentOffset : indentMax;
+                    listV_Result.Items.Add(item1);                                              // file in  top directory                       
                     directoriesOld = directoriesNew;
                     directoryNameOld = directoryNameNew;
                     if (!fileInResult)
                     {
                         fileInResult = true;
-                        firstFile = listView_Result.Items.Count;
+                        firstFile = listV_Result.Items.Count;
                     }
                 }
                 else
                 { // add directory tree
                     int oldElements = directoriesOld.Count();
                     int startLoop = indentOffset + 1;
-                    imageIndex = 0;                                                         // imageIndex 0 = Directory
+                    imageIndex = 0;                                                             // imageIndex 0 = Directory
                     directoryNameOld = selectedPath;
                     for (int i = indentOffset + 1; i < directoriesNew.Count(); i++)
                     {
@@ -1193,7 +1185,7 @@ namespace FindReplace
                                 IndentCount = i - indentOffset,
                                 Tag = directoryNameOld
                             };
-                            listView_Result.Items.Add(item1);                             // sub-directory
+                            listV_Result.Items.Add(item1);                                      // sub-directory
                         }
                         else
                         {
@@ -1204,14 +1196,14 @@ namespace FindReplace
                                     IndentCount = i - indentOffset,
                                     Tag = directoryNameOld
                                 };
-                                listView_Result.Items.Add(item1);                         // sub-directory
+                                listV_Result.Items.Add(item1);                                  // sub-directory
                                 oldElements = 0;
                             }
                         }
                     }
                     // ListViewItem (string array subitems and text, int image index)
                     // new file in new directory 
-                    imageIndex = 1;                                                         // imageIndex 1 = File
+                    imageIndex = 1;                                                             // imageIndex 1 = File
                     ListViewItem item2 = new ListViewItem(new string[]
                         {
                             Path.GetFileName(file),
@@ -1224,52 +1216,39 @@ namespace FindReplace
                         IndentCount = directoriesNew.Count() - indentOffset,
                         Tag = foundItem.ID
                     };
-                    listView_Result.Items.Add(item2);                                     // file in sub-directory
+                    listV_Result.Items.Add(item2);                                              // file in sub-directory
+                    indentMax = (directoriesNew.Count() - indentOffset > indentMax) ? directoriesNew.Count() - indentOffset : indentMax;
                     directoriesOld = directoriesNew;
                     directoryNameOld = directoryNameNew;
                     if (!fileInResult)
                     {
                         fileInResult = true;
-                        firstFile = listView_Result.Items.Count;
+                        firstFile = listV_Result.Items.Count;
                     }
                 }
             }
-            if (listView_Result.Items.Count > 0)
+            if (listV_Result.Items.Count > 0)
             {
-                listView_Result.BeginUpdate();
+                listV_Result.BeginUpdate();
 
 
                 //Auto size using header
-                listView_Result.AutoResizeColumns(ColumnHeaderAutoResizeStyle.HeaderSize);
-
-                ////Grab column size based on header
-                //foreach (ColumnHeader colHeader in listView_Result.Columns)
-                //    columnSize.Add(colHeader.Index, colHeader.Width);
-
+                listV_Result.AutoResizeColumns(ColumnHeaderAutoResizeStyle.HeaderSize);
                 //Auto size using data
-                listView_Result.AutoResizeColumns(ColumnHeaderAutoResizeStyle.ColumnContent);       // Resize all Columns with ColumnContent 
-                listView_Result.AutoResizeColumn(1, ColumnHeaderAutoResizeStyle.HeaderSize);        // Exception "Matches":    HeaderSize
+                listV_Result.AutoResizeColumns(ColumnHeaderAutoResizeStyle.ColumnContent);       // Resize all Columns with ColumnContent 
+                listV_Result.AutoResizeColumn(1, ColumnHeaderAutoResizeStyle.HeaderSize);        // Exception "Matches":    HeaderSize
                 //int myListViewWidth = listView_Result.Width;
                 ////MessageBox.Show("myListViewWidth:" + myListViewWidth);
                 int myListViewWidth2 = 0;
-                foreach (ColumnHeader colHeader in listView_Result.Columns)
+                foreach (ColumnHeader colHeader in listV_Result.Columns)
                 {
                     myListViewWidth2 += colHeader.Width;
                 }
-                //MessageBox.Show("myListViewWidth: " + myListViewWidth + "myListViewWidth2: " + myListViewWidth2);
-                splitContainer1.SplitterDistance = myListViewWidth2+35;
+                splitContainer1.SplitterDistance = myListViewWidth2+34 + indentMax;             // Margins: MaterialCard: 2*14, ListView 2*3 + max(IndentCount)
 
-                //Grab comumn size based on data and set max width
-                //foreach (ColumnHeader colHeader in listView_Result.Columns)
-                //{
-                //    if (columnSize.TryGetValue(colHeader.Index, out int nColWidth))
-                //        colHeader.Width = Math.Max(nColWidth, colHeader.Width);      // colHeader.Width = Math.Max(nColWidth, colHeader.Width);
-                //    else
-                //        colHeader.Width = Math.Max(50, colHeader.Width);                //Default to 50
-                //}
-                listView_Result.EndUpdate();
-                listView_Result.Items[firstFile - 1].Selected = true;
-                listView_Result.Items[firstFile - 1].Focused = true;
+                listV_Result.EndUpdate();
+                listV_Result.Items[firstFile - 1].Selected = true;
+                listV_Result.Items[firstFile - 1].Focused = true;
                 materialTabControl1.SelectedIndex = 0;
             }
             
@@ -1320,11 +1299,11 @@ namespace FindReplace
                             (f.Checkbox_RegExValue) ? "True" : "False",
                             f.TextBox_ReplaceTextValue,
                     });
-                    materialListView_Favorites.Items.Add(itemNew);
+                    listV_Favorites.Items.Add(itemNew);
                     SetMessage("Favorites: \"" + f.TextBox_DescriptionValue + "\" added.");
                 }
                 f.Dispose();
-                MaterialListView_FavoritesSetListViewColumnSizes();
+                ListV_Favorites_SetColumnSizes();
             }
             SetToolStripMenuBackground();
         }
@@ -1332,7 +1311,7 @@ namespace FindReplace
 
         private void ToolStripMenu_Favorites_Update_Click(object sender, EventArgs e)
         {
-            foreach (ListViewItem item in materialListView_Favorites.SelectedItems)
+            foreach (ListViewItem item in listV_Favorites.SelectedItems)
             {
                 using (FormModFavorite f = new FormModFavorite(item.SubItems[0].Text, item.SubItems[1].Text, item.SubItems[2].Text, item.SubItems[3].Text,
                     item.SubItems[4].Text, item.SubItems[5].Text, item.SubItems[6].Text, item.SubItems[7].Text, item.SubItems[8].Text, item.SubItems[9].Text,
@@ -1340,8 +1319,8 @@ namespace FindReplace
                 {
                     if (f.ShowDialog(this) == DialogResult.OK)
                     {
-                        int itemIndex = materialListView_Favorites.SelectedIndices[0];
-                        materialListView_Favorites.Items.Remove(item);
+                        int itemIndex = listV_Favorites.SelectedIndices[0];
+                        listV_Favorites.Items.Remove(item);
                         ListViewItem itemNew = new ListViewItem(new string[]
                        {
                             f.TextBox_DescriptionValue,
@@ -1356,7 +1335,7 @@ namespace FindReplace
                             (f.Checkbox_RegExValue) ? "True" : "False",
                             f.TextBox_ReplaceTextValue,
                         });
-                        materialListView_Favorites.Items.Add(itemNew);
+                        listV_Favorites.Items.Add(itemNew);
                         SetMessage("Favorites: \"" + f.TextBox_DescriptionValue + "\" updated.");
                     }
                     f.Dispose();
@@ -1461,7 +1440,7 @@ namespace FindReplace
         {
             int ID;             // TAG contains ID of listFiles
             string file;        // ID -> list_founds -> match-values from REGEXP.Matches            
-            System.Windows.Forms.ListView.SelectedListViewItemCollection fileselection = this.listView_Result.SelectedItems;
+            System.Windows.Forms.ListView.SelectedListViewItemCollection fileselection = this.listV_Result.SelectedItems;
             ResetPreview();
             foreach (ListViewItem item in fileselection)
             {
@@ -1585,7 +1564,7 @@ namespace FindReplace
             materialLabel_PrMatches.Text = string.Empty;
             int ID;             // TAG contains ID of listFiles
             string file;        // ID -> list_founds -> match-values from REGEXP.Matches            
-            System.Windows.Forms.ListView.SelectedListViewItemCollection fileselection = this.listView_Result.SelectedItems;
+            System.Windows.Forms.ListView.SelectedListViewItemCollection fileselection = this.listV_Result.SelectedItems;
             foreach (ListViewItem item in fileselection)
             {
                 if (item.ImageIndex == 1)  // File selected
@@ -1664,7 +1643,7 @@ namespace FindReplace
         {
             int ID;             // TAG contains ID of listFiles
             string file;        // ID -> list_founds -> match-values from REGEXP.Matches            
-            System.Windows.Forms.ListView.SelectedListViewItemCollection fileselection = this.listView_Result.SelectedItems;
+            System.Windows.Forms.ListView.SelectedListViewItemCollection fileselection = this.listV_Result.SelectedItems;
             foreach (ListViewItem item in fileselection)
             {
                 if (item.ImageIndex == 1)  // File selected
@@ -1687,7 +1666,7 @@ namespace FindReplace
         {
             int ID;             // TAG contains ID of listFiles
             string file;        // ID -> list_founds -> match-values from REGEXP.Matches            
-            System.Windows.Forms.ListView.SelectedListViewItemCollection fileselection = this.listView_Result.SelectedItems;
+            System.Windows.Forms.ListView.SelectedListViewItemCollection fileselection = this.listV_Result.SelectedItems;
             ProcessStartInfo startInfo = new ProcessStartInfo();
             foreach (ListViewItem item in fileselection)
             {
@@ -1709,7 +1688,7 @@ namespace FindReplace
             string file;        // ID -> list_founds -> match-values from REGEXP.Matches
             string backupDir;   // Backup central, local or Empty
             selectedReplaceString = materialTextBox_ReplaceString.Text;
-            System.Windows.Forms.ListView.SelectedListViewItemCollection fileselection = this.listView_Result.SelectedItems;
+            System.Windows.Forms.ListView.SelectedListViewItemCollection fileselection = this.listV_Result.SelectedItems;
             foreach (ListViewItem item in fileselection)
             {
                 if (item.ImageIndex == 1)                                   // File selected. Get Filename from listFiles[]
@@ -1730,7 +1709,7 @@ namespace FindReplace
                         item.SubItems[1].Text = FindStringInFile(file).ToString();
                         item.SubItems[2].Text = File.GetLastWriteTime(file).ToString("yyyy/MM/dd HH:mm:ss");
                         item.SubItems[3].Text = FileTools.GetFileSizeHuman(file);
-                        ListView_Result_SelectedIndexChanged(listView_Result, EventArgs.Empty);  // Refresh File Preview after restore
+                        ListView_Result_SelectedIndexChanged(listV_Result, EventArgs.Empty);  // Refresh File Preview after restore
                         SetMessage("Replace: file contents changed.");
                     }
                 }
@@ -1742,7 +1721,7 @@ namespace FindReplace
             int ID;             // TAG contains ID of listFiles
             string file;        // ID -> list_founds -> match-values from REGEXP.Matches  
             string backupDir;   // Backup local or central
-            System.Windows.Forms.ListView.SelectedListViewItemCollection fileselection = this.listView_Result.SelectedItems;
+            System.Windows.Forms.ListView.SelectedListViewItemCollection fileselection = this.listV_Result.SelectedItems;
             if (materialRadioButtonBRNone.Checked)
             {
                 SetMessage("Nothing to restore - Option \"Do not archive\" is checked.", true);
@@ -1769,7 +1748,7 @@ namespace FindReplace
                             item.SubItems[1].Text = FindStringInFile(file).ToString();
                             item.SubItems[2].Text = File.GetLastWriteTime(file).ToString("yyyy/MM/dd HH:mm:ss");
                             item.SubItems[3].Text = FileTools.GetFileSizeHuman(file);
-                            ListView_Result_SelectedIndexChanged(listView_Result, EventArgs.Empty);  // Refresh File Preview after restore
+                            ListView_Result_SelectedIndexChanged(listV_Result, EventArgs.Empty);  // Refresh File Preview after restore
                             SetMessage("Restore: file \"" + file + "\" successful restored.");
                         }
                         else
@@ -1784,7 +1763,7 @@ namespace FindReplace
                             item.SubItems[1].Text = FindStringInFile(file).ToString();
                             item.SubItems[2].Text = File.GetLastWriteTime(file).ToString("yyyy/MM/dd HH:mm:ss");
                             item.SubItems[3].Text = FileTools.GetFileSizeHuman(file);
-                            ListView_Result_SelectedIndexChanged(listView_Result, EventArgs.Empty);  // Refresh File Preview after restore
+                            ListView_Result_SelectedIndexChanged(listV_Result, EventArgs.Empty);  // Refresh File Preview after restore
                             SetMessage("Restore: file \"" + file + "\" successful restored.");
                         }
                         f.Dispose();
@@ -1816,15 +1795,15 @@ namespace FindReplace
         private enum MoveDirection { Up = -1, Down = 1 };
         private void ToolStripMenu_Favorites_MoveUp_Click(object sender, EventArgs e)
         {
-            MoveItems(materialListView_Favorites, MoveDirection.Up);
+            MoveItems(listV_Favorites, MoveDirection.Up);
         }
 
         private void ToolStripMenu_Favorites_MoveDown_Click(object sender, EventArgs e)
         {
-            MoveItems(materialListView_Favorites, MoveDirection.Down);
+            MoveItems(listV_Favorites, MoveDirection.Down);
         }
         
-        private void MoveItems(MaterialListView sender, MoveDirection direction)
+        private void MoveItems(System.Windows.Forms.ListView  sender, MoveDirection direction)
         {
             bool valid = sender.SelectedItems.Count > 0 &&
                         ((direction == MoveDirection.Down && (sender.SelectedItems[sender.SelectedItems.Count - 1].Index < sender.Items.Count - 1))

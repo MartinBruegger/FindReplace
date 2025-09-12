@@ -270,6 +270,7 @@
             this.materialButton_OK.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
             this.materialButton_OK.Density = MaterialSkin.Controls.MaterialButton.MaterialButtonDensity.Default;
             this.materialButton_OK.Depth = 0;
+            this.materialButton_OK.DialogResult = System.Windows.Forms.DialogResult.OK;
             this.materialButton_OK.HighEmphasis = true;
             this.materialButton_OK.Icon = null;
             this.materialButton_OK.Location = new System.Drawing.Point(41, 417);
@@ -283,7 +284,6 @@
             this.materialButton_OK.Type = MaterialSkin.Controls.MaterialButton.MaterialButtonType.Contained;
             this.materialButton_OK.UseAccentColor = false;
             this.materialButton_OK.UseVisualStyleBackColor = true;
-            this.materialButton_OK.Click += new System.EventHandler(this.MaterialButton_OK_Click);
             // 
             // materialButton_Cancel
             // 
@@ -311,7 +311,7 @@
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.CancelButton = this.materialButton_Cancel;
-            this.ClientSize = new System.Drawing.Size(760, 457);
+            this.ClientSize = new System.Drawing.Size(776, 496);
             this.ControlBox = false;
             this.Controls.Add(this.materialButton_Cancel);
             this.Controls.Add(this.materialButton_OK);
