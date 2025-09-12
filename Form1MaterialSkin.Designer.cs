@@ -32,7 +32,7 @@
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Form1MaterialSkin));
             this.panel_Left = new System.Windows.Forms.Panel();
             this.materialLabel1 = new MaterialSkin.Controls.MaterialLabel();
-            this.treeView1 = new System.Windows.Forms.TreeView();
+            this.treeV_Directories = new System.Windows.Forms.TreeView();
             this.contextMenuStrip_Tree = new System.Windows.Forms.ContextMenuStrip(this.components);
             this.toolStripMenu_Tree_Explorer = new System.Windows.Forms.ToolStripMenuItem();
             this.imageListTree = new System.Windows.Forms.ImageList(this.components);
@@ -58,7 +58,7 @@
             this.tabPage1 = new System.Windows.Forms.TabPage();
             this.splitContainer1 = new System.Windows.Forms.SplitContainer();
             this.materialCard_Result = new MaterialSkin.Controls.MaterialCard();
-            this.listView_Result = new System.Windows.Forms.ListView();
+            this.listV_Result = new System.Windows.Forms.ListView();
             this.columnHeader13 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.columnHeader14 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.columnHeader15 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
@@ -108,8 +108,7 @@
             this.materialSwitch_Theme = new MaterialSkin.Controls.MaterialSwitch();
             this.tabPage3 = new System.Windows.Forms.TabPage();
             this.materialCard_Favorites = new MaterialSkin.Controls.MaterialCard();
-            this.materialButton_FavoritesAdd = new MaterialSkin.Controls.MaterialButton();
-            this.materialListView_Favorites = new MaterialSkin.Controls.MaterialListView();
+            this.listV_Favorites = new System.Windows.Forms.ListView();
             this.columnHeader1 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.columnHeader2 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.columnHeader3 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
@@ -128,6 +127,7 @@
             this.toolStripMenu_Favorites_Delete = new System.Windows.Forms.ToolStripMenuItem();
             this.toolStripMenu_Favorites_MoveUp = new System.Windows.Forms.ToolStripMenuItem();
             this.toolStripMenu_Favorites_MoveDown = new System.Windows.Forms.ToolStripMenuItem();
+            this.materialButton_FavoritesAdd = new MaterialSkin.Controls.MaterialButton();
             this.tabPage4 = new System.Windows.Forms.TabPage();
             this.materialCard_About = new MaterialSkin.Controls.MaterialCard();
             this.richTextBoxAbout = new System.Windows.Forms.RichTextBox();
@@ -182,10 +182,10 @@
             this.panel_Left.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left)));
             this.panel_Left.Controls.Add(this.materialLabel1);
-            this.panel_Left.Controls.Add(this.treeView1);
+            this.panel_Left.Controls.Add(this.treeV_Directories);
             this.panel_Left.Location = new System.Drawing.Point(0, 66);
             this.panel_Left.Name = "panel_Left";
-            this.panel_Left.Size = new System.Drawing.Size(300, 930);
+            this.panel_Left.Size = new System.Drawing.Size(300, 920);
             this.panel_Left.TabIndex = 0;
             // 
             // materialLabel1
@@ -201,34 +201,35 @@
             this.materialLabel1.TabIndex = 0;
             this.materialLabel1.Text = "Select Directory";
             // 
-            // treeView1
+            // treeV_Directories
             // 
-            this.treeView1.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            this.treeV_Directories.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left)));
-            this.treeView1.BackColor = System.Drawing.SystemColors.ControlLight;
-            this.treeView1.ContextMenuStrip = this.contextMenuStrip_Tree;
-            this.treeView1.ForeColor = System.Drawing.SystemColors.WindowText;
-            this.treeView1.ImageIndex = 0;
-            this.treeView1.ImageList = this.imageListTree;
-            this.treeView1.Location = new System.Drawing.Point(9, 31);
-            this.treeView1.Name = "treeView1";
-            this.treeView1.SelectedImageIndex = 0;
-            this.treeView1.Size = new System.Drawing.Size(290, 890);
-            this.treeView1.TabIndex = 7;
-            this.treeView1.BeforeExpand += new System.Windows.Forms.TreeViewCancelEventHandler(this.TreeView1_BeforeExpand);
-            this.treeView1.BeforeSelect += new System.Windows.Forms.TreeViewCancelEventHandler(this.TreeView1_BeforeSelect);
+            this.treeV_Directories.BackColor = System.Drawing.SystemColors.ControlLight;
+            this.treeV_Directories.ContextMenuStrip = this.contextMenuStrip_Tree;
+            this.treeV_Directories.ForeColor = System.Drawing.SystemColors.WindowText;
+            this.treeV_Directories.ImageIndex = 0;
+            this.treeV_Directories.ImageList = this.imageListTree;
+            this.treeV_Directories.Location = new System.Drawing.Point(9, 31);
+            this.treeV_Directories.Name = "treeV_Directories";
+            this.treeV_Directories.SelectedImageIndex = 0;
+            this.treeV_Directories.Size = new System.Drawing.Size(290, 880);
+            this.treeV_Directories.TabIndex = 7;
+            this.treeV_Directories.BeforeExpand += new System.Windows.Forms.TreeViewCancelEventHandler(this.TreeView1_BeforeExpand);
+            this.treeV_Directories.BeforeSelect += new System.Windows.Forms.TreeViewCancelEventHandler(this.TreeView1_BeforeSelect);
             // 
             // contextMenuStrip_Tree
             // 
             this.contextMenuStrip_Tree.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.toolStripMenu_Tree_Explorer});
             this.contextMenuStrip_Tree.Name = "contextMenuStrip_Tree";
-            this.contextMenuStrip_Tree.Size = new System.Drawing.Size(117, 26);
+            this.contextMenuStrip_Tree.ShowImageMargin = false;
+            this.contextMenuStrip_Tree.Size = new System.Drawing.Size(92, 26);
             // 
             // toolStripMenu_Tree_Explorer
             // 
             this.toolStripMenu_Tree_Explorer.Name = "toolStripMenu_Tree_Explorer";
-            this.toolStripMenu_Tree_Explorer.Size = new System.Drawing.Size(116, 22);
+            this.toolStripMenu_Tree_Explorer.Size = new System.Drawing.Size(155, 22);
             this.toolStripMenu_Tree_Explorer.Text = "Explorer";
             this.toolStripMenu_Tree_Explorer.Click += new System.EventHandler(this.ToolStripMenu_Tree_Explorer_Click);
             // 
@@ -262,7 +263,7 @@
             this.panel_LeftFindParms.Controls.Add(this.materialCheckbox_SelectByDate);
             this.panel_LeftFindParms.Controls.Add(this.materialTextBox_Filenames);
             this.panel_LeftFindParms.Controls.Add(this.materialCheckbox_SubDirectory);
-            this.panel_LeftFindParms.Location = new System.Drawing.Point(6, 1000);
+            this.panel_LeftFindParms.Location = new System.Drawing.Point(6, 990);
             this.panel_LeftFindParms.Name = "panel_LeftFindParms";
             this.panel_LeftFindParms.Size = new System.Drawing.Size(300, 340);
             this.panel_LeftFindParms.TabIndex = 1;
@@ -510,7 +511,7 @@
             this.panel_Center.Controls.Add(this.materialTabControl1);
             this.panel_Center.Location = new System.Drawing.Point(300, 66);
             this.panel_Center.Name = "panel_Center";
-            this.panel_Center.Size = new System.Drawing.Size(1523, 1270);
+            this.panel_Center.Size = new System.Drawing.Size(1555, 1270);
             this.panel_Center.TabIndex = 2;
             // 
             // materialTabSelector1
@@ -524,7 +525,7 @@
             this.materialTabSelector1.Location = new System.Drawing.Point(11, 3);
             this.materialTabSelector1.MouseState = MaterialSkin.MouseState.HOVER;
             this.materialTabSelector1.Name = "materialTabSelector1";
-            this.materialTabSelector1.Size = new System.Drawing.Size(1503, 29);
+            this.materialTabSelector1.Size = new System.Drawing.Size(1545, 29);
             this.materialTabSelector1.TabIndex = 1;
             this.materialTabSelector1.Text = "materialTabSelector1";
             // 
@@ -543,8 +544,10 @@
             this.materialTabControl1.Multiline = true;
             this.materialTabControl1.Name = "materialTabControl1";
             this.materialTabControl1.SelectedIndex = 0;
-            this.materialTabControl1.Size = new System.Drawing.Size(1502, 1220);
+            this.materialTabControl1.Size = new System.Drawing.Size(1545, 1225);
             this.materialTabControl1.TabIndex = 0;
+            this.materialTabControl1.SelectedIndexChanged += new System.EventHandler(this.ListV_Favorites_SelectedIndexChanged);
+            this.materialTabControl1.MouseDoubleClick += new System.Windows.Forms.MouseEventHandler(this.ListV_Favorites_MouseDoubleClick);
             // 
             // tabPage1
             // 
@@ -552,7 +555,7 @@
             this.tabPage1.Location = new System.Drawing.Point(4, 22);
             this.tabPage1.Name = "tabPage1";
             this.tabPage1.Padding = new System.Windows.Forms.Padding(3);
-            this.tabPage1.Size = new System.Drawing.Size(1494, 1194);
+            this.tabPage1.Size = new System.Drawing.Size(1537, 1199);
             this.tabPage1.TabIndex = 0;
             this.tabPage1.Text = "Result";
             this.tabPage1.UseVisualStyleBackColor = true;
@@ -584,7 +587,7 @@
             this.splitContainer1.Panel2.Controls.Add(this.materialCard_Preview);
             this.splitContainer1.Panel2.Controls.Add(this.materialTextBox_PrFindString);
             this.splitContainer1.Panel2MinSize = 100;
-            this.splitContainer1.Size = new System.Drawing.Size(1494, 1200);
+            this.splitContainer1.Size = new System.Drawing.Size(1537, 1200);
             this.splitContainer1.SplitterDistance = 630;
             this.splitContainer1.SplitterIncrement = 5;
             this.splitContainer1.TabIndex = 0;
@@ -595,7 +598,7 @@
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
             this.materialCard_Result.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(255)))));
-            this.materialCard_Result.Controls.Add(this.listView_Result);
+            this.materialCard_Result.Controls.Add(this.listV_Result);
             this.materialCard_Result.Depth = 0;
             this.materialCard_Result.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(222)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
             this.materialCard_Result.Location = new System.Drawing.Point(3, 3);
@@ -606,40 +609,40 @@
             this.materialCard_Result.Size = new System.Drawing.Size(627, 1187);
             this.materialCard_Result.TabIndex = 2;
             // 
-            // listView_Result
+            // listV_Result
             // 
-            this.listView_Result.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            this.listV_Result.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            this.listView_Result.BorderStyle = System.Windows.Forms.BorderStyle.None;
-            this.listView_Result.Columns.AddRange(new System.Windows.Forms.ColumnHeader[] {
+            this.listV_Result.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.listV_Result.Columns.AddRange(new System.Windows.Forms.ColumnHeader[] {
             this.columnHeader13,
             this.columnHeader14,
             this.columnHeader15,
             this.columnHeader16});
-            this.listView_Result.ContextMenuStrip = this.contextMenuStrip_Result;
-            this.listView_Result.FullRowSelect = true;
-            this.listView_Result.HideSelection = false;
-            this.listView_Result.Location = new System.Drawing.Point(10, 10);
-            this.listView_Result.Name = "listView_Result";
-            this.listView_Result.Size = new System.Drawing.Size(607, 1174);
-            this.listView_Result.SmallImageList = this.imageList_Result;
-            this.listView_Result.TabIndex = 1;
-            this.listView_Result.UseCompatibleStateImageBehavior = false;
-            this.listView_Result.View = System.Windows.Forms.View.Details;
-            this.listView_Result.SelectedIndexChanged += new System.EventHandler(this.ListView_Result_SelectedIndexChanged);
-            this.listView_Result.DoubleClick += new System.EventHandler(this.ToolStripMenu_Result_Edit_Click);
+            this.listV_Result.ContextMenuStrip = this.contextMenuStrip_Result;
+            this.listV_Result.FullRowSelect = true;
+            this.listV_Result.HideSelection = false;
+            this.listV_Result.Location = new System.Drawing.Point(10, 10);
+            this.listV_Result.Name = "listV_Result";
+            this.listV_Result.Size = new System.Drawing.Size(607, 1174);
+            this.listV_Result.SmallImageList = this.imageList_Result;
+            this.listV_Result.TabIndex = 1;
+            this.listV_Result.UseCompatibleStateImageBehavior = false;
+            this.listV_Result.View = System.Windows.Forms.View.Details;
+            this.listV_Result.SelectedIndexChanged += new System.EventHandler(this.ListView_Result_SelectedIndexChanged);
+            this.listV_Result.DoubleClick += new System.EventHandler(this.ToolStripMenu_Result_Edit_Click);
             // 
             // columnHeader13
             // 
             this.columnHeader13.Text = "Name";
-            this.columnHeader13.Width = 400;
+            this.columnHeader13.Width = 200;
             // 
             // columnHeader14
             // 
             this.columnHeader14.Text = "Matches";
             this.columnHeader14.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
-            this.columnHeader14.Width = 70;
+            this.columnHeader14.Width = 80;
             // 
             // columnHeader15
             // 
@@ -661,34 +664,35 @@
             this.toolStripMenu_Result_Replace_Text,
             this.toolStripMenu_Result_Restore});
             this.contextMenuStrip_Result.Name = "contextMenuStrip_Result";
-            this.contextMenuStrip_Result.Size = new System.Drawing.Size(140, 92);
+            this.contextMenuStrip_Result.ShowImageMargin = false;
+            this.contextMenuStrip_Result.Size = new System.Drawing.Size(115, 92);
             this.contextMenuStrip_Result.Text = "contextMenu Result";
             // 
             // toolStripMenu_Result_Edit
             // 
             this.toolStripMenu_Result_Edit.Name = "toolStripMenu_Result_Edit";
-            this.toolStripMenu_Result_Edit.Size = new System.Drawing.Size(139, 22);
+            this.toolStripMenu_Result_Edit.Size = new System.Drawing.Size(114, 22);
             this.toolStripMenu_Result_Edit.Text = "Open";
             this.toolStripMenu_Result_Edit.Click += new System.EventHandler(this.ToolStripMenu_Result_Edit_Click);
             // 
             // toolStripMenu_Result_Explorer
             // 
             this.toolStripMenu_Result_Explorer.Name = "toolStripMenu_Result_Explorer";
-            this.toolStripMenu_Result_Explorer.Size = new System.Drawing.Size(139, 22);
+            this.toolStripMenu_Result_Explorer.Size = new System.Drawing.Size(114, 22);
             this.toolStripMenu_Result_Explorer.Text = "Explorer";
             this.toolStripMenu_Result_Explorer.Click += new System.EventHandler(this.ToolStripMenu_Result_Explorer_Click);
             // 
             // toolStripMenu_Result_Replace_Text
             // 
             this.toolStripMenu_Result_Replace_Text.Name = "toolStripMenu_Result_Replace_Text";
-            this.toolStripMenu_Result_Replace_Text.Size = new System.Drawing.Size(139, 22);
+            this.toolStripMenu_Result_Replace_Text.Size = new System.Drawing.Size(114, 22);
             this.toolStripMenu_Result_Replace_Text.Text = "Replace Text";
             this.toolStripMenu_Result_Replace_Text.Click += new System.EventHandler(this.ToolStripMenu_Result_Replace_Text_Click);
             // 
             // toolStripMenu_Result_Restore
             // 
             this.toolStripMenu_Result_Restore.Name = "toolStripMenu_Result_Restore";
-            this.toolStripMenu_Result_Restore.Size = new System.Drawing.Size(139, 22);
+            this.toolStripMenu_Result_Restore.Size = new System.Drawing.Size(114, 22);
             this.toolStripMenu_Result_Restore.Text = "Restore";
             this.toolStripMenu_Result_Restore.Click += new System.EventHandler(this.ToolStripMenu_Result_Restore_Click);
             // 
@@ -703,7 +707,7 @@
             // 
             this.pictureBox_PRFindPage.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
             this.pictureBox_PRFindPage.Image = ((System.Drawing.Image)(resources.GetObject("pictureBox_PRFindPage.Image")));
-            this.pictureBox_PRFindPage.Location = new System.Drawing.Point(571, 1165);
+            this.pictureBox_PRFindPage.Location = new System.Drawing.Point(684, 1161);
             this.pictureBox_PRFindPage.Name = "pictureBox_PRFindPage";
             this.pictureBox_PRFindPage.Size = new System.Drawing.Size(24, 24);
             this.pictureBox_PRFindPage.TabIndex = 18;
@@ -716,7 +720,7 @@
             // 
             this.pictureBox_PRRegEx.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
             this.pictureBox_PRRegEx.Image = ((System.Drawing.Image)(resources.GetObject("pictureBox_PRRegEx.Image")));
-            this.pictureBox_PRRegEx.Location = new System.Drawing.Point(655, 1165);
+            this.pictureBox_PRRegEx.Location = new System.Drawing.Point(768, 1161);
             this.pictureBox_PRRegEx.Name = "pictureBox_PRRegEx";
             this.pictureBox_PRRegEx.Size = new System.Drawing.Size(24, 24);
             this.pictureBox_PRRegEx.TabIndex = 17;
@@ -729,7 +733,7 @@
             // 
             this.pictureBox_PRMatchWord.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
             this.pictureBox_PRMatchWord.Image = ((System.Drawing.Image)(resources.GetObject("pictureBox_PRMatchWord.Image")));
-            this.pictureBox_PRMatchWord.Location = new System.Drawing.Point(627, 1165);
+            this.pictureBox_PRMatchWord.Location = new System.Drawing.Point(740, 1161);
             this.pictureBox_PRMatchWord.Name = "pictureBox_PRMatchWord";
             this.pictureBox_PRMatchWord.Size = new System.Drawing.Size(24, 24);
             this.pictureBox_PRMatchWord.TabIndex = 16;
@@ -742,7 +746,7 @@
             // 
             this.pictureBox_PRMatchCase.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
             this.pictureBox_PRMatchCase.Image = ((System.Drawing.Image)(resources.GetObject("pictureBox_PRMatchCase.Image")));
-            this.pictureBox_PRMatchCase.Location = new System.Drawing.Point(599, 1165);
+            this.pictureBox_PRMatchCase.Location = new System.Drawing.Point(712, 1161);
             this.pictureBox_PRMatchCase.Name = "pictureBox_PRMatchCase";
             this.pictureBox_PRMatchCase.Size = new System.Drawing.Size(24, 24);
             this.pictureBox_PRMatchCase.TabIndex = 15;
@@ -757,7 +761,7 @@
             this.label_SCPanel2PB.AutoSize = true;
             this.label_SCPanel2PB.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
             this.label_SCPanel2PB.Font = new System.Drawing.Font("Verdana", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Pixel, ((byte)(0)));
-            this.label_SCPanel2PB.Location = new System.Drawing.Point(587, 1153);
+            this.label_SCPanel2PB.Location = new System.Drawing.Point(730, 1149);
             this.label_SCPanel2PB.Name = "label_SCPanel2PB";
             this.label_SCPanel2PB.Size = new System.Drawing.Size(46, 14);
             this.label_SCPanel2PB.TabIndex = 14;
@@ -769,7 +773,7 @@
             this.pictureBox_PRBackward.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
             this.pictureBox_PRBackward.BackColor = System.Drawing.Color.Transparent;
             this.pictureBox_PRBackward.Image = ((System.Drawing.Image)(resources.GetObject("pictureBox_PRBackward.Image")));
-            this.pictureBox_PRBackward.Location = new System.Drawing.Point(708, 1165);
+            this.pictureBox_PRBackward.Location = new System.Drawing.Point(805, 1161);
             this.pictureBox_PRBackward.Name = "pictureBox_PRBackward";
             this.pictureBox_PRBackward.Size = new System.Drawing.Size(24, 24);
             this.pictureBox_PRBackward.TabIndex = 13;
@@ -780,7 +784,7 @@
             // 
             this.pictureBox_PRForward.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
             this.pictureBox_PRForward.Image = ((System.Drawing.Image)(resources.GetObject("pictureBox_PRForward.Image")));
-            this.pictureBox_PRForward.Location = new System.Drawing.Point(738, 1165);
+            this.pictureBox_PRForward.Location = new System.Drawing.Point(825, 1161);
             this.pictureBox_PRForward.Name = "pictureBox_PRForward";
             this.pictureBox_PRForward.Size = new System.Drawing.Size(24, 24);
             this.pictureBox_PRForward.TabIndex = 12;
@@ -794,7 +798,7 @@
             this.materialLabel_PrMatches.Depth = 0;
             this.materialLabel_PrMatches.Font = new System.Drawing.Font("Roboto", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Pixel);
             this.materialLabel_PrMatches.FontType = MaterialSkin.MaterialSkinManager.fontType.Caption;
-            this.materialLabel_PrMatches.Location = new System.Drawing.Point(771, 1171);
+            this.materialLabel_PrMatches.Location = new System.Drawing.Point(850, 1167);
             this.materialLabel_PrMatches.MouseState = MaterialSkin.MouseState.HOVER;
             this.materialLabel_PrMatches.Name = "materialLabel_PrMatches";
             this.materialLabel_PrMatches.Size = new System.Drawing.Size(1, 0);
@@ -814,7 +818,7 @@
             this.materialCard_Preview.MouseState = MaterialSkin.MouseState.HOVER;
             this.materialCard_Preview.Name = "materialCard_Preview";
             this.materialCard_Preview.Padding = new System.Windows.Forms.Padding(14);
-            this.materialCard_Preview.Size = new System.Drawing.Size(855, 1135);
+            this.materialCard_Preview.Size = new System.Drawing.Size(895, 1120);
             this.materialCard_Preview.TabIndex = 10;
             // 
             // richTextBox_Preview
@@ -826,7 +830,7 @@
             this.richTextBox_Preview.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.richTextBox_Preview.Location = new System.Drawing.Point(10, 10);
             this.richTextBox_Preview.Name = "richTextBox_Preview";
-            this.richTextBox_Preview.Size = new System.Drawing.Size(835, 1114);
+            this.richTextBox_Preview.Size = new System.Drawing.Size(875, 1099);
             this.richTextBox_Preview.TabIndex = 0;
             this.richTextBox_Preview.Text = "";
             this.richTextBox_Preview.KeyUp += new System.Windows.Forms.KeyEventHandler(this.RichTextBox_Preview_KeyUp);
@@ -841,12 +845,12 @@
             this.materialTextBox_PrFindString.Font = new System.Drawing.Font("Roboto", 16F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Pixel);
             this.materialTextBox_PrFindString.Hint = "Find Text";
             this.materialTextBox_PrFindString.LeadingIcon = null;
-            this.materialTextBox_PrFindString.Location = new System.Drawing.Point(3, 1144);
+            this.materialTextBox_PrFindString.Location = new System.Drawing.Point(3, 1140);
             this.materialTextBox_PrFindString.MaxLength = 2000;
             this.materialTextBox_PrFindString.MouseState = MaterialSkin.MouseState.OUT;
             this.materialTextBox_PrFindString.Multiline = false;
             this.materialTextBox_PrFindString.Name = "materialTextBox_PrFindString";
-            this.materialTextBox_PrFindString.Size = new System.Drawing.Size(550, 50);
+            this.materialTextBox_PrFindString.Size = new System.Drawing.Size(670, 50);
             this.materialTextBox_PrFindString.TabIndex = 1;
             this.materialTextBox_PrFindString.Text = "";
             this.materialTextBox_PrFindString.TrailingIcon = null;
@@ -857,7 +861,7 @@
             this.tabPage2.Location = new System.Drawing.Point(4, 22);
             this.tabPage2.Name = "tabPage2";
             this.tabPage2.Padding = new System.Windows.Forms.Padding(3);
-            this.tabPage2.Size = new System.Drawing.Size(1478, 1188);
+            this.tabPage2.Size = new System.Drawing.Size(1537, 1194);
             this.tabPage2.TabIndex = 1;
             this.tabPage2.Text = "Options";
             this.tabPage2.UseVisualStyleBackColor = true;
@@ -878,7 +882,7 @@
             this.materialCard_Options.MouseState = MaterialSkin.MouseState.HOVER;
             this.materialCard_Options.Name = "materialCard_Options";
             this.materialCard_Options.Padding = new System.Windows.Forms.Padding(14);
-            this.materialCard_Options.Size = new System.Drawing.Size(1160, 983);
+            this.materialCard_Options.Size = new System.Drawing.Size(1160, 1180);
             this.materialCard_Options.TabIndex = 2;
             // 
             // groupBox6
@@ -1276,7 +1280,7 @@
             this.tabPage3.Controls.Add(this.materialCard_Favorites);
             this.tabPage3.Location = new System.Drawing.Point(4, 22);
             this.tabPage3.Name = "tabPage3";
-            this.tabPage3.Size = new System.Drawing.Size(1478, 1188);
+            this.tabPage3.Size = new System.Drawing.Size(1537, 1209);
             this.tabPage3.TabIndex = 2;
             this.tabPage3.Text = "Favorites";
             this.tabPage3.UseVisualStyleBackColor = true;
@@ -1287,8 +1291,8 @@
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
             this.materialCard_Favorites.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(255)))));
+            this.materialCard_Favorites.Controls.Add(this.listV_Favorites);
             this.materialCard_Favorites.Controls.Add(this.materialButton_FavoritesAdd);
-            this.materialCard_Favorites.Controls.Add(this.materialListView_Favorites);
             this.materialCard_Favorites.Depth = 0;
             this.materialCard_Favorites.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(222)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
             this.materialCard_Favorites.Location = new System.Drawing.Point(7, 7);
@@ -1296,39 +1300,15 @@
             this.materialCard_Favorites.MouseState = MaterialSkin.MouseState.HOVER;
             this.materialCard_Favorites.Name = "materialCard_Favorites";
             this.materialCard_Favorites.Padding = new System.Windows.Forms.Padding(14);
-            this.materialCard_Favorites.Size = new System.Drawing.Size(1428, 1059);
+            this.materialCard_Favorites.Size = new System.Drawing.Size(1525, 1195);
             this.materialCard_Favorites.TabIndex = 0;
             // 
-            // materialButton_FavoritesAdd
+            // listV_Favorites
             // 
-            this.materialButton_FavoritesAdd.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
-            this.materialButton_FavoritesAdd.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
-            this.materialButton_FavoritesAdd.Density = MaterialSkin.Controls.MaterialButton.MaterialButtonDensity.Default;
-            this.materialButton_FavoritesAdd.Depth = 0;
-            this.materialButton_FavoritesAdd.HighEmphasis = true;
-            this.materialButton_FavoritesAdd.Icon = null;
-            this.materialButton_FavoritesAdd.Location = new System.Drawing.Point(17, 1017);
-            this.materialButton_FavoritesAdd.Margin = new System.Windows.Forms.Padding(4, 6, 4, 6);
-            this.materialButton_FavoritesAdd.MouseState = MaterialSkin.MouseState.HOVER;
-            this.materialButton_FavoritesAdd.Name = "materialButton_FavoritesAdd";
-            this.materialButton_FavoritesAdd.NoAccentTextColor = System.Drawing.Color.Empty;
-            this.materialButton_FavoritesAdd.Size = new System.Drawing.Size(64, 36);
-            this.materialButton_FavoritesAdd.TabIndex = 9;
-            this.materialButton_FavoritesAdd.Text = "Add";
-            this.materialButton_FavoritesAdd.Type = MaterialSkin.Controls.MaterialButton.MaterialButtonType.Contained;
-            this.materialButton_FavoritesAdd.UseAccentColor = false;
-            this.materialButton_FavoritesAdd.UseVisualStyleBackColor = true;
-            this.materialButton_FavoritesAdd.Click += new System.EventHandler(this.MaterialButton_FavoritesAdd_Click);
-            // 
-            // materialListView_Favorites
-            // 
-            this.materialListView_Favorites.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            this.listV_Favorites.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            this.materialListView_Favorites.AutoSizeTable = false;
-            this.materialListView_Favorites.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(255)))));
-            this.materialListView_Favorites.BorderStyle = System.Windows.Forms.BorderStyle.None;
-            this.materialListView_Favorites.Columns.AddRange(new System.Windows.Forms.ColumnHeader[] {
+            this.listV_Favorites.Columns.AddRange(new System.Windows.Forms.ColumnHeader[] {
             this.columnHeader1,
             this.columnHeader2,
             this.columnHeader3,
@@ -1340,28 +1320,24 @@
             this.columnHeader9,
             this.columnHeader10,
             this.columnHeader11});
-            this.materialListView_Favorites.ContextMenuStrip = this.contextMenuStrip_Favorites;
-            this.materialListView_Favorites.Depth = 0;
-            this.materialListView_Favorites.FullRowSelect = true;
-            this.materialListView_Favorites.HideSelection = false;
-            this.materialListView_Favorites.Location = new System.Drawing.Point(17, 17);
-            this.materialListView_Favorites.MinimumSize = new System.Drawing.Size(200, 100);
-            this.materialListView_Favorites.MouseLocation = new System.Drawing.Point(-1, -1);
-            this.materialListView_Favorites.MouseState = MaterialSkin.MouseState.OUT;
-            this.materialListView_Favorites.Name = "materialListView_Favorites";
-            this.materialListView_Favorites.OwnerDraw = true;
-            this.materialListView_Favorites.Size = new System.Drawing.Size(1389, 989);
-            this.materialListView_Favorites.TabIndex = 0;
-            this.materialListView_Favorites.UseCompatibleStateImageBehavior = false;
-            this.materialListView_Favorites.View = System.Windows.Forms.View.Details;
-            this.materialListView_Favorites.SelectedIndexChanged += new System.EventHandler(this.MaterialListView_Favorites_SelectedIndexChanged);
-            this.materialListView_Favorites.KeyDown += new System.Windows.Forms.KeyEventHandler(this.MaterialListView_Favorites_KeyDown);
-            this.materialListView_Favorites.MouseDoubleClick += new System.Windows.Forms.MouseEventHandler(this.MaterialListView_Favorites_MouseDoubleClick);
+            this.listV_Favorites.ContextMenuStrip = this.contextMenuStrip_Favorites;
+            this.listV_Favorites.FullRowSelect = true;
+            this.listV_Favorites.HideSelection = false;
+            this.listV_Favorites.Location = new System.Drawing.Point(10, 10);
+            this.listV_Favorites.MultiSelect = false;
+            this.listV_Favorites.Name = "listV_Favorites";
+            this.listV_Favorites.Size = new System.Drawing.Size(1503, 1134);
+            this.listV_Favorites.TabIndex = 10;
+            this.listV_Favorites.UseCompatibleStateImageBehavior = false;
+            this.listV_Favorites.View = System.Windows.Forms.View.Details;
+            this.listV_Favorites.SelectedIndexChanged += new System.EventHandler(this.ListV_Favorites_SelectedIndexChanged);
+            this.listV_Favorites.KeyDown += new System.Windows.Forms.KeyEventHandler(this.ListV_Favorites_KeyDown);
+            this.listV_Favorites.MouseDoubleClick += new System.Windows.Forms.MouseEventHandler(this.ListV_Favorites_MouseDoubleClick);
             // 
             // columnHeader1
             // 
             this.columnHeader1.Text = "Description";
-            this.columnHeader1.Width = 400;
+            this.columnHeader1.Width = 200;
             // 
             // columnHeader2
             // 
@@ -1371,48 +1347,45 @@
             // columnHeader3
             // 
             this.columnHeader3.Text = "Subdirectories";
-            this.columnHeader3.Width = 100;
+            this.columnHeader3.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             // 
             // columnHeader4
             // 
             this.columnHeader4.Text = "Files";
-            this.columnHeader4.Width = 100;
             // 
             // columnHeader5
             // 
             this.columnHeader5.Text = "By Date";
-            this.columnHeader5.Width = 80;
+            this.columnHeader5.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             // 
             // columnHeader6
             // 
             this.columnHeader6.Text = "Days";
             this.columnHeader6.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
-            this.columnHeader6.Width = 65;
             // 
             // columnHeader7
             // 
             this.columnHeader7.Text = "Find Text";
-            this.columnHeader7.Width = 150;
+            this.columnHeader7.Width = 100;
             // 
             // columnHeader8
             // 
             this.columnHeader8.Text = "Match Case";
-            this.columnHeader8.Width = 100;
+            this.columnHeader8.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             // 
             // columnHeader9
             // 
             this.columnHeader9.Text = "Match Word";
-            this.columnHeader9.Width = 100;
+            this.columnHeader9.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             // 
             // columnHeader10
             // 
-            this.columnHeader10.Text = "Regular Expression";
-            this.columnHeader10.Width = 100;
+            this.columnHeader10.Text = "RegExp";
+            this.columnHeader10.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             // 
             // columnHeader11
             // 
             this.columnHeader11.Text = "Replace Text";
-            this.columnHeader11.Width = 150;
             // 
             // contextMenuStrip_Favorites
             // 
@@ -1425,56 +1398,78 @@
             this.toolStripMenu_Favorites_MoveUp,
             this.toolStripMenu_Favorites_MoveDown});
             this.contextMenuStrip_Favorites.Name = "contextMenuStrip_Favorites";
-            this.contextMenuStrip_Favorites.Size = new System.Drawing.Size(150, 136);
+            this.contextMenuStrip_Favorites.ShowImageMargin = false;
+            this.contextMenuStrip_Favorites.Size = new System.Drawing.Size(125, 136);
             // 
             // toolStripMenu_Favorites_LoadAndFind
             // 
             this.toolStripMenu_Favorites_LoadAndFind.Name = "toolStripMenu_Favorites_LoadAndFind";
-            this.toolStripMenu_Favorites_LoadAndFind.Size = new System.Drawing.Size(149, 22);
+            this.toolStripMenu_Favorites_LoadAndFind.Size = new System.Drawing.Size(124, 22);
             this.toolStripMenu_Favorites_LoadAndFind.Text = "Load and Find";
             this.toolStripMenu_Favorites_LoadAndFind.Click += new System.EventHandler(this.ToolStripMenu_Favorites_LoadAndFind_Click);
             // 
             // toolStripMenu_Favorites_Load
             // 
             this.toolStripMenu_Favorites_Load.Name = "toolStripMenu_Favorites_Load";
-            this.toolStripMenu_Favorites_Load.Size = new System.Drawing.Size(149, 22);
+            this.toolStripMenu_Favorites_Load.Size = new System.Drawing.Size(124, 22);
             this.toolStripMenu_Favorites_Load.Text = "Load only";
             this.toolStripMenu_Favorites_Load.Click += new System.EventHandler(this.ToolStripMenu_Favorites_Load_Click);
             // 
             // toolStripMenu_Favorites_Update
             // 
             this.toolStripMenu_Favorites_Update.Name = "toolStripMenu_Favorites_Update";
-            this.toolStripMenu_Favorites_Update.Size = new System.Drawing.Size(149, 22);
+            this.toolStripMenu_Favorites_Update.Size = new System.Drawing.Size(124, 22);
             this.toolStripMenu_Favorites_Update.Text = "Update";
             this.toolStripMenu_Favorites_Update.Click += new System.EventHandler(this.ToolStripMenu_Favorites_Update_Click);
             // 
             // toolStripMenu_Favorites_Delete
             // 
             this.toolStripMenu_Favorites_Delete.Name = "toolStripMenu_Favorites_Delete";
-            this.toolStripMenu_Favorites_Delete.Size = new System.Drawing.Size(149, 22);
+            this.toolStripMenu_Favorites_Delete.Size = new System.Drawing.Size(124, 22);
             this.toolStripMenu_Favorites_Delete.Text = "Delete";
             this.toolStripMenu_Favorites_Delete.Click += new System.EventHandler(this.ToolStripMenu_Favorites_Delete_Click);
             // 
             // toolStripMenu_Favorites_MoveUp
             // 
             this.toolStripMenu_Favorites_MoveUp.Name = "toolStripMenu_Favorites_MoveUp";
-            this.toolStripMenu_Favorites_MoveUp.Size = new System.Drawing.Size(149, 22);
+            this.toolStripMenu_Favorites_MoveUp.Size = new System.Drawing.Size(124, 22);
             this.toolStripMenu_Favorites_MoveUp.Text = "Move Up";
             this.toolStripMenu_Favorites_MoveUp.Click += new System.EventHandler(this.ToolStripMenu_Favorites_MoveUp_Click);
             // 
             // toolStripMenu_Favorites_MoveDown
             // 
             this.toolStripMenu_Favorites_MoveDown.Name = "toolStripMenu_Favorites_MoveDown";
-            this.toolStripMenu_Favorites_MoveDown.Size = new System.Drawing.Size(149, 22);
+            this.toolStripMenu_Favorites_MoveDown.Size = new System.Drawing.Size(124, 22);
             this.toolStripMenu_Favorites_MoveDown.Text = "Move Down";
             this.toolStripMenu_Favorites_MoveDown.Click += new System.EventHandler(this.ToolStripMenu_Favorites_MoveDown_Click);
+            // 
+            // materialButton_FavoritesAdd
+            // 
+            this.materialButton_FavoritesAdd.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
+            this.materialButton_FavoritesAdd.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
+            this.materialButton_FavoritesAdd.Density = MaterialSkin.Controls.MaterialButton.MaterialButtonDensity.Default;
+            this.materialButton_FavoritesAdd.Depth = 0;
+            this.materialButton_FavoritesAdd.HighEmphasis = true;
+            this.materialButton_FavoritesAdd.Icon = null;
+            this.materialButton_FavoritesAdd.Location = new System.Drawing.Point(10, 1155);
+            this.materialButton_FavoritesAdd.Margin = new System.Windows.Forms.Padding(4, 6, 4, 6);
+            this.materialButton_FavoritesAdd.MouseState = MaterialSkin.MouseState.HOVER;
+            this.materialButton_FavoritesAdd.Name = "materialButton_FavoritesAdd";
+            this.materialButton_FavoritesAdd.NoAccentTextColor = System.Drawing.Color.Empty;
+            this.materialButton_FavoritesAdd.Size = new System.Drawing.Size(64, 36);
+            this.materialButton_FavoritesAdd.TabIndex = 9;
+            this.materialButton_FavoritesAdd.Text = "Add";
+            this.materialButton_FavoritesAdd.Type = MaterialSkin.Controls.MaterialButton.MaterialButtonType.Contained;
+            this.materialButton_FavoritesAdd.UseAccentColor = false;
+            this.materialButton_FavoritesAdd.UseVisualStyleBackColor = true;
+            this.materialButton_FavoritesAdd.Click += new System.EventHandler(this.MaterialButton_FavoritesAdd_Click);
             // 
             // tabPage4
             // 
             this.tabPage4.Controls.Add(this.materialCard_About);
             this.tabPage4.Location = new System.Drawing.Point(4, 22);
             this.tabPage4.Name = "tabPage4";
-            this.tabPage4.Size = new System.Drawing.Size(1478, 1188);
+            this.tabPage4.Size = new System.Drawing.Size(1537, 1209);
             this.tabPage4.TabIndex = 3;
             this.tabPage4.Text = "About";
             this.tabPage4.UseVisualStyleBackColor = true;
@@ -1493,7 +1488,7 @@
             this.materialCard_About.MouseState = MaterialSkin.MouseState.HOVER;
             this.materialCard_About.Name = "materialCard_About";
             this.materialCard_About.Padding = new System.Windows.Forms.Padding(14);
-            this.materialCard_About.Size = new System.Drawing.Size(1380, 942);
+            this.materialCard_About.Size = new System.Drawing.Size(1525, 1195);
             this.materialCard_About.TabIndex = 2;
             // 
             // richTextBoxAbout
@@ -1506,7 +1501,7 @@
             this.richTextBoxAbout.Location = new System.Drawing.Point(17, 17);
             this.richTextBoxAbout.Name = "richTextBoxAbout";
             this.richTextBoxAbout.ReadOnly = true;
-            this.richTextBoxAbout.Size = new System.Drawing.Size(1346, 908);
+            this.richTextBoxAbout.Size = new System.Drawing.Size(1491, 1161);
             this.richTextBoxAbout.TabIndex = 1;
             this.richTextBoxAbout.Text = "";
             this.richTextBoxAbout.LinkClicked += new System.Windows.Forms.LinkClickedEventHandler(this.RichTextBoxAbout_LinkClicked);
@@ -1538,7 +1533,7 @@
             this.materialProgressBar1.MarqueeAnimationSpeed = 300;
             this.materialProgressBar1.MouseState = MaterialSkin.MouseState.HOVER;
             this.materialProgressBar1.Name = "materialProgressBar1";
-            this.materialProgressBar1.Size = new System.Drawing.Size(1718, 5);
+            this.materialProgressBar1.Size = new System.Drawing.Size(1760, 5);
             this.materialProgressBar1.TabIndex = 15;
             this.materialProgressBar1.Visible = false;
             // 
@@ -1547,9 +1542,9 @@
             this.panel_Bottom.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
             this.panel_Bottom.Controls.Add(this.groupBox_Bottom);
-            this.panel_Bottom.Location = new System.Drawing.Point(0, 1339);
+            this.panel_Bottom.Location = new System.Drawing.Point(0, 1329);
             this.panel_Bottom.Name = "panel_Bottom";
-            this.panel_Bottom.Size = new System.Drawing.Size(1820, 48);
+            this.panel_Bottom.Size = new System.Drawing.Size(1862, 48);
             this.panel_Bottom.TabIndex = 17;
             // 
             // groupBox_Bottom
@@ -1561,7 +1556,7 @@
             this.groupBox_Bottom.Controls.Add(this.materialProgressBar1);
             this.groupBox_Bottom.Location = new System.Drawing.Point(6, 2);
             this.groupBox_Bottom.Name = "groupBox_Bottom";
-            this.groupBox_Bottom.Size = new System.Drawing.Size(1808, 40);
+            this.groupBox_Bottom.Size = new System.Drawing.Size(1850, 40);
             this.groupBox_Bottom.TabIndex = 17;
             this.groupBox_Bottom.TabStop = false;
             // 
@@ -1581,7 +1576,7 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1836, 1346);
+            this.ClientSize = new System.Drawing.Size(1868, 1346);
             this.Controls.Add(this.panel_Bottom);
             this.Controls.Add(this.panel_LeftFindParms);
             this.Controls.Add(this.panel_Center);
@@ -1650,7 +1645,7 @@
         private System.Windows.Forms.Panel panel_Left;
         private System.Windows.Forms.Panel panel_LeftFindParms;
         private System.Windows.Forms.Panel panel_Center;
-        private System.Windows.Forms.TreeView treeView1;
+        private System.Windows.Forms.TreeView treeV_Directories;
         private MaterialSkin.Controls.MaterialLabel materialLabel1;
         private System.Windows.Forms.ImageList imageListTree;
         private MaterialSkin.Controls.MaterialTabControl materialTabControl1;
@@ -1695,15 +1690,6 @@
         private MaterialSkin.Controls.MaterialLabel materialLabel7;
         private MaterialSkin.Controls.MaterialComboBox materialComboBox_NetworkDrive;
         private MaterialSkin.Controls.MaterialCard materialCard_Favorites;
-        private MaterialSkin.Controls.MaterialListView materialListView_Favorites;
-        private System.Windows.Forms.ColumnHeader columnHeader1;
-        private System.Windows.Forms.ColumnHeader columnHeader2;
-        private System.Windows.Forms.ColumnHeader columnHeader3;
-        private System.Windows.Forms.ColumnHeader columnHeader4;
-        private System.Windows.Forms.ColumnHeader columnHeader5;
-        private System.Windows.Forms.ColumnHeader columnHeader6;
-        private System.Windows.Forms.ColumnHeader columnHeader7;
-        private System.Windows.Forms.ColumnHeader columnHeader8;
         private System.Windows.Forms.SplitContainer splitContainer1;
         private MaterialSkin.Controls.MaterialTextBox materialTextBox_PrFindString;
         private MaterialSkin.Controls.MaterialCard materialCard_Preview;
@@ -1719,7 +1705,7 @@
         private MaterialSkin.Controls.MaterialButton materialButton_FavoritesAdd;
         private System.Windows.Forms.PictureBox pictureBox_PRBackward;
         private System.Windows.Forms.PictureBox pictureBox_PRForward;
-        private System.Windows.Forms.ListView listView_Result;
+        private System.Windows.Forms.ListView listV_Result;
         private System.Windows.Forms.ColumnHeader columnHeader13;
         private System.Windows.Forms.ColumnHeader columnHeader14;
         private System.Windows.Forms.ColumnHeader columnHeader15;
@@ -1740,11 +1726,8 @@
         private System.Windows.Forms.ContextMenuStrip contextMenuStrip_Result;
         private System.Windows.Forms.ToolStripMenuItem toolStripMenu_Result_Edit;
         private System.Windows.Forms.ToolStripMenuItem toolStripMenu_Result_Explorer;
-        private System.Windows.Forms.ColumnHeader columnHeader9;
-        private System.Windows.Forms.ColumnHeader columnHeader10;
         private System.Windows.Forms.ToolStripMenuItem toolStripMenu_Result_Replace_Text;
         private System.Windows.Forms.ToolStripMenuItem toolStripMenu_Result_Restore;
-        private System.Windows.Forms.ColumnHeader columnHeader11;
         private System.Windows.Forms.ContextMenuStrip contextMenuStrip_Tree;
         private System.Windows.Forms.ToolStripMenuItem toolStripMenu_Tree_Explorer;
         private System.Windows.Forms.GroupBox groupBox6;
@@ -1754,5 +1737,17 @@
         private System.Windows.Forms.GroupBox groupBox_Bottom;
         private System.Windows.Forms.ToolStripMenuItem toolStripMenu_Favorites_MoveUp;
         private System.Windows.Forms.ToolStripMenuItem toolStripMenu_Favorites_MoveDown;
+        private System.Windows.Forms.ListView listV_Favorites;
+        private System.Windows.Forms.ColumnHeader columnHeader1;
+        private System.Windows.Forms.ColumnHeader columnHeader2;
+        private System.Windows.Forms.ColumnHeader columnHeader3;
+        private System.Windows.Forms.ColumnHeader columnHeader4;
+        private System.Windows.Forms.ColumnHeader columnHeader5;
+        private System.Windows.Forms.ColumnHeader columnHeader6;
+        private System.Windows.Forms.ColumnHeader columnHeader7;
+        private System.Windows.Forms.ColumnHeader columnHeader8;
+        private System.Windows.Forms.ColumnHeader columnHeader9;
+        private System.Windows.Forms.ColumnHeader columnHeader10;
+        private System.Windows.Forms.ColumnHeader columnHeader11;
     }
 }

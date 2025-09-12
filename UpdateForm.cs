@@ -4,6 +4,11 @@ using System.Windows.Forms;
 
 namespace FindReplace
 {
+    // In UpdateForm are 2 Buttons
+    // - Update:    materialButton_Update           in materialButton_Update DialogResult= OK
+    // - Cancel:    materialButton_Cancel           in materialButton_Cancel DialogResult= Cancel (Default)
+    // Forms AcceptButton: materialButton_Update
+    //       CancelButton: materialButton_Cancel
     public partial class UpdateForm : MaterialForm
     {
         public UpdateForm()

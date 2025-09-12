@@ -2,6 +2,7 @@ This file contains latest news in project FindReplace
 
 Version  	Date		Changes
 ========	==========	=======
+1.1.0.5     2025/09/12  Favorites: ListView replaces MaterialListView, Updater.cs fixed
 1.1.0.4     2025/09/11  ListView Columns resize auto, ContextMenuStrip background fixed when Theme=dark
 1.1.0.3     2025/09/09  Preview/RichTextBox Font changed to "Consolas", localbackup now supports a propper entryName (fileName without Path)
 1.1.0.2     2025/09/02  StatusMessage in a GroupBox, more Text in Message, less empty Space at the Bottom of the Form
