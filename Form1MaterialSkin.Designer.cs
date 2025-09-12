@@ -229,7 +229,7 @@
             // toolStripMenu_Tree_Explorer
             // 
             this.toolStripMenu_Tree_Explorer.Name = "toolStripMenu_Tree_Explorer";
-            this.toolStripMenu_Tree_Explorer.Size = new System.Drawing.Size(155, 22);
+            this.toolStripMenu_Tree_Explorer.Size = new System.Drawing.Size(91, 22);
             this.toolStripMenu_Tree_Explorer.Text = "Explorer";
             this.toolStripMenu_Tree_Explorer.Click += new System.EventHandler(this.ToolStripMenu_Tree_Explorer_Click);
             // 
@@ -606,7 +606,7 @@
             this.materialCard_Result.MouseState = MaterialSkin.MouseState.HOVER;
             this.materialCard_Result.Name = "materialCard_Result";
             this.materialCard_Result.Padding = new System.Windows.Forms.Padding(14);
-            this.materialCard_Result.Size = new System.Drawing.Size(627, 1187);
+            this.materialCard_Result.Size = new System.Drawing.Size(627, 1197);
             this.materialCard_Result.TabIndex = 2;
             // 
             // listV_Result
@@ -861,7 +861,7 @@
             this.tabPage2.Location = new System.Drawing.Point(4, 22);
             this.tabPage2.Name = "tabPage2";
             this.tabPage2.Padding = new System.Windows.Forms.Padding(3);
-            this.tabPage2.Size = new System.Drawing.Size(1537, 1194);
+            this.tabPage2.Size = new System.Drawing.Size(1537, 1199);
             this.tabPage2.TabIndex = 1;
             this.tabPage2.Text = "Options";
             this.tabPage2.UseVisualStyleBackColor = true;
@@ -1280,7 +1280,7 @@
             this.tabPage3.Controls.Add(this.materialCard_Favorites);
             this.tabPage3.Location = new System.Drawing.Point(4, 22);
             this.tabPage3.Name = "tabPage3";
-            this.tabPage3.Size = new System.Drawing.Size(1537, 1209);
+            this.tabPage3.Size = new System.Drawing.Size(1537, 1199);
             this.tabPage3.TabIndex = 2;
             this.tabPage3.Text = "Favorites";
             this.tabPage3.UseVisualStyleBackColor = true;
@@ -1469,7 +1469,7 @@
             this.tabPage4.Controls.Add(this.materialCard_About);
             this.tabPage4.Location = new System.Drawing.Point(4, 22);
             this.tabPage4.Name = "tabPage4";
-            this.tabPage4.Size = new System.Drawing.Size(1537, 1209);
+            this.tabPage4.Size = new System.Drawing.Size(1537, 1199);
             this.tabPage4.TabIndex = 3;
             this.tabPage4.Text = "About";
             this.tabPage4.UseVisualStyleBackColor = true;
