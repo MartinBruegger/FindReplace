@@ -142,6 +142,9 @@
       <DependentUpon>Settings.settings</DependentUpon>
       <DesignTimeSharedInput>True</DesignTimeSharedInput>
     </Compile>
+    <Content Include="Updater.exe">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
     <Content Include="Update\FindReplace.manifest" />
     <None Include="Update\FindReplace.zip" />
   </ItemGroup>
@@ -200,9 +203,6 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="ReplaceStr.ico" />
-    <Content Include="Updater.exe">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </Content>
     <Content Include="Update\FindReplace_changes.txt" />
   </ItemGroup>
   <ItemGroup />
