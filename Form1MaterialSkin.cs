@@ -1137,7 +1137,6 @@ namespace FindReplace
             listV_Result.Items.Add(item0);                                                      // top directory
             directoriesOld = directoryNameOld.Split('\\');
             int indentOffset = directoriesOld.Count() - 1;
-            int indentMax = 0;
             foreach (MatchInfo foundItem in listMatches)
             {
                 file = listFiles[foundItem.ID];
@@ -1159,7 +1158,6 @@ namespace FindReplace
                         IndentCount = directoriesNew.Count() - indentOffset,
                         Tag = foundItem.ID
                     };
-                    indentMax = (directoriesNew.Count() - indentOffset > indentMax) ? directoriesNew.Count() - indentOffset : indentMax;
                     listV_Result.Items.Add(item1);                                              // file in  top directory                       
                     directoriesOld = directoriesNew;
                     directoryNameOld = directoryNameNew;
@@ -1217,7 +1215,6 @@ namespace FindReplace
                         Tag = foundItem.ID
                     };
                     listV_Result.Items.Add(item2);                                              // file in sub-directory
-                    indentMax = (directoriesNew.Count() - indentOffset > indentMax) ? directoriesNew.Count() - indentOffset : indentMax;
                     directoriesOld = directoriesNew;
                     directoryNameOld = directoryNameNew;
                     if (!fileInResult)
@@ -1231,20 +1228,17 @@ namespace FindReplace
             {
                 listV_Result.BeginUpdate();
 
-
                 //Auto size using header
                 listV_Result.AutoResizeColumns(ColumnHeaderAutoResizeStyle.HeaderSize);
                 //Auto size using data
-                listV_Result.AutoResizeColumns(ColumnHeaderAutoResizeStyle.ColumnContent);       // Resize all Columns with ColumnContent 
-                listV_Result.AutoResizeColumn(1, ColumnHeaderAutoResizeStyle.HeaderSize);        // Exception "Matches":    HeaderSize
-                //int myListViewWidth = listView_Result.Width;
-                ////MessageBox.Show("myListViewWidth:" + myListViewWidth);
-                int myListViewWidth2 = 0;
-                foreach (ColumnHeader colHeader in listV_Result.Columns)
+                listV_Result.AutoResizeColumns(ColumnHeaderAutoResizeStyle.ColumnContent);      // Resize all Columns with ColumnContent 
+                listV_Result.AutoResizeColumn(1, ColumnHeaderAutoResizeStyle.HeaderSize);       // Exception "Matches":    HeaderSize
+                int listV_ResultWidth = 0;                                                      // calculate position for setting the SplitterDistance
+                foreach (ColumnHeader colHeader in listV_Result.Columns)                        // .. get Width of all Columns, add Locations and Margins
                 {
-                    myListViewWidth2 += colHeader.Width;
+                    listV_ResultWidth += colHeader.Width;
                 }
-                splitContainer1.SplitterDistance = myListViewWidth2+34 + indentMax;             // Margins: MaterialCard: 2*14, ListView 2*3 + max(IndentCount)
+                splitContainer1.SplitterDistance = listV_ResultWidth + 54;                      // .. MaterialCard: Location 3, Margin 14; ListView: Location 10 =27 *2=54
 
                 listV_Result.EndUpdate();
                 listV_Result.Items[firstFile - 1].Selected = true;
@@ -1261,7 +1255,6 @@ namespace FindReplace
             PictureBox_Checked(pictureBox_PRRegEx, regEx);
             materialLabel_PrMatches.Text = string.Empty;
             richTextBox_Preview.Text = string.Empty;
-            //richTextBox_Preview.Font = new Font("Consolas",richTextBox_Preview.Font.Size);
             richTextBox_Preview.Font = new Font("Consolas", 8F);  // Lucida Console
         }
 

@@ -511,7 +511,7 @@
             this.panel_Center.Controls.Add(this.materialTabControl1);
             this.panel_Center.Location = new System.Drawing.Point(300, 66);
             this.panel_Center.Name = "panel_Center";
-            this.panel_Center.Size = new System.Drawing.Size(1571, 1270);
+            this.panel_Center.Size = new System.Drawing.Size(1587, 1270);
             this.panel_Center.TabIndex = 2;
             // 
             // materialTabSelector1
@@ -525,7 +525,7 @@
             this.materialTabSelector1.Location = new System.Drawing.Point(11, 3);
             this.materialTabSelector1.MouseState = MaterialSkin.MouseState.HOVER;
             this.materialTabSelector1.Name = "materialTabSelector1";
-            this.materialTabSelector1.Size = new System.Drawing.Size(1561, 29);
+            this.materialTabSelector1.Size = new System.Drawing.Size(1577, 29);
             this.materialTabSelector1.TabIndex = 1;
             this.materialTabSelector1.Text = "materialTabSelector1";
             // 
@@ -544,7 +544,7 @@
             this.materialTabControl1.Multiline = true;
             this.materialTabControl1.Name = "materialTabControl1";
             this.materialTabControl1.SelectedIndex = 0;
-            this.materialTabControl1.Size = new System.Drawing.Size(1561, 1225);
+            this.materialTabControl1.Size = new System.Drawing.Size(1577, 1225);
             this.materialTabControl1.TabIndex = 0;
             this.materialTabControl1.SelectedIndexChanged += new System.EventHandler(this.ListV_Favorites_SelectedIndexChanged);
             this.materialTabControl1.MouseDoubleClick += new System.Windows.Forms.MouseEventHandler(this.ListV_Favorites_MouseDoubleClick);
@@ -555,7 +555,7 @@
             this.tabPage1.Location = new System.Drawing.Point(4, 22);
             this.tabPage1.Name = "tabPage1";
             this.tabPage1.Padding = new System.Windows.Forms.Padding(3);
-            this.tabPage1.Size = new System.Drawing.Size(1553, 1199);
+            this.tabPage1.Size = new System.Drawing.Size(1569, 1199);
             this.tabPage1.TabIndex = 0;
             this.tabPage1.Text = "Result";
             this.tabPage1.UseVisualStyleBackColor = true;
@@ -587,7 +587,7 @@
             this.splitContainer1.Panel2.Controls.Add(this.materialCard_Preview);
             this.splitContainer1.Panel2.Controls.Add(this.materialTextBox_PrFindString);
             this.splitContainer1.Panel2MinSize = 100;
-            this.splitContainer1.Size = new System.Drawing.Size(1553, 1200);
+            this.splitContainer1.Size = new System.Drawing.Size(1569, 1200);
             this.splitContainer1.SplitterDistance = 630;
             this.splitContainer1.SplitterIncrement = 5;
             this.splitContainer1.TabIndex = 0;
@@ -606,7 +606,7 @@
             this.materialCard_Result.MouseState = MaterialSkin.MouseState.HOVER;
             this.materialCard_Result.Name = "materialCard_Result";
             this.materialCard_Result.Padding = new System.Windows.Forms.Padding(14);
-            this.materialCard_Result.Size = new System.Drawing.Size(627, 1197);
+            this.materialCard_Result.Size = new System.Drawing.Size(627, 1187);
             this.materialCard_Result.TabIndex = 2;
             // 
             // listV_Result
@@ -625,7 +625,7 @@
             this.listV_Result.HideSelection = false;
             this.listV_Result.Location = new System.Drawing.Point(10, 10);
             this.listV_Result.Name = "listV_Result";
-            this.listV_Result.Size = new System.Drawing.Size(607, 1174);
+            this.listV_Result.Size = new System.Drawing.Size(607, 1164);
             this.listV_Result.SmallImageList = this.imageList_Result;
             this.listV_Result.TabIndex = 1;
             this.listV_Result.UseCompatibleStateImageBehavior = false;
@@ -707,7 +707,7 @@
             // 
             this.pictureBox_PRFindPage.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
             this.pictureBox_PRFindPage.Image = ((System.Drawing.Image)(resources.GetObject("pictureBox_PRFindPage.Image")));
-            this.pictureBox_PRFindPage.Location = new System.Drawing.Point(700, 1161);
+            this.pictureBox_PRFindPage.Location = new System.Drawing.Point(716, 1161);
             this.pictureBox_PRFindPage.Name = "pictureBox_PRFindPage";
             this.pictureBox_PRFindPage.Size = new System.Drawing.Size(24, 24);
             this.pictureBox_PRFindPage.TabIndex = 18;
@@ -720,7 +720,7 @@
             // 
             this.pictureBox_PRRegEx.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
             this.pictureBox_PRRegEx.Image = ((System.Drawing.Image)(resources.GetObject("pictureBox_PRRegEx.Image")));
-            this.pictureBox_PRRegEx.Location = new System.Drawing.Point(784, 1161);
+            this.pictureBox_PRRegEx.Location = new System.Drawing.Point(800, 1161);
             this.pictureBox_PRRegEx.Name = "pictureBox_PRRegEx";
             this.pictureBox_PRRegEx.Size = new System.Drawing.Size(24, 24);
             this.pictureBox_PRRegEx.TabIndex = 17;
@@ -733,7 +733,7 @@
             // 
             this.pictureBox_PRMatchWord.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
             this.pictureBox_PRMatchWord.Image = ((System.Drawing.Image)(resources.GetObject("pictureBox_PRMatchWord.Image")));
-            this.pictureBox_PRMatchWord.Location = new System.Drawing.Point(756, 1161);
+            this.pictureBox_PRMatchWord.Location = new System.Drawing.Point(772, 1161);
             this.pictureBox_PRMatchWord.Name = "pictureBox_PRMatchWord";
             this.pictureBox_PRMatchWord.Size = new System.Drawing.Size(24, 24);
             this.pictureBox_PRMatchWord.TabIndex = 16;
@@ -746,7 +746,7 @@
             // 
             this.pictureBox_PRMatchCase.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
             this.pictureBox_PRMatchCase.Image = ((System.Drawing.Image)(resources.GetObject("pictureBox_PRMatchCase.Image")));
-            this.pictureBox_PRMatchCase.Location = new System.Drawing.Point(728, 1161);
+            this.pictureBox_PRMatchCase.Location = new System.Drawing.Point(744, 1161);
             this.pictureBox_PRMatchCase.Name = "pictureBox_PRMatchCase";
             this.pictureBox_PRMatchCase.Size = new System.Drawing.Size(24, 24);
             this.pictureBox_PRMatchCase.TabIndex = 15;
@@ -761,7 +761,7 @@
             this.label_SCPanel2PB.AutoSize = true;
             this.label_SCPanel2PB.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
             this.label_SCPanel2PB.Font = new System.Drawing.Font("Verdana", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Pixel, ((byte)(0)));
-            this.label_SCPanel2PB.Location = new System.Drawing.Point(746, 1149);
+            this.label_SCPanel2PB.Location = new System.Drawing.Point(762, 1149);
             this.label_SCPanel2PB.Name = "label_SCPanel2PB";
             this.label_SCPanel2PB.Size = new System.Drawing.Size(46, 14);
             this.label_SCPanel2PB.TabIndex = 14;
@@ -773,7 +773,7 @@
             this.pictureBox_PRBackward.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
             this.pictureBox_PRBackward.BackColor = System.Drawing.Color.Transparent;
             this.pictureBox_PRBackward.Image = ((System.Drawing.Image)(resources.GetObject("pictureBox_PRBackward.Image")));
-            this.pictureBox_PRBackward.Location = new System.Drawing.Point(821, 1161);
+            this.pictureBox_PRBackward.Location = new System.Drawing.Point(837, 1161);
             this.pictureBox_PRBackward.Name = "pictureBox_PRBackward";
             this.pictureBox_PRBackward.Size = new System.Drawing.Size(24, 24);
             this.pictureBox_PRBackward.TabIndex = 13;
@@ -784,7 +784,7 @@
             // 
             this.pictureBox_PRForward.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
             this.pictureBox_PRForward.Image = ((System.Drawing.Image)(resources.GetObject("pictureBox_PRForward.Image")));
-            this.pictureBox_PRForward.Location = new System.Drawing.Point(841, 1161);
+            this.pictureBox_PRForward.Location = new System.Drawing.Point(857, 1161);
             this.pictureBox_PRForward.Name = "pictureBox_PRForward";
             this.pictureBox_PRForward.Size = new System.Drawing.Size(24, 24);
             this.pictureBox_PRForward.TabIndex = 12;
@@ -798,7 +798,7 @@
             this.materialLabel_PrMatches.Depth = 0;
             this.materialLabel_PrMatches.Font = new System.Drawing.Font("Roboto", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Pixel);
             this.materialLabel_PrMatches.FontType = MaterialSkin.MaterialSkinManager.fontType.Caption;
-            this.materialLabel_PrMatches.Location = new System.Drawing.Point(866, 1167);
+            this.materialLabel_PrMatches.Location = new System.Drawing.Point(882, 1167);
             this.materialLabel_PrMatches.MouseState = MaterialSkin.MouseState.HOVER;
             this.materialLabel_PrMatches.Name = "materialLabel_PrMatches";
             this.materialLabel_PrMatches.Size = new System.Drawing.Size(1, 0);
@@ -818,7 +818,7 @@
             this.materialCard_Preview.MouseState = MaterialSkin.MouseState.HOVER;
             this.materialCard_Preview.Name = "materialCard_Preview";
             this.materialCard_Preview.Padding = new System.Windows.Forms.Padding(14);
-            this.materialCard_Preview.Size = new System.Drawing.Size(911, 1120);
+            this.materialCard_Preview.Size = new System.Drawing.Size(927, 1120);
             this.materialCard_Preview.TabIndex = 10;
             // 
             // richTextBox_Preview
@@ -830,7 +830,7 @@
             this.richTextBox_Preview.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.richTextBox_Preview.Location = new System.Drawing.Point(10, 10);
             this.richTextBox_Preview.Name = "richTextBox_Preview";
-            this.richTextBox_Preview.Size = new System.Drawing.Size(891, 1099);
+            this.richTextBox_Preview.Size = new System.Drawing.Size(907, 1099);
             this.richTextBox_Preview.TabIndex = 0;
             this.richTextBox_Preview.Text = "";
             this.richTextBox_Preview.KeyUp += new System.Windows.Forms.KeyEventHandler(this.RichTextBox_Preview_KeyUp);
@@ -850,7 +850,7 @@
             this.materialTextBox_PrFindString.MouseState = MaterialSkin.MouseState.OUT;
             this.materialTextBox_PrFindString.Multiline = false;
             this.materialTextBox_PrFindString.Name = "materialTextBox_PrFindString";
-            this.materialTextBox_PrFindString.Size = new System.Drawing.Size(686, 50);
+            this.materialTextBox_PrFindString.Size = new System.Drawing.Size(702, 50);
             this.materialTextBox_PrFindString.TabIndex = 1;
             this.materialTextBox_PrFindString.Text = "";
             this.materialTextBox_PrFindString.TrailingIcon = null;
@@ -861,7 +861,7 @@
             this.tabPage2.Location = new System.Drawing.Point(4, 22);
             this.tabPage2.Name = "tabPage2";
             this.tabPage2.Padding = new System.Windows.Forms.Padding(3);
-            this.tabPage2.Size = new System.Drawing.Size(1537, 1199);
+            this.tabPage2.Size = new System.Drawing.Size(1553, 1199);
             this.tabPage2.TabIndex = 1;
             this.tabPage2.Text = "Options";
             this.tabPage2.UseVisualStyleBackColor = true;
@@ -1280,7 +1280,7 @@
             this.tabPage3.Controls.Add(this.materialCard_Favorites);
             this.tabPage3.Location = new System.Drawing.Point(4, 22);
             this.tabPage3.Name = "tabPage3";
-            this.tabPage3.Size = new System.Drawing.Size(1537, 1199);
+            this.tabPage3.Size = new System.Drawing.Size(1569, 1199);
             this.tabPage3.TabIndex = 2;
             this.tabPage3.Text = "Favorites";
             this.tabPage3.UseVisualStyleBackColor = true;
@@ -1300,7 +1300,7 @@
             this.materialCard_Favorites.MouseState = MaterialSkin.MouseState.HOVER;
             this.materialCard_Favorites.Name = "materialCard_Favorites";
             this.materialCard_Favorites.Padding = new System.Windows.Forms.Padding(14);
-            this.materialCard_Favorites.Size = new System.Drawing.Size(1525, 1195);
+            this.materialCard_Favorites.Size = new System.Drawing.Size(1556, 1187);
             this.materialCard_Favorites.TabIndex = 0;
             // 
             // listV_Favorites
@@ -1326,7 +1326,7 @@
             this.listV_Favorites.Location = new System.Drawing.Point(10, 10);
             this.listV_Favorites.MultiSelect = false;
             this.listV_Favorites.Name = "listV_Favorites";
-            this.listV_Favorites.Size = new System.Drawing.Size(1503, 1134);
+            this.listV_Favorites.Size = new System.Drawing.Size(1534, 1126);
             this.listV_Favorites.TabIndex = 10;
             this.listV_Favorites.UseCompatibleStateImageBehavior = false;
             this.listV_Favorites.View = System.Windows.Forms.View.Details;
@@ -1451,7 +1451,7 @@
             this.materialButton_FavoritesAdd.Depth = 0;
             this.materialButton_FavoritesAdd.HighEmphasis = true;
             this.materialButton_FavoritesAdd.Icon = null;
-            this.materialButton_FavoritesAdd.Location = new System.Drawing.Point(10, 1155);
+            this.materialButton_FavoritesAdd.Location = new System.Drawing.Point(10, 1147);
             this.materialButton_FavoritesAdd.Margin = new System.Windows.Forms.Padding(4, 6, 4, 6);
             this.materialButton_FavoritesAdd.MouseState = MaterialSkin.MouseState.HOVER;
             this.materialButton_FavoritesAdd.Name = "materialButton_FavoritesAdd";
@@ -1469,7 +1469,7 @@
             this.tabPage4.Controls.Add(this.materialCard_About);
             this.tabPage4.Location = new System.Drawing.Point(4, 22);
             this.tabPage4.Name = "tabPage4";
-            this.tabPage4.Size = new System.Drawing.Size(1537, 1199);
+            this.tabPage4.Size = new System.Drawing.Size(1569, 1199);
             this.tabPage4.TabIndex = 3;
             this.tabPage4.Text = "About";
             this.tabPage4.UseVisualStyleBackColor = true;
@@ -1488,7 +1488,7 @@
             this.materialCard_About.MouseState = MaterialSkin.MouseState.HOVER;
             this.materialCard_About.Name = "materialCard_About";
             this.materialCard_About.Padding = new System.Windows.Forms.Padding(14);
-            this.materialCard_About.Size = new System.Drawing.Size(1525, 1195);
+            this.materialCard_About.Size = new System.Drawing.Size(1556, 1185);
             this.materialCard_About.TabIndex = 2;
             // 
             // richTextBoxAbout
@@ -1501,7 +1501,7 @@
             this.richTextBoxAbout.Location = new System.Drawing.Point(17, 17);
             this.richTextBoxAbout.Name = "richTextBoxAbout";
             this.richTextBoxAbout.ReadOnly = true;
-            this.richTextBoxAbout.Size = new System.Drawing.Size(1491, 1161);
+            this.richTextBoxAbout.Size = new System.Drawing.Size(1522, 1151);
             this.richTextBoxAbout.TabIndex = 1;
             this.richTextBoxAbout.Text = "";
             this.richTextBoxAbout.LinkClicked += new System.Windows.Forms.LinkClickedEventHandler(this.RichTextBoxAbout_LinkClicked);
@@ -1533,7 +1533,7 @@
             this.materialProgressBar1.MarqueeAnimationSpeed = 300;
             this.materialProgressBar1.MouseState = MaterialSkin.MouseState.HOVER;
             this.materialProgressBar1.Name = "materialProgressBar1";
-            this.materialProgressBar1.Size = new System.Drawing.Size(1776, 5);
+            this.materialProgressBar1.Size = new System.Drawing.Size(1792, 5);
             this.materialProgressBar1.TabIndex = 15;
             this.materialProgressBar1.Visible = false;
             // 
@@ -1544,7 +1544,7 @@
             this.panel_Bottom.Controls.Add(this.groupBox_Bottom);
             this.panel_Bottom.Location = new System.Drawing.Point(0, 1329);
             this.panel_Bottom.Name = "panel_Bottom";
-            this.panel_Bottom.Size = new System.Drawing.Size(1878, 48);
+            this.panel_Bottom.Size = new System.Drawing.Size(1894, 48);
             this.panel_Bottom.TabIndex = 17;
             // 
             // groupBox_Bottom
@@ -1556,7 +1556,7 @@
             this.groupBox_Bottom.Controls.Add(this.materialProgressBar1);
             this.groupBox_Bottom.Location = new System.Drawing.Point(6, 2);
             this.groupBox_Bottom.Name = "groupBox_Bottom";
-            this.groupBox_Bottom.Size = new System.Drawing.Size(1866, 40);
+            this.groupBox_Bottom.Size = new System.Drawing.Size(1882, 40);
             this.groupBox_Bottom.TabIndex = 17;
             this.groupBox_Bottom.TabStop = false;
             // 
@@ -1576,7 +1576,7 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1884, 1346);
+            this.ClientSize = new System.Drawing.Size(1900, 1346);
             this.Controls.Add(this.panel_Bottom);
             this.Controls.Add(this.panel_LeftFindParms);
             this.Controls.Add(this.panel_Center);
