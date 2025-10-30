@@ -2,6 +2,7 @@ This file contains latest news in project FindReplace
 
 Version  	Date		Changes
 ========	==========	=======
+1.1.0.7     2025/10/30  Drag/Drop Folder into TreeView_Directories fixed
 1.1.0.6     2025/09/15  Splitterposition with new formula, cosmetics in CardBox-Sizes
 1.1.0.5     2025/09/12  Favorites: ListView replaces MaterialListView, Updater.cs fixed
 1.1.0.4     2025/09/11  ListView Columns resize auto, ContextMenuStrip background fixed when Theme=dark

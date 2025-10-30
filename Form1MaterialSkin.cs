@@ -26,11 +26,11 @@ namespace FindReplace
 {
     public partial class Form1MaterialSkin : MaterialForm
     {
-        readonly List<string> listFiles = new List<string>();
-        readonly List<string> listDirectories = new List<string>();
-        
+        private readonly List<string> listFiles = new List<string>();
+        private readonly List<string> listDirectories = new List<string>();
 
-        class MatchInfo
+
+        private class MatchInfo
         {
             public int ID { get; set; }
             public int Matches { get; set; }
@@ -44,8 +44,8 @@ namespace FindReplace
                 Size = _Size;
             }
         }
-        readonly List<MatchInfo> listMatches = new List<MatchInfo>();
-        class PreviewMatchClass
+        private readonly List<MatchInfo> listMatches = new List<MatchInfo>();
+        private class PreviewMatchClass
         {
             public int Match { get; set; }
             public string Value { get; set; }
@@ -57,7 +57,7 @@ namespace FindReplace
                 Position = _Position;
             }
         }
-        class PreviewFindClass
+        private class PreviewFindClass
         {
             public int Match { get; set; }
             public string Value { get; set; }
@@ -73,24 +73,24 @@ namespace FindReplace
         private readonly List<PreviewMatchClass> listPreviewMatches = new List<PreviewMatchClass>();
         private readonly MaterialSkinManager TManager = MaterialSkinManager.Instance;
 
-        string bg_worker1_msg;                          // temporary location for backgroundworker1 messages
-        bool NetworkDriveMapped = false;
-        int preview_match_x = 0;
-        string selectedPath = string.Empty;
-        string selectedFileNames = string.Empty;
-        string selectedTextString = string.Empty;
-        string selectedRegXText = string.Empty;
-        bool selectedSubDirectory = false;
-        bool selectedByDate = false;
-        double selectedFileAge = 0;
-        bool matchCase = false;
-        bool matchWord = false;
-        bool regEx = false;
-        string selectedReplaceString = string.Empty;
-        string selectedBackupDir = string.Empty;
-        readonly string argumentPath = string.Empty;
-        readonly string historyFile = "Favorites.xml";
-        string colorScheme;
+        private string bg_worker1_msg;                          // temporary location for backgroundworker1 messages
+        private bool NetworkDriveMapped = false;
+        private int preview_match_x = 0;
+        private string selectedPath = string.Empty;
+        private string selectedFileNames = string.Empty;
+        private string selectedTextString = string.Empty;
+        private string selectedRegXText = string.Empty;
+        private bool selectedSubDirectory = false;
+        private bool selectedByDate = false;
+        private double selectedFileAge = 0;
+        private bool matchCase = false;
+        private bool matchWord = false;
+        private bool regEx = false;
+        private string selectedReplaceString = string.Empty;
+        private string selectedBackupDir = string.Empty;
+        private readonly string argumentPath = string.Empty;
+        private readonly string historyFile = "Favorites.xml";
+        private string colorScheme;
         public Form1MaterialSkin(string[] argumentFile)
         {
             if (argumentFile.Length > 0)
@@ -101,8 +101,6 @@ namespace FindReplace
                     argumentPath = Path.GetDirectoryName(argumentFile[0]);
             }
             InitializeComponent();
-            this.DragEnter += new DragEventHandler(Form1_DragEnter);
-            this.DragDrop += new DragEventHandler(Form1_DragDrop);
             BuildTreeLevel0();
             richTextBoxAbout.LoadFile("FindReplace.rtf");
             materialLabel_AppVersion.Text = Assembly.GetEntryAssembly().GetName().Version.ToString();
@@ -111,51 +109,6 @@ namespace FindReplace
             materialSkinManager.AddFormToManage(this);
             materialSkinManager.ColorScheme = new ColorScheme(Primary.BlueGrey800, Primary.BlueGrey900, Primary.BlueGrey500, Accent.LightBlue200, TextShade.WHITE);
         }
-        void Form1_DragEnter(object sender, DragEventArgs e)
-        {
-            if (e.Data.GetDataPresent(DataFormats.FileDrop)) e.Effect = DragDropEffects.Copy;
-        }
-
-        void Form1_DragDrop(object sender, DragEventArgs e)
-        {
-            string[] files = (string[])e.Data.GetData(DataFormats.FileDrop);
-            foreach (string file in files)
-            {
-                if (file.StartsWith("\\\\"))
-                {
-                    string UNCdirectory = file;
-                    //string mapDriveMsg;
-                    if (!Directory.Exists(file))
-                        UNCdirectory = Path.GetDirectoryName(file);
-                    string mapDriveMsg = Utility.NetworkDrive.MapNetworkDrive(materialComboBox_NetworkDrive.Text, UNCdirectory);
-                    if (string.IsNullOrEmpty(mapDriveMsg))
-                    {
-                        NetworkDriveMapped = true;
-                        BuildTreeLevel0();
-                        selectedPath = materialComboBox_NetworkDrive.Text + ":";
-                        SetMessage("Drag and Drop - directory: \"" + file + "\" mapped as network drive \"" + materialComboBox_NetworkDrive.Text + "\"");
-                    }
-                    else
-                    {
-                        BuildTreeLevel0();
-                        selectedPath = null;
-                        SetMessage("Drag and Drop: " + mapDriveMsg, true);
-                    }
-                }
-                else
-                {
-                    if (Directory.Exists(file))
-                        selectedPath = file;
-                    else
-                        selectedPath = Path.GetDirectoryName(file);
-                    SetMessage("Drag and Drop - selected directory is \"" + selectedPath + "\"");
-                }
-            }
-            treeV_Directories.CollapseAll();
-            if (!string.IsNullOrEmpty(selectedPath))
-                SelectPathInTreeView(selectedPath);
-        }
-
         private void BuildTreeLevel0()
         {
             treeV_Directories.Nodes.Clear();
@@ -1837,6 +1790,51 @@ namespace FindReplace
                 }
                 sender.EndUpdate();
             }
+        }
+
+        private void treeV_Directories_DragOver(object sender, DragEventArgs e)
+        {
+            e.Effect = DragDropEffects.Copy;
+        }
+
+        private void treeV_Directories_DragDrop(object sender, DragEventArgs e)
+        {
+            string[] files = (string[])e.Data.GetData(DataFormats.FileDrop);
+            foreach (string file in files)
+            {
+                if (file.StartsWith("\\\\"))
+                {
+                    string UNCdirectory = file;
+                    //string mapDriveMsg;
+                    if (!Directory.Exists(file))
+                        UNCdirectory = Path.GetDirectoryName(file);
+                    string mapDriveMsg = Utility.NetworkDrive.MapNetworkDrive(materialComboBox_NetworkDrive.Text, UNCdirectory);
+                    if (string.IsNullOrEmpty(mapDriveMsg))
+                    {
+                        NetworkDriveMapped = true;
+                        BuildTreeLevel0();
+                        selectedPath = materialComboBox_NetworkDrive.Text + ":";
+                        SetMessage("Drag and Drop - directory: \"" + file + "\" mapped as network drive \"" + materialComboBox_NetworkDrive.Text + "\"");
+                    }
+                    else
+                    {
+                        BuildTreeLevel0();
+                        selectedPath = null;
+                        SetMessage("Drag and Drop: " + mapDriveMsg, true);
+                    }
+                }
+                else
+                {
+                    if (Directory.Exists(file))
+                        selectedPath = file;
+                    else
+                        selectedPath = Path.GetDirectoryName(file);
+                    SetMessage("Drag and Drop - selected directory is \"" + selectedPath + "\"");
+                }
+            }
+            treeV_Directories.CollapseAll();
+            if (!string.IsNullOrEmpty(selectedPath))
+                _ = SelectPathInTreeView(selectedPath);
         }
     }
 }
