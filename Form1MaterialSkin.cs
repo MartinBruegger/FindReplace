@@ -89,7 +89,7 @@ namespace FindReplace
         private string selectedReplaceString = string.Empty;
         private string selectedBackupDir = string.Empty;
         private readonly string argumentPath = string.Empty;
-        private readonly string historyFile = "Favorites.xml";
+        private readonly string favoritesFile = "Favorites.xml";
         private string colorScheme;
         public Form1MaterialSkin(string[] argumentFile)
         {
@@ -278,6 +278,7 @@ namespace FindReplace
                     break;
             }
             colorScheme = color;
+            listV_Favorites.InsertionMark.Color = TManager.ColorScheme.AccentColor;
             if (!materialSwitch_Theme.Checked) 
                 SetToolStripMenuBackground();
         }
@@ -422,11 +423,11 @@ namespace FindReplace
                     selectedPath = string.Empty;
                 }
 
-            if (File.Exists(historyFile))
+            if (File.Exists(favoritesFile))
             {
                 try
                 {
-                    XDocument doc = XDocument.Load(historyFile);
+                    XDocument doc = XDocument.Load(favoritesFile);
                     foreach (var dm in doc.Descendants("Favorite"))
                     {
                         ListViewItem item = new ListViewItem(new string[]
@@ -454,6 +455,7 @@ namespace FindReplace
                 }
             }
             ListV_Favorites_SetColumnSizes();
+            listV_Favorites.InsertionMark.Color = TManager.ColorScheme.AccentColor;
         }
         private void ListV_Favorites_SetColumnSizes()
         {
@@ -478,7 +480,7 @@ namespace FindReplace
         private void Form1MaterialSkin_FormClosed(object sender, FormClosedEventArgs e)
         {
             if (listV_Favorites.Items.Count > 0)
-                using (XmlWriter writer = XmlWriter.Create(historyFile))
+                using (XmlWriter writer = XmlWriter.Create(favoritesFile))
                 {
                     writer.WriteStartDocument();
                     writer.WriteStartElement("Favorites");
@@ -1835,6 +1837,85 @@ namespace FindReplace
             treeV_Directories.CollapseAll();
             if (!string.IsNullOrEmpty(selectedPath))
                 _ = SelectPathInTreeView(selectedPath);
+        }
+
+        private void listV_Favorites_ItemDrag(object sender, ItemDragEventArgs e)
+        {
+            listV_Favorites.DoDragDrop(e.Item, DragDropEffects.Move);
+        }
+
+        private void listV_Favorites_DragEnter(object sender, DragEventArgs e)
+        {
+            e.Effect = e.AllowedEffect;
+        }
+
+        private void listV_Favorites_DragOver(object sender, DragEventArgs e)
+        {
+            // Retrieve the client coordinates of the mouse pointer.
+            Point targetPoint =
+                listV_Favorites.PointToClient(new Point(e.X, e.Y));
+
+            // Retrieve the index of the item closest to the mouse pointer.
+            int targetIndex = listV_Favorites.InsertionMark.NearestIndex(targetPoint);
+
+            // Confirm that the mouse pointer is not over the dragged item.
+            if (targetIndex > -1)
+            {
+                // Determine whether the mouse pointer is to the left or
+                // the right of the midpoint of the closest item and set
+                // the InsertionMark.AppearsAfterItem property accordingly.
+                Rectangle itemBounds = listV_Favorites.GetItemRect(targetIndex);
+                if (targetPoint.X > itemBounds.Left + (itemBounds.Width / 2))
+                {
+                    listV_Favorites.InsertionMark.AppearsAfterItem = true;
+                }
+                else
+                {
+                    listV_Favorites.InsertionMark.AppearsAfterItem = false;
+                }
+            }
+
+            // Set the location of the insertion mark. If the mouse is
+            // over the dragged item, the targetIndex value is -1 and
+            // the insertion mark disappears.
+            listV_Favorites.InsertionMark.Index = targetIndex;
+        }
+
+        private void listV_Favorites_DragLeave(object sender, EventArgs e)
+        {
+            listV_Favorites.InsertionMark.Index = -1;
+        }
+
+        private void listV_Favorites_DragDrop(object sender, DragEventArgs e)
+        {
+            // Retrieve the index of the insertion mark;
+            int targetIndex = listV_Favorites.InsertionMark.Index;
+
+            // If the insertion mark is not visible, exit the method.
+            if (targetIndex == -1)
+            {
+                return;
+            }
+
+            // If the insertion mark is to the right of the item with
+            // the corresponding index, increment the target index.
+            if (listV_Favorites.InsertionMark.AppearsAfterItem)
+            {
+                targetIndex++;
+            }
+
+            // Retrieve the dragged item.
+            ListViewItem draggedItem =
+                (ListViewItem)e.Data.GetData(typeof(ListViewItem));
+
+            // Insert a copy of the dragged item at the target index.
+            // A copy must be inserted before the original item is removed
+            // to preserve item index values. 
+            listV_Favorites.Items.Insert(
+                targetIndex, (ListViewItem)draggedItem.Clone());
+
+            // Remove the original copy of the dragged item.
+            listV_Favorites.Items.Remove(draggedItem);
         }
     }
 }
